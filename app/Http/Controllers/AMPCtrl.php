@@ -15,7 +15,7 @@ class AMPCtrl extends Controller {
 		$datpermohonan = \App\Amp::orderBy('no_permohonan','ASC')
 		->select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
 		->join('tbl_perusahaan','tbl_permohonan.kode_perusahaan','=','tbl_perusahaan.kode_perusahaan')
-		->join('tbl_amp','tbl_permohonan.kode_amp','=','tbl_amp.kode_amp')
+		->join('tbl_amp','tbl_permohonan.kode_peralatan','=','tbl_amp.kode_amp')
 		->get();
 		return view('amp.listpemeriksaanamp')
 		
@@ -26,7 +26,7 @@ class AMPCtrl extends Controller {
 		session()->forget('no_permohonan');
 		$datpermohonan = \App\permohonan::select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
 		->join('tbl_perusahaan', 'tbl_permohonan.kode_perusahaan', '=', 'tbl_perusahaan.kode_perusahaan')
-		->join('tbl_amp','tbl_permohonan.kode_amp','=','tbl_amp.kode_amp')->find($id);
+		->join('tbl_amp','tbl_permohonan.kode_peralatan','=','tbl_amp.kode_amp')->find($id);
 		session()->put('no_permohonan', $datpermohonan->no_permohonan);
 		return view('amp.pm_1_unit_menu')->with('datpermohonan',$datpermohonan);
 	}
