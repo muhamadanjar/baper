@@ -7,13 +7,11 @@ use Illuminate\Http\Request;
 
 class permohonanCtrl extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
+	public function __construct($value=''){
+		$this->middleware('auth');
+	}
+	
+	public function index(){
 
 		$permohonan = \App\permohonan::select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
 		->join('tbl_perusahaan', 'tbl_permohonan.kode_perusahaan', '=', 'tbl_perusahaan.kode_perusahaan')
@@ -21,11 +19,7 @@ class permohonanCtrl extends Controller {
 		return view('permohonan.permohonan')->with('permohonan',$permohonan);
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
+	
 	public function create()
 	{
 		$kode_peralatan = \App\AmpMast::get();
@@ -34,11 +28,7 @@ class permohonanCtrl extends Controller {
 		return view('permohonan.permohonanAdd')->with('perusahaan',$perusahaan);
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+	
 	public function store(Request $request){
 		$validator = \Validator::make($request->all(), \App\permohonan::$rules);
 		/**
@@ -61,9 +51,9 @@ class permohonanCtrl extends Controller {
 		$permohonan->jabatan = $request->jabatan;
 		$permohonan->jenis_peralatan = $request->jenis_peralatan;
 		if ($request->jenis_peralatan == 'amp') {
-			$permohonan->kode_amp = $request->kode_peralatan;
+			$permohonan->kode_peralatan = $request->kode_peralatan;
 		}else{
-			$permohonan->kode_bp = $request->kode_peralatan;
+			$permohonan->kode_peralatan = $request->kode_peralatan;
 		}
 		$permohonan->kondisi = $request->kondisi;
 		$permohonan->save();
@@ -71,23 +61,12 @@ class permohonanCtrl extends Controller {
 		return redirect('permohonan/permohonan/index');
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function show($id)
 	{
 		//
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	
 	public function edit($id)
 	{
 		$permohonan = \App\permohonan::select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
@@ -102,12 +81,7 @@ class permohonanCtrl extends Controller {
 		->with('perusahaan',$perusahaan)->with('kode_peralatan',$kode_peralatan);
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	
 	public function update($id,Request $request)
 	{
 		$permohonan = \App\permohonan::find($id);
@@ -129,12 +103,7 @@ class permohonanCtrl extends Controller {
 		return redirect('permohonan/permohonan/index');
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	
 	public function destroy($id)
 	{
 		$permohonan = \App\permohonan::find($id);

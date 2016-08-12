@@ -61,12 +61,12 @@
                                     <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle" type="button"><i class="icon-cog4"></i><span class="caret"></span></button>
                                     <ul class="dropdown-menu icons-right dropdown-menu-right">
                                         <li><a href="{{ route('permohonanedit', ['id' => $v->no_permohonan]) }}"><i class="icon-quill2"></i> Ubah</a></li>
-                                        <li data-form="#frm-{{$v->no_permohonan}}" 
+                                        <li data-form="#frm-{{trim($v->no_permohonan)}}" 
                                             data-title="Hapus {{ $v->no_permohonan }}" 
                                             data-message="Apa anda yakin menghapus {{ $v->no_permohonan }} ?">
                                             <a class= "formConfirm" href="#"><i class="fa fa-bell"></i> Hapus </a>
                                         </li>
-                                        <form action="{{ route('permohonandelete', array($v->no_permohonan) ) }}" method="get" style="display:none" id="frm-{{$v->no_permohonan}}"></form>
+                                        <form action="{{ route('permohonandelete', array($v->no_permohonan) ) }}" method="get" style="display:none" id="frm-{{trim($v->no_permohonan)}}"></form>
                                         
                                                         
                                     </ul>

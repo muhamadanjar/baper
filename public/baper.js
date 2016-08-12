@@ -35,9 +35,9 @@ $.extend({
     });
 
     $('#formConfirm').on('click', '#frm_submit', function(e) {
-            var id = $(this).attr('data-form');
-          
-            $(id).submit();
+        var id = $(this).attr('data-form');
+        console.log(id);
+        $(id).submit();
     });
   
 

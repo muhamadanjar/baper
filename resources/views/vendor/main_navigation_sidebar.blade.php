@@ -62,7 +62,6 @@
 							<li><a href="#">Quary</a></li>
 						</ul>
 					</li>
-					<li><a href="#"><span>Permohonan Sertifikat</span> <i class="icon-bars"></i></a></li>
 					<li>
 						<a href="#"><span>Penerbitan Sertifikat</span> <i class="icon-user"></i></a>
 					</li>

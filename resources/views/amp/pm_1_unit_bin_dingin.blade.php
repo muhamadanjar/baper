@@ -51,7 +51,9 @@
     $catatan_pemeriksa = '';
     $harus_diperbaiki = '';
     $pemeriksaan_tahap_2 = '';
-    $kesimpulan_unit_bin_dingin = ''; 
+    $kesimpulan_check = '';
+    $kesimpulan_ket = '';
+    $foto_unit = ''; 
 if (isset($pm_satu_amp_unitbindingin)) {
     if($pm_satu_amp_unitbindingin->kode_periksa){
         $kode_periksa = $pm_satu_amp_unitbindingin->kode_periksa;
@@ -70,12 +72,16 @@ if (isset($pm_satu_amp_unitbindingin)) {
         $catatan_pemeriksa = $pm_satu_amp_unitbindingin->catatan_pemeriksa;
         $harus_diperbaiki = $pm_satu_amp_unitbindingin->harus_diperbaiki;
         $pemeriksaan_tahap_2 = $pm_satu_amp_unitbindingin->pemeriksaan_tahap_2;
+        $foto_unit = $pm_satu_amp_unitbindingin->foto_unit;
+        $kesimpulan_check = $pm_satu_amp_unitbindingin->kesimpulan_check;
+        $kesimpulan_ket = $pm_satu_amp_unitbindingin->kesimpulan_ket;
+
     }
 }
 ?>
     <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            
+        <input type="hidden" name="foto_unit_" value="{{$foto_unit}}" /> 
 		<div class="table-responsive">
             <table class="table table-bordered" fixed-header>                               
                 <tr>
@@ -135,7 +141,7 @@ if (isset($pm_satu_amp_unitbindingin)) {
                                         
 
                     @endif
-                    <td><input type="text" size="50" name="pelat_pemisah_keterangan" value=""></td>
+                    <td><input type="text" size="50" name="pelat_pemisah_keterangan" class="form-control" value=""></td>
                     <td><input type="file" class="styled" name="pelat_pemisah_foto" value="">
 
                     </td>
@@ -180,7 +186,7 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     <td><input type="checkbox" class="styled" class="styled" name="dinding_bin" value="TA"></td>
 					<td><input type="checkbox" class="styled" class="styled" name="dinding_bin" value="TG"></td>
                     @endif
-                    <td><input type="text" size="50" name="dinding_bin_keterangan" value=""></td>
+                    <td><input type="text" size="50" name="dinding_bin_keterangan" class="form-control" value=""></td>
                     <td><input type="file" class="styled" name="dinding_bin_foto" value=""></td>
                 </tr>
                 <tr class="bukaan_pintu">
@@ -223,7 +229,7 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     <td><input type="checkbox" class="styled" name="bukaan_pintu" value="TA"></td>
                     <td><input type="checkbox" class="styled" name="bukaan_pintu" value="TG"></td>
                     @endif
-                    <td><input type="text" size="50" name="bukaan_pintu_keterangan" 
+                    <td><input type="text" size="50" name="bukaan_pintu_keterangan" class="form-control"
                     value="{{ $bukaan_pintu_keterangan }}"></td>
 
                     <td><input type="file" class="styled" name="bukaan_pintu_foto" 
@@ -233,7 +239,7 @@ if (isset($pm_satu_amp_unitbindingin)) {
 					<td>4</td>
                     <td>Pintu Pengatur Bukaan dan Penguncinya</td>
                     @if($pintu_pengatur == 'B ')
-                    <td><input type="checkbox" class="styled" name="pintu_pengatur" value="B" checked="checked"></td>
+                    <td style="text-align: center;"><input type="checkbox" class="styled" name="pintu_pengatur" value="B" checked="checked"></td>
                     <td><input type="checkbox" class="styled" name="pintu_pengatur" value="RL"></td>
                     <td><input type="checkbox" class="styled" name="pintu_pengatur" value="RT"></td>
                     <td><input type="checkbox" class="styled" name="pintu_pengatur" value="TA"></td>
@@ -269,7 +275,7 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     <td><input type="checkbox" class="styled" name="pintu_pengatur" value="TA"></td>
                     <td><input type="checkbox" class="styled" name="pintu_pengatur" value="TG"></td>
                     @endif
-                    <td><input type="text" size="50" name="pintu_pengatur_keterangan" value=""></td>
+                    <td><input type="text" size="50" name="pintu_pengatur_keterangan" class="form-control" value=""></td>
                     <td><input type="file" class="styled" name="pintu_pengatur_foto"></td>
                 </tr>
                 <tr class="skala_meter">
@@ -312,7 +318,7 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     <td><input type="checkbox" class="styled" name="skala_meter" value="TA"></td>
                     <td><input type="checkbox" class="styled" name="skala_meter" value="TG"></td>
                     @endif
-                    <td><input type="text" size="50" name="skala_meter_keterangan" value=""></td>
+                    <td><input type="text" size="50" name="skala_meter_keterangan" class="form-control" value=""></td>
                     <td><input type="file" class="styled" name="skala_meter_foto"></td>
                 </tr>
                 <tr class="motor_penggerak">
@@ -355,7 +361,7 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     <td><input type="checkbox" class="styled" name="motor_penggerak" value="TA"></td>
 					<td><input type="checkbox" class="styled" name="motor_penggerak" value="TG"></td>
                     @endif
-                    <td><input type="text" size="50" name="motor_penggerak_keterangan" value=""></td>
+                    <td><input type="text" size="50" name="motor_penggerak_keterangan" class="form-control" value=""></td>
                     <td><input type="file" class="styled" name="motor_penggerak_foto"></td>
                 </tr>
                 <tr class="penggetar">
@@ -398,7 +404,7 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     <td><input type="checkbox" class="styled" name="penggetar" value="TA"></td>
 				    <td><input type="checkbox" class="styled" name="penggetar" value="TG"></td>
                     @endif
-                    <td><input type="text" size="50" name="penggetar_keterangan" =""></td>
+                    <td><input type="text" size="50" name="penggetar_keterangan" class="form-control"></td>
                     <td><input type="file" class="styled" name="penggetar_foto"></td>
                 </tr>
                 <tr class="pengatur_kecepatan">
@@ -441,7 +447,7 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     <td><input type="checkbox" class="styled" name="pengatur_kecepatan" value="TA"></td>
                     <td><input type="checkbox" class="styled" name="pengatur_kecepatan" value="TG"></td>
                     @endif
-                    <td><input type="text" size="50" name="pengatur_kecepatan_keterangan" value=""></td>
+                    <td><input type="text" size="50" name="pengatur_kecepatan_keterangan" class="form-control" value=""></td>
                     <td><input type="file" class="styled" name="pengatur_kecepatan_foto"></td>
                 </tr>
                 <tr class="konstruksi_pendukung">
@@ -484,7 +490,7 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     <td><input type="checkbox" class="styled" name="konstruksi_pendukung" value="TA"></td>
                     <td><input type="checkbox" class="styled" name="konstruksi_pendukung" value="TG"></td>
                     @endif
-                    <td><input type="text" size="50" name="konstruksi_pendukung_keterangan" value=""></td>
+                    <td><input type="text" size="50" name="konstruksi_pendukung_keterangan" class="form-control" value=""></td>
                     <td><input type="file" class="styled" name="konstruksi_pendukung_foto" value=""></td>
                 </tr>
                 <tr class="pelindung_bin">
@@ -527,7 +533,7 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     <td><input type="checkbox" class="styled" name="pelindung_bin" value="TA"></td>
 					<td><input type="checkbox" class="styled" name="pelindung_bin" value="TG"></td>
                     @endif
-                    <td><input type="text" size="50" name="pelindung_bin_keterangan" value=""></td>
+                    <td><input type="text" size="50" name="pelindung_bin_keterangan" class="form-control" value=""></td>
                     <td><input type="file" class="styled" name="pelindung_bin_foto" value=""></td>
                 </tr>
 			</table>
@@ -538,7 +544,7 @@ if (isset($pm_satu_amp_unitbindingin)) {
 				<tr>
 					<td width=360>Catatan Pemeriksa</td>
 					<td colspan="5">
-                        <textarea name="catatan_pemeriksa" style="width:100%;height:150px">
+                        <textarea name="catatan_pemeriksa" class="editor">
                             {{ $catatan_pemeriksa }}        
                         </textarea>
                     </td>
@@ -561,44 +567,44 @@ if (isset($pm_satu_amp_unitbindingin)) {
 				
 				<tr>
 					<td width=360>Kesimpulan</td>
-                    @if($kesimpulan_unit_bin_dingin == 'B ')
-					<td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="B"></td>
-					<td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="RL"></td>
-					<td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="RT"></td>
-					<td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="TA"></td>
-					<td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="TG"></td>
-                    @elseif($kesimpulan_unit_bin_dingin == 'RL')
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="B"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="RL"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="RT"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="TA"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="TG"></td>
-                    @elseif($kesimpulan_unit_bin_dingin == 'RT')
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="B"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="RL"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="RT"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="TA"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="TG"></td>
-                    @elseif($kesimpulan_unit_bin_dingin == 'TA')
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="B"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="RL"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="RT"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="TA"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="TG"></td>
-                    @elseif($kesimpulan_unit_bin_dingin == 'TG')
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="B"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="RL"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="RT"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="TA"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="TG"></td>
+                    @if($kesimpulan_check == 'B')
+					<td><input type="checkbox" name="kesimpulan_check" value="B" checked="checked"></td>
+					<td><input type="checkbox" name="kesimpulan_check" value="RL"></td>
+					<td><input type="checkbox" name="kesimpulan_check" value="RT"></td>
+					<td><input type="checkbox" name="kesimpulan_check" value="TA"></td>
+					<td><input type="checkbox" name="kesimpulan_check" value="TG"></td>
+                    @elseif($kesimpulan_check == 'RL')
+                    <td><input type="checkbox" name="kesimpulan_check" value="B"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="RL" checked="checked"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="RT"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="TA"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="TG"></td>
+                    @elseif($kesimpulan_check == 'RT')
+                    <td><input type="checkbox" name="kesimpulan_check" value="B"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="RL"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="RT" checked="checked"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="TA"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="TG"></td>
+                    @elseif($kesimpulan_check == 'TA')
+                    <td><input type="checkbox" name="kesimpulan_check" value="B"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="RL"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="RT"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="TA" checked="checked"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="TG"></td>
+                    @elseif($kesimpulan_check == 'TG')
+                    <td><input type="checkbox" name="kesimpulan_check" value="B"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="RL"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="RT"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="TA"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="TG" checked="checked"></td>
                     @else
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="B"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="RL"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="RT"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="TA"></td>
-                    <td><input type="checkbox" name="kesimpulan_unit_bin_dingin" value="TG"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="B"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="RL"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="RT"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="TA"></td>
+                    <td><input type="checkbox" name="kesimpulan_check" value="TG"></td>
                     @endif
-					<td><input type="text" size="50" name="keterangan" value=""></td>
+					<td><input type="text" size="50" name="kesimpulan_ket" class="form-control" value=""></td>
 				</tr>
 			</table>
 		</div>

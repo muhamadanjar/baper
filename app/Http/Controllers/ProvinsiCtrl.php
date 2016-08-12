@@ -7,11 +7,9 @@ use Illuminate\Http\Request;
 
 class ProvinsiCtrl extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+	public function __construct($value=''){
+		$this->middleware('auth');
+	}
 
 	public function provinsi_get($value=''){
 		return \App\Provinsi::orderBy('kode_provinsi','ASC')->get();

@@ -46,7 +46,7 @@
 				        <div class="form-group">
 							<label class="col-sm-2 control-label">No Permohonan:</label>
 				            <div class="col-sm-2">
-				            	<input type="text" class="form-control" name="no_permohonan" value="{{ $permohonan->no_permohonan }}">
+				            	<input type="text" class="form-control" name="no_permohonan" value="{{ $permohonan->no_permohonan }}" maxlength="10">
 				            </div>
 							
 						</div>

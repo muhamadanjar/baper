@@ -19,9 +19,9 @@
             <!-- Breadcrumbs line -->
             <div class="breadcrumb-line">
                 <ul class="breadcrumb">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="forms.html">Forms</a></li>
-                    <li class="active">---</li>
+                    <li><a href="{{ url('home') }}">Home</a></li>
+                    <li><a href="{{ url('master') }}">Master</a></li>
+                    <li class="active">AMP</li>
                 </ul>
 
                 <div class="visible-xs breadcrumb-toggle">

@@ -60,9 +60,9 @@
 
 
 </head>
-<body>	
+<body class="navbar-fixed">	
     <!-- Navbar -->
-	<div class="navbar navbar-inverse" role="navigation">
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="#"><img src="{{ asset('images/logo_.png') }}" alt="Bahan dan Peralatan"></a>
 			<a class="sidebar-toggle"><i class="icon-paragraph-justify2"></i></a>

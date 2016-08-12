@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\pm_amp_1_unit_bin_dingin as PMAMP1UBD;
 use Illuminate\Http\Request;
 use App\Lib\AHelper;
+use Carbon\Carbon;
 
 class AMPCtrl extends Controller {
 
@@ -54,7 +55,7 @@ class AMPCtrl extends Controller {
 	public function pem_amp_1_unit_bin_dingin_cold_bin(){
 		
 		$no_permohonan = session('no_permohonan');
-		$pm_satu_amp_unitbindingin = PMAMP1UBD::find($no_permohonan);
+		$pm_satu_amp_unitbindingin = PMAMP1UBD::orderBy('tgl_periksa','DESC')->find($no_permohonan);
 		if (is_null($no_permohonan)) {
 			return redirect('/home');
 		}
@@ -84,11 +85,15 @@ class AMPCtrl extends Controller {
 		$pm->catatan_pemeriksa = $request->catatan_pemeriksa;
 		$pm->harus_diperbaiki = $request->harus_diperbaiki;
 		$pm->pemeriksaan_tahap_2 = $request->pemeriksaan_tahap_2;
-		$pm->kesimpulan_unit_bin_dingin = $request->kesimpulan_unit_bin_dingin;
+		$pm->kesimpulan_check = $request->kesimpulan_check;
+		$pm->kesimpulan_ket = $request->kesimpulan_ket;
+		$pm->tgl_periksa = Carbon::now();
 		if ( !is_null($file) )  {
 			$fileName = str_random(20) . '.' . $file->getClientOriginalExtension();	
 			$pm->foto_unit = $fileName;
 			$this->_s->UploadFile($file);
+		}else{
+			$pm->foto_unit = $request->foto_unit_;
 		}
 		
 		

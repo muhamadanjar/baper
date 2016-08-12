@@ -7,13 +7,11 @@ use Illuminate\Http\Request;
 
 class KabupatenCtrl extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
+	public function __construct($value=''){
+		$this->middleware('auth');
+	}
+
+	public function index(){
 		$provinsi = \App\Provinsi::get();
 		$kabupaten = \App\Kabupaten::get();
 		return view('master.kabupaten')->with('provinsi',$provinsi)->with('kabupaten',$kabupaten);
