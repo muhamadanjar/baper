@@ -141,8 +141,17 @@ if (isset($pm_satu_amp_unitbindingin)) {
                                         
 
                     @endif
-                    <td><input type="text" size="50" name="pelat_pemisah_keterangan" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="pelat_pemisah_foto" value="">
+                    <td>
+                        <input type="text" size="50" name="pelat_pemisah_keterangan" class="form-control" value="">
+                    </td>
+                    <td>
+                        <div class="col-md-1">
+                            <img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media">    
+                        </div>
+                        <div class="col-md-11">
+                            <input type="file" class="styled" name="pelat_pemisah_foto" value="">    
+                        </div>
+                        
 
                     </td>
                 </tr>
@@ -491,7 +500,15 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     <td><input type="checkbox" class="styled" name="konstruksi_pendukung" value="TG"></td>
                     @endif
                     <td><input type="text" size="50" name="konstruksi_pendukung_keterangan" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="konstruksi_pendukung_foto" value=""></td>
+                    <td>
+                        <div class="col-md-1">
+                            <img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media">    
+                        </div>
+                        <div class="col-md-11">
+                            <input type="file" class="styled" name="konstruksi_pendukung_foto" value="">    
+                        </div>
+                        
+                    </td>
                 </tr>
                 <tr class="pelindung_bin">
 					<td>10</td>
@@ -534,7 +551,14 @@ if (isset($pm_satu_amp_unitbindingin)) {
 					<td><input type="checkbox" class="styled" name="pelindung_bin" value="TG"></td>
                     @endif
                     <td><input type="text" size="50" name="pelindung_bin_keterangan" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="pelindung_bin_foto" value=""></td>
+                    <td>
+                        <div class="col-md-1">
+                            <img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media">    
+                        </div>
+                        <div class="col-md-11">
+                            <input type="file" class="styled" name="pelindung_bin_foto" value="">
+                        </div>
+                    </td>
                 </tr>
 			</table>
 		</div>				
@@ -617,11 +641,21 @@ if (isset($pm_satu_amp_unitbindingin)) {
 			<table class="table table-bordered" fixed-header> 
 				<tr>
 					<td>Foto Unit</td>
-					<td><input type="file" name="foto_unit" class="styled"></td>
+					<td>
+                        <div class="col-md-1">
+                            <a class="thumb-zoom lightbox"><img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media"></a>    
+                        </div>
+                        <div class="col-md-5">
+                            <input type="file" name="foto_unit" class="styled">
+                        </div>
+                        
+                        </td>
 				</tr> 
 								
 			</table>
 		</div>
+     
+        
 		<table>
 			<tr>
 			<td>&nbsp;</td>

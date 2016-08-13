@@ -81,6 +81,9 @@
     				                    <tbody>
 
     				                    @foreach($amp as $k =>$va)
+                                <?php
+                                  $kondisi = ($va->kondisi == '1') ? 'Baik' : 'Rusak' ;
+                                ?>
     				                        <tr>
     				                            <td>{{ $va->kode_amp }}</td>
     				                            <td>{{ $va->merk }}</td>
@@ -88,10 +91,13 @@
     				                            <td>{{ $va->tahun_buat }}</td>
     				                            <td>{{ $va->kapasitas }}</td>
     				                            <td>{{ $va->lokasi }}</td>
-    				                            <td>{{ $va->kondisi }}</td>
+    				                            <td>{{ $kondisi }}</td>
     				                        </tr>
     				                        
     				                    @endforeach 
+                                <tr>
+                                    <td><button>Cetak</button></td>
+                                </tr>
     				                    </tbody>
     				                </table>
     			                </div>
@@ -177,8 +183,10 @@
                                         <td>{{ $va->lokasi }}</td>
                                         <td>{{ $va->kondisi }}</td>
                                     </tr>
+
                                     
                                 @endforeach 
+                                
                                 </tbody>
                             </table>
                           </div>
@@ -196,11 +204,10 @@
 <style type="text/css">
 	html, body, #map,#map-bp,#map-quary { margin: 0; padding: 0; height: 500px }
 </style>
-
-<script>
-     
-      
-</script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApmd32zjXiNfF1dLG44UzwsSOSou0O00k"
     async defer></script>
+@section('map_jquery')
+
+<script type="text/javascript" src="{{ asset('bapermap.js') }}"></script>
+@endsection
 @stop

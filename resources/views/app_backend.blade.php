@@ -281,7 +281,7 @@
             @include('vendor.modal')
             <!-- Footer -->
 	        <div class="footer clearfix">
-		        <div class="pull-left">&copy; 2013. Londinium Admin Template by <a href="http://themeforest.net/user/Kopyov">Bahan dan Peralatan</a></div>
+		        <div class="pull-left">&copy; 2016.  by <a href="#">Bahan dan Peralatan</a></div>
 	        	<div class="pull-right icons-group">
 	        		<a href="#"><i class="icon-screen2"></i></a>
 	        		<a href="#"><i class="icon-balance"></i></a>
@@ -294,5 +294,6 @@
     </div>
     <!-- /page container -->
     <script type="text/javascript" src="{{ asset('baper.js') }}"></script>
+    @yield('map_jquery')
 </body>
 </html>

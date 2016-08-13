@@ -41,7 +41,7 @@ class AmpMastCtrl extends Controller {
 			array_push($arraytext, strtoupper($tipe));	
 		}
 		if ($kode_provinsi != 'all') {
-			$text = (empty($text)) ? 'UPPER(kode_provinsi) = ?' : $text.' AND UPPER(kode_provinsi) = ?' ;
+			$text = (empty($text)) ? 'UPPER(tbl_amp.kode_provinsi) = ?' : $text.' AND UPPER(tbl_amp.kode_provinsi) = ?' ;
 			array_push($arraytext, strtoupper($kode_provinsi));			
 		}
 
@@ -52,14 +52,34 @@ class AmpMastCtrl extends Controller {
 		
 		if ($arraytext) {
 			
-			$dbquery = \App\AmpMast::orderBy('kode_amp','ASC')
+			$dbquery = \App\AmpMast::select('tbl_amp.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.nama_perusahaan','tbl_kabupaten.nama_kabupaten')
+			->join('tbl_provinsi',function($join){
+				$join->on('tbl_amp.kode_provinsi', '=', 'tbl_provinsi.kode_provinsi');
+			})
+			->join('tbl_kabupaten',function($join){
+				$join->on('tbl_amp.kode_kabupaten', '=', 'tbl_kabupaten.kode_kabupaten');
+			})
+			->join('tbl_perusahaan',function($join){
+				$join->on('tbl_amp.kode_perusahaan', '=', 'tbl_perusahaan.kode_perusahaan');
+			})
+			->orderBy('kode_amp','ASC')
 			->whereRaw($text,
 				$arraytext
 			)->get();
 
 
 		}else{
-			$dbquery = \App\AmpMast::orderBy('kode_amp','ASC')
+			$dbquery = \App\AmpMast::select('tbl_amp.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.nama_perusahaan','tbl_kabupaten.nama_kabupaten')
+			->join('tbl_provinsi',function($join){
+				$join->on('tbl_amp.kode_provinsi', '=', 'tbl_provinsi.kode_provinsi');
+			})
+			->join('tbl_kabupaten',function($join){
+				$join->on('tbl_amp.kode_kabupaten', '=', 'tbl_kabupaten.kode_kabupaten');
+			})
+			->join('tbl_perusahaan',function($join){
+				$join->on('tbl_amp.kode_perusahaan', '=', 'tbl_perusahaan.kode_perusahaan');
+			})
+			->orderBy('kode_amp','ASC')
 			->get();
 		}
 		
@@ -168,12 +188,13 @@ class AmpMastCtrl extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
+	public function destroy($id){
 		$amp = \App\ampMast::find($id);
 		$amp->delete();
 
 		return redirect('master/amp/index');
 	}
+
+	
 
 }
