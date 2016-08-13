@@ -96,7 +96,8 @@
     				                        
     				                    @endforeach 
                                 <tr>
-                                    <td><button>Cetak</button></td>
+                                    <td><a href="{{ url('laporan/excel-amp') }}">
+                                    <button class="btn btn-success">Cetak</button></a></td>
                                 </tr>
     				                    </tbody>
     				                </table>

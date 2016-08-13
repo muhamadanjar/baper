@@ -27,7 +27,7 @@ Route::group(array('prefix'=>'custom'), function(){
 	Route::get('form', function(){
 		return view('vendor.modalForm');
 	});
-	Route::get('laporan-{namafile}', 'ReportCtrl@printAmp');
+	
 	Route::get('geojson/{term}','MapCtrl@geojson');
 	Route::get('barcode',function ($value=''){
 		//echo \DNS1D::getBarcodeSVG("4445645656", "PHARMA2T");
@@ -209,6 +209,11 @@ Route::group(array('prefix'=>'jadwal'), function(){
 	Route::get('jadwal_pemeriksaan/ubah-{id}',['as' => 'jadwal_pemeriksaanedit','uses' => 'jadwal_pemeriksaanCtrl@edit']);
 	Route::post('jadwal_pemeriksaan/ubah-{id}','jadwal_pemeriksaanCtrl@update');
 });
+
+Route::group(array('prefix'=>'laporan'), function(){
+	Route::get('excel-{namafile}', 'ReportCtrl@printAmp');
+});
+
 
 Route::get('cauth/login','CAuthCtrl@getLogin');
 Route::post('cauth/login','CAuthCtrl@postLogin');

@@ -146,7 +146,9 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     </td>
                     <td>
                         <div class="col-md-1">
-                            <img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media">    
+                            <a href="{{ asset('files') }}/{{$foto_unit}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media" alt="">
+                            </a>   
                         </div>
                         <div class="col-md-11">
                             <input type="file" class="styled" name="pelat_pemisah_foto" value="">    
@@ -502,7 +504,9 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     <td><input type="text" size="50" name="konstruksi_pendukung_keterangan" class="form-control" value=""></td>
                     <td>
                         <div class="col-md-1">
-                            <img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media">    
+                            <a href="{{ asset('files') }}/{{$foto_unit}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media" alt="">
+                            </a>   
                         </div>
                         <div class="col-md-11">
                             <input type="file" class="styled" name="konstruksi_pendukung_foto" value="">    
@@ -553,7 +557,9 @@ if (isset($pm_satu_amp_unitbindingin)) {
                     <td><input type="text" size="50" name="pelindung_bin_keterangan" class="form-control" value=""></td>
                     <td>
                         <div class="col-md-1">
-                            <img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media">    
+                            <a href="{{ asset('files') }}/{{$foto_unit}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media" alt="">
+                            </a>   
                         </div>
                         <div class="col-md-11">
                             <input type="file" class="styled" name="pelindung_bin_foto" value="">
@@ -643,7 +649,9 @@ if (isset($pm_satu_amp_unitbindingin)) {
 					<td>Foto Unit</td>
 					<td>
                         <div class="col-md-1">
-                            <a class="thumb-zoom lightbox"><img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media"></a>    
+                            <a href="{{ asset('files') }}/{{$foto_unit}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media" alt="">
+                            </a>    
                         </div>
                         <div class="col-md-5">
                             <input type="file" name="foto_unit" class="styled">
@@ -654,7 +662,8 @@ if (isset($pm_satu_amp_unitbindingin)) {
 								
 			</table>
 		</div>
-     
+        
+        
         
 		<table>
 			<tr>

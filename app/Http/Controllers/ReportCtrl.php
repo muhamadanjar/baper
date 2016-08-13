@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class ReportCtrl extends Controller {
 
 	public function printAmp($namafile=''){
-		$amp = \App\AmpMast::get();
+		$amp = \App\AmpMast::select('tbl_amp.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.pic')
+		->join('tbl_perusahaan','tbl_amp.kode_perusahaan','=','tbl_perusahaan.kode_perusahaan')
+		->get();
 
 		error_reporting(E_ALL);
 		ini_set('display_errors', TRUE);
@@ -19,42 +21,79 @@ class ReportCtrl extends Controller {
 		$objPHPExcel = new \PHPExcel();
 
 		$report = $amp;
-		$users = \Session::get('users');
-		$tgl = \Session::get('tgl');
+		
 
 		$objPHPExcel->setActiveSheetIndex(0)
 	            ->setCellValue('B2', 'Laporan Data AMP');
 	    $objPHPExcel->getActiveSheet()->getStyle("B2")->getFont()->setSize(16);
 
 		// Setting Ukuran
-		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(25);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(10);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(13);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
-
-		$posHeader = 5;
-		$objPHPExcel->getActiveSheet()->getStyle('A'.$posHeader.':E'.$posHeader)
-		->applyFromArray($this->Borderstyle());
-		$objPHPExcel->getActiveSheet()->getStyle('A'.$posHeader.':E'.$posHeader)->getFill()
-		->applyFromArray($this->Colorstyle('D9EDF7'));
+		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(4);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(42);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(14);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(14);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(14);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(14);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(32);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(19);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(17);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(17);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('L')->setWidth(18);
 		
+		$objPHPExcel->getActiveSheet()->getStyle('A7:L8')
+		->applyFromArray($this->Borderstyle());
+		$objPHPExcel->getActiveSheet()->getStyle('A7:L8')->applyFromArray($this->HorizontalVerticalCenter());
+		$objPHPExcel->getActiveSheet()
+					->getStyle('A7:L8')
+					->getFont()->setBold(true);
+		
+		
+		$objPHPExcel->setActiveSheetIndex(0)->mergeCells('A7:A8');
+		$objPHPExcel->setActiveSheetIndex(0)->mergeCells('B7:B8');
+		$objPHPExcel->setActiveSheetIndex(0)->mergeCells('C7:C8');
+		$objPHPExcel->setActiveSheetIndex(0)->mergeCells('D7:D8');
+		$objPHPExcel->setActiveSheetIndex(0)->mergeCells('E7:E8');
+		$objPHPExcel->setActiveSheetIndex(0)->mergeCells('F7:F8');
+		$objPHPExcel->setActiveSheetIndex(0)->mergeCells('G7:G8');
+		$objPHPExcel->setActiveSheetIndex(0)->mergeCells('H7:H8');
+		$objPHPExcel->setActiveSheetIndex(0)->mergeCells('I7:I8');
+		$objPHPExcel->setActiveSheetIndex(0)->mergeCells('J7:J8');
+		$objPHPExcel->setActiveSheetIndex(0)->mergeCells('K7:K8');
+		$objPHPExcel->setActiveSheetIndex(0)->mergeCells('L7:L8');
+		
+		$posHeader = 7;
+
 		$objPHPExcel->setActiveSheetIndex(0)
-		            ->setCellValue('A'.$posHeader, 'Merk')
-		            ->setCellValue('B'.$posHeader, 'Tipe')
-		            ->setCellValue('C'.$posHeader, 'Tahun Buat')
-		            ->setCellValue('D'.$posHeader, 'Kapasitas')
-		            ->setCellValue('E'.$posHeader, 'Kondisi');
-		$pos = $posHeader + 1;
-		foreach ($report as $k => $v) {
-			$objPHPExcel->getActiveSheet()->getStyle('A'.$pos.':E'.$pos)->applyFromArray($this->Borderstyle());
+		            ->setCellValue('A'.$posHeader, 'No')
+		            ->setCellValue('B'.$posHeader, 'Perusahaan')
+		            ->setCellValue('C'.$posHeader, 'Alamat Kantor')
+		            ->setCellValue('D'.$posHeader, 'Longtitude')
+		            ->setCellValue('E'.$posHeader, 'Latitude')
+		            ->setCellValue('F'.$posHeader, 'PIC')
+		            ->setCellValue('G'.$posHeader, 'ALAMAT ALAT')
+		            ->setCellValue('H'.$posHeader, 'KABUPATEN')
+		            ->setCellValue('I'.$posHeader, 'Merk')
+		            ->setCellValue('J'.$posHeader, 'Tahun Pembuatan')
+		            ->setCellValue('K'.$posHeader, 'Tipe')
+		            ->setCellValue('L'.$posHeader, 'Kapasitas Maksimum');
+		            
+		$pos = 9;
+		$no = 1;
+		//dd($amp);
+		foreach ($amp as $k => $vk) {
+			//$objPHPExcel->getActiveSheet()->getStyle('A'.$pos.':E'.$pos)->applyFromArray($this->Borderstyle());
 			$objPHPExcel->setActiveSheetIndex(0)
-				->setCellValue('A'.$pos, $v->merk)
-				->setCellValue('B'.$pos, $v->tipe)
-				->setCellValue('C'.$pos, $v->tahun_buat)
-				->setCellValue('D'.$pos, $v->kapasitas)
-				->setCellValue('E'.$pos, $v->kondisi);
+				->setCellValue('A'.$pos, $no)
+				->setCellValue('B'.$pos, trim($vk->nama_perusahaan))
+				->setCellValue('C'.$pos, trim($vk->alamat))
+				->setCellValue('D'.$pos, $vk->longtitude)
+				->setCellValue('E'.$pos, $vk->latitude)
+				->setCellValue('F'.$pos, $vk->pic)
+				->setCellValue('G'.$pos, $vk->lokasi);
 			$pos++;
+			$no++;
+
+			
 			
 		}
 
@@ -62,7 +101,7 @@ class ReportCtrl extends Controller {
 		$objPHPExcel->getActiveSheet()->setTitle('Laporan AMP');
 
 		// Set active sheet index to the first sheet, so Excel opens this as the first sheet
-		$objPHPExcel->setActiveSheetIndex(0);
+		//$objPHPExcel->setActiveSheetIndex(0);
 
 		$this->Excel2003($namafile);
 
