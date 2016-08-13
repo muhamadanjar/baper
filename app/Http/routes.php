@@ -48,14 +48,13 @@ Route::group(array('prefix'=>'api'), function(){
 	Route::get('form', function(){
 		return view('vendor.modalForm');
 	});
-	Route::get('map/getlayer', function(){
-		$layers_ol = \App\Layer::orderBy('urutan','ASC')->get();
-		return $layers_ol;
-	});
 	
 	Route::get('map/search/amp/{term}','MapCtrl@show_amp');
 	Route::post('tambahamp','MapCtrl@ampstore');
 	Route::get('getamp-{id}','AmpMastCtrl@getAMP');
+	
+	Route::get('getampmap&merk={merk}&tipe={tipe}&kode_provinsi={kode_provinsi}&kondisi={kondisi}','AmpMastCtrl@getAmpMap');
+
 	Route::get('getbp','BpMastCtrl@getBP');
 	Route::get('getquary','QuaryCtrl@getQUARY');
 	Route::get('getperusahaan-{kode_perusahaan}','perusahaanCtrl@getPerusahaan');
@@ -64,7 +63,7 @@ Route::group(array('prefix'=>'api'), function(){
 		return \App\Kabupaten::where('kode_provinsi',$kode_provinsi)->get();
 	});
 
-	Route::get('getampmap&merk={merk}&tipe={tipe}&tahun_buat={tahun_buat}','AmpMastCtrl@getAmpMap');
+	
 	
 });
 

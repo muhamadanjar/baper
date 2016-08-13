@@ -28,22 +28,41 @@ class AmpMastCtrl extends Controller {
 		return $isi;
 	}
 
-	public function getAmpMap($merk='',$tipe='',$tahun_buat=''){
-		$textmerk = '';
-		if (!$merk == 'all') {
-			$textmerk = 'UPPER(merk) = ? ';
-			$arraymerk = array(strtoupper('%'.$merk.'%'));
+	public function getAmpMap($merk='',$tipe='',$kode_provinsi='',$kondisi=''){
+		$text = '';
+		$arraytext = array();
+
+		if ($merk != 'all') {
+			$text = 'UPPER(merk) = ?';
+			array_push($arraytext, strtoupper($merk));
+		}
+		if ($tipe != 'all') {
+			$text = (empty($text)) ? 'UPPER(tipe) = ?' : $text.' AND UPPER(tipe) = ?' ;
+			array_push($arraytext, strtoupper($tipe));	
+		}
+		if ($kode_provinsi != 'all') {
+			$text = (empty($text)) ? 'UPPER(kode_provinsi) = ?' : $text.' AND UPPER(kode_provinsi) = ?' ;
+			array_push($arraytext, strtoupper($kode_provinsi));			
+		}
+
+		if ($kondisi != 'all') {
+			$text = (empty($text)) ? 'UPPER(kondisi) = ?' : $text.' AND UPPER(kondisi) = ?' ;
+			array_push($arraytext, strtoupper($kondisi));			
 		}
 		
-		if (!empty($textmerk)) {
+		if ($arraytext) {
+			
 			$dbquery = \App\AmpMast::orderBy('kode_amp','ASC')
-			->whereRaw($textmerk,
-				$arraymerk
+			->whereRaw($text,
+				$arraytext
 			)->get();
+
+
 		}else{
 			$dbquery = \App\AmpMast::orderBy('kode_amp','ASC')
 			->get();
 		}
+		
 		
 			
 			
