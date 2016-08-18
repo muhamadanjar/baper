@@ -14,7 +14,9 @@ class MapCtrl extends Controller {
 
 	public function index()
 	{
-		$amp = \App\AmpMast::get();
+		$amp = \App\AmpMast::select('tbl_amp.*','tbl_perusahaan.nama_perusahaan')
+		->join('tbl_perusahaan','tbl_perusahaan.kode_perusahaan','=','tbl_amp.kode_perusahaan')
+		->get();
 		$tipe = \App\AmpMast::select('tipe')->distinct('tipe')->get();
 		$merk = \App\AmpMast::select('merk')->distinct('merk')->get();
 		$bp = \App\BpMast::get();

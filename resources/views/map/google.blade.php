@@ -74,6 +74,7 @@
     				                            <th>Tahun Buat</th>
     				                            <th>Kapasitas</th>
     				                            <th>Lokasi</th>
+                                        <th>Perusahaan</th>
     				                            <th>Kondisi</th>
     				                        </tr>
     				                    </thead>
@@ -91,6 +92,7 @@
     				                            <td>{{ $va->tahun_buat }}</td>
     				                            <td>{{ $va->kapasitas }}</td>
     				                            <td>{{ $va->lokasi }}</td>
+                                        <td>{{ $va->nama_perusahaan }}</td>
     				                            <td>{{ $kondisi }}</td>
     				                        </tr>
     				                        
@@ -168,6 +170,7 @@
                                         <th>Tahun Buat</th>
                                         <th>Kapasitas</th>
                                         <th>Lokasi</th>
+                                        <th>Perusahaan</th>
                                         <th>Kondisi</th>
                                     </tr>
                                 </thead>
@@ -182,6 +185,7 @@
                                         <td>{{ $va->tahun_buat }}</td>
                                         <td>{{ $va->kapasitas }}</td>
                                         <td>{{ $va->lokasi }}</td>
+                                        <td>{{ $va->nama_perusahaan }}</td>
                                         <td>{{ $va->kondisi }}</td>
                                     </tr>
 
