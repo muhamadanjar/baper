@@ -204,7 +204,10 @@ $.extend({
             dataType: 'json',
             async: false,
             success: function(data) {
-                
+                $('select[name="kabupaten"]').html('');
+                $('select[name="kabupaten"]').append($("<option></option>")
+                .attr("value",'all')
+                .text("--------------")); 
                 $.each(data, function(key, value) {
                     console.log(value);
                     $('select[name="kabupaten"]').append($("<option></option>")

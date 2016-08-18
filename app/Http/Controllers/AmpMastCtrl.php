@@ -28,7 +28,7 @@ class AmpMastCtrl extends Controller {
 		return $isi;
 	}
 
-	public function getAmpMap($merk='',$tipe='',$kode_provinsi='',$kondisi=''){
+	public function getAmpMap($merk='',$kapasitas='',$kode_provinsi='',$kondisi=''){
 		$text = '';
 		$arraytext = array();
 
@@ -36,9 +36,9 @@ class AmpMastCtrl extends Controller {
 			$text = 'UPPER(merk) = ?';
 			array_push($arraytext, strtoupper($merk));
 		}
-		if ($tipe != 'all') {
-			$text = (empty($text)) ? 'UPPER(tipe) = ?' : $text.' AND UPPER(tipe) = ?' ;
-			array_push($arraytext, strtoupper($tipe));	
+		if ($kapasitas != 'all') {
+			$text = (empty($text)) ? 'UPPER(kapasitas) = ?' : $text.' AND UPPER(kapasitas) = ?' ;
+			array_push($arraytext, strtoupper($kapasitas));	
 		}
 		if ($kode_provinsi != 'all') {
 			$text = (empty($text)) ? 'UPPER(tbl_amp.kode_provinsi) = ?' : $text.' AND UPPER(tbl_amp.kode_provinsi) = ?' ;
@@ -52,7 +52,7 @@ class AmpMastCtrl extends Controller {
 		
 		if ($arraytext) {
 			
-			$dbquery = \App\AmpMast::select('tbl_amp.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.nama_perusahaan','tbl_kabupaten.nama_kabupaten')
+			$dbquery = \App\AmpMast::select('tbl_amp.*','tbl_perusahaan.nama_perusahaan','tbl_provinsi.nama_provinsi','tbl_kabupaten.nama_kabupaten')
 			->join('tbl_provinsi',function($join){
 				$join->on('tbl_amp.kode_provinsi', '=', 'tbl_provinsi.kode_provinsi');
 			})
@@ -69,7 +69,7 @@ class AmpMastCtrl extends Controller {
 
 
 		}else{
-			$dbquery = \App\AmpMast::select('tbl_amp.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.nama_perusahaan','tbl_kabupaten.nama_kabupaten')
+			$dbquery = \App\AmpMast::select('tbl_amp.*','tbl_perusahaan.nama_perusahaan','tbl_provinsi.nama_provinsi','tbl_kabupaten.nama_kabupaten')
 			->join('tbl_provinsi',function($join){
 				$join->on('tbl_amp.kode_provinsi', '=', 'tbl_provinsi.kode_provinsi');
 			})

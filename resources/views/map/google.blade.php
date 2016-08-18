@@ -37,10 +37,10 @@
                             </select>  
                           </div>
                           <div class="col-md-2">
-                            <select name="tipe" class="form-control">
-                              <option value="all">--Tipe--</option>
-                              @foreach($tipe as $k => $v)
-                              <option value="{{ $v->tipe }}">{{$v->tipe}}</option>
+                            <select name="kapasitas" class="form-control">
+                              <option value="all">--Kapasitas--</option>
+                              @foreach($kapasitas as $k => $v)
+                              <option value="{{ $v->kapasitas }}">{{$v->kapasitas}}</option>
                               @endforeach
                             </select>  
                           </div>
@@ -48,8 +48,8 @@
                           <div class="col-md-2">
                             <select name="kondisi" class="form-control">
                               <option value="all">--Kondisi--</option>
-                              <option value="1">Baik</option>
-                              <option value="2">Rusak</option>
+                              <option value="1">Laik Operasi</option>
+                              <option value="2">Tidak Laik</option>
                             </select>  
                           </div>
                           <div class="col-md-1">
@@ -68,14 +68,13 @@
     				                <table class="table">
     				                    <thead>
     				                        <tr>
-    				                            <th>Kode AMP</th>
     				                            <th>Merk</th>
     				                            <th>Tipe</th>
     				                            <th>Tahun Buat</th>
-    				                            <th>Kapasitas</th>
-    				                            <th>Lokasi</th>
-                                        <th>Perusahaan</th>
-    				                            <th>Kondisi</th>
+    				                            <th>Perusahaan</th>
+    				                            <th>Mulai</th>
+                                        <th>Akhir</th>
+                                        <th>Kondisi</th>
     				                        </tr>
     				                    </thead>
 
@@ -86,13 +85,12 @@
                                   $kondisi = ($va->kondisi == '1') ? 'Baik' : 'Rusak' ;
                                 ?>
     				                        <tr>
-    				                            <td>{{ $va->kode_amp }}</td>
     				                            <td>{{ $va->merk }}</td>
     				                            <td>{{ $va->tipe }}</td>
     				                            <td>{{ $va->tahun_buat }}</td>
-    				                            <td>{{ $va->kapasitas }}</td>
-    				                            <td>{{ $va->lokasi }}</td>
-                                        <td>{{ $va->nama_perusahaan }}</td>
+    				                            <td>{{ $va->nama_perusahaan }}</td>
+                                        <td>{{ $va->tgl_mulai }}</td>
+                                        <td>{{ $va->tgl_akhir }}</td>
     				                            <td>{{ $kondisi }}</td>
     				                        </tr>
     				                        

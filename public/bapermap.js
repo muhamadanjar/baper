@@ -19,7 +19,7 @@
           zoom: 10
         });
 
-        ampMarker = getjson('/api/getamp-null');
+        ampMarker = getjson(rootURL+"/api/getampmap&merk=all&kapasitas=all&kode_provinsi=all&kondisi=all");
         setMarkers(map,ampMarker);
         /*bpMarker = getjson('http://localhost/baper/public/api/getbp');
         setMarkers(mapbp,bpMarker);
@@ -49,7 +49,7 @@
             var add =  locations[i]['merk'];
             latlngset = new google.maps.LatLng(lat, long);
             marker = new google.maps.Marker({  
-                map: map, title: loan , position: latlngset , html: popupContent('',locations[i]) 
+                map: map, title: locations[i]['nama_perusahaan'] , position: latlngset , html: popupContentAMP('',locations[i]) 
             });
             markers.push(marker);
             map.setCenter(marker.getPosition());
@@ -84,17 +84,24 @@
     }
     function popupContentAMP(title,content){
         var popup = "<div class='panel panel-default'>";
+        var kondisi = "";
         popup += "<div class='panel-heading'><h6 class='panel-title'><i class='icon-accessibility'></i><b><u>"+title+"</u></b></h6></div>";
         popup += "<div class='panel-body'>";
         popup += "<table class='table table-bordered'>";
-        for (var name in content) {
-            if (name == 'image_link' || name == 'IMAGE_LINK' || name == 'foto' || name == 'FOTO') {
-                  popup += "<tr><td><b>" + name + "</b></td><td><b>:</b> </td><td><image class='img-responsive' src='" + feature.properties[name] + "' width='100'/></td></tr>";
-            }else if (name == 'geometry' || name == 'geom') {
-            }else{
-                popup += "<tr><td><b>" + name + "</b></td><td><b>:</b> </td><td>" + content[name] + "</td></tr>";
-            }
-        }
+
+        if (content['kondisi'] == '1') { kondisi = 'Laik'} else { kondisi = 'Tidak Laik'};
+        popup += "<tr><td><b>Kode Amp</b></td><td><b>:</b> </td><td>" + content['kode_amp'] + "</td></tr>";
+        popup += "<tr><td><b>Merk</b></td><td><b>:</b> </td><td>" + content['merk'] + "</td></tr>";
+        popup += "<tr><td><b>Tipe</b></td><td><b>:</b> </td><td>" + content['tipe'] + "</td></tr>";
+        popup += "<tr><td><b>Tahun Buat</b></td><td><b>:</b> </td><td>" + content['tahun_buat'] + "</td></tr>";
+        popup += "<tr><td><b>Kapasitas</b></td><td><b>:</b> </td><td>" + content['kapasitas'] + "</td></tr>";
+        
+        popup += "<tr><td><b>Provinsi</b></td><td><b>:</b> </td><td>" + content['nama_provinsi'] + "</td></tr>";
+        popup += "<tr><td><b>Kabupaten</b></td><td><b>:</b> </td><td>" + content['nama_kabupaten'] + "</td></tr>";
+        popup += "<tr><td><b>Perusahaan</b></td><td><b>:</b> </td><td>" + content['nama_perusahaan'] + "</td></tr>";
+        popup += "<tr><td><b>Kondisi</b></td><td><b>:</b> </td><td>" + kondisi + "</td></tr>";
+        popup += "<tr><td><b>Foto</b></td><td><b>:</b> </td><td><img class='img-responsive' width='100' src='" + content['foto'] + "' /></td></tr>";
+        
         popup += '</div>';
         popup += '</div>';
         popup += '</div>';
@@ -121,10 +128,10 @@
     $( "#btn-map-filter" ).click(function(e) {
         alert( "Handler for .click() called." );
         var merk = $("select[name='merk']").val();
-        var tipe = $("select[name='tipe']").val();
+        var kapasitas = $("select[name='kapasitas']").val();
         var kode_provinsi = $("select[name='provinsi']").val();
         var kondisi = $("select[name='kondisi']").val();
-        var urlmarker = rootURL+"/api/getampmap&merk="+merk+"&tipe="+tipe+"&kode_provinsi="+kode_provinsi+"&kondisi="+kondisi;
+        var urlmarker = rootURL+"/api/getampmap&merk="+merk+"&kapasitas="+kapasitas+"&kode_provinsi="+kode_provinsi+"&kondisi="+kondisi;
         console.log(urlmarker)
         deleteMarkers();
         ampMarker = getjson(urlmarker);

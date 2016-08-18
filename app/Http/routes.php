@@ -53,7 +53,7 @@ Route::group(array('prefix'=>'api'), function(){
 	Route::post('tambahamp','MapCtrl@ampstore');
 	Route::get('getamp-{id}','AmpMastCtrl@getAMP');
 	
-	Route::get('getampmap&merk={merk}&tipe={tipe}&kode_provinsi={kode_provinsi}&kondisi={kondisi}','AmpMastCtrl@getAmpMap');
+	Route::get('getampmap&merk={merk}&kapasitas={kapasitas}&kode_provinsi={kode_provinsi}&kondisi={kondisi}','AmpMastCtrl@getAmpMap');
 
 	Route::get('getbp','BpMastCtrl@getBP');
 	Route::get('getquary','QuaryCtrl@getQUARY');
