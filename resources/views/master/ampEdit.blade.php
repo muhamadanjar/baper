@@ -105,14 +105,17 @@
 												
 						<div class="form-group">
 				            <label class="col-sm-2 control-label">Longtitude:</label>
-				            <div class="col-sm-10">
+				            <div class="col-sm-5">
 				            	<input type="text" class="form-control" name="longtitude" value="{{ $amp->longtitude }}">
+				            </div>
+				            <div class="col-sm-2">
+				            	<a class="btn btn-location btn-success"><i class="icon-location"></i></a>
 				            </div>
 				        </div>
 						
 						<div class="form-group">
 				            <label class="col-sm-2 control-label">Latitude:</label>
-				            <div class="col-sm-10">
+				            <div class="col-sm-5">
 				            	<input type="text" class="form-control" name="latitude" value="{{ $amp->latitude }}">
 				            </div>
 				        </div>
