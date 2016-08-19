@@ -23,10 +23,21 @@ class ReportCtrl extends Controller {
 
 		$report = (session('store_data_map') === null) ? $amp : session('store_data_map') ;
 		
+		$objDrawing = new \PHPExcel_Worksheet_Drawing();
+		$objDrawing->setName('Logo');
+		$objDrawing->setDescription('Logo');
+		$logo = 'images/logo.png'; // Provide path to your logo file
+		$objDrawing->setPath($logo);  //setOffsetY has no effect
+		$objDrawing->setCoordinates('B2');
+		$objDrawing->setHeight(80); // logo height
 
 		$objPHPExcel->setActiveSheetIndex(0)
-	            ->setCellValue('B2', 'Laporan Data AMP');
-	    $objPHPExcel->getActiveSheet()->getStyle("B2")->getFont()->setSize(16);
+	            ->setCellValue('I2', 'DAFTAR KELAIKAN OPERASI ASPHLAT MIXING PLANT (AMP)');
+	    $objPHPExcel->setActiveSheetIndex(0)
+	            ->setCellValue('I3', 'BALAI BESAR PELAKSANAAN JALAN NASIONAL IV');
+	    $objPHPExcel->setActiveSheetIndex(0)
+	            ->setCellValue('I4', 'PROVINSI BANTEN - PERIODE TAHUN 2015');
+	    $objPHPExcel->getActiveSheet()->getStyle("I2:I4")->getFont()->setSize(18);
 
 		// Setting Ukuran
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(4);
@@ -77,6 +88,7 @@ class ReportCtrl extends Controller {
 		            ->setCellValue('J'.$posHeader, 'Tahun Pembuatan')
 		            ->setCellValue('K'.$posHeader, 'Tipe')
 		            ->setCellValue('L'.$posHeader, 'Kapasitas Maksimum');
+
 		$objPHPExcel->getActiveSheet()->getStyle('C'.$posHeader)->getAlignment()->setWrapText(true);
 		$objPHPExcel->getActiveSheet()->getStyle('J'.$posHeader)->getAlignment()->setWrapText(true);
 		$objPHPExcel->getActiveSheet()->getStyle('L'.$posHeader)->getAlignment()->setWrapText(true);           
@@ -84,7 +96,7 @@ class ReportCtrl extends Controller {
 		$no = 1;
 		//dd($amp);
 		foreach ($report as $k => $vk) {
-			//$objPHPExcel->getActiveSheet()->getStyle('A'.$pos.':E'.$pos)->applyFromArray($this->Borderstyle());
+			$objPHPExcel->getActiveSheet()->getStyle('A'.$pos.':L'.$pos)->applyFromArray($this->Borderstyle());
 			$objPHPExcel->setActiveSheetIndex(0)
 				->setCellValue('A'.$pos, $no)
 				->setCellValue('B'.$pos, trim($vk->nama_perusahaan))
