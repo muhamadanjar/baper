@@ -116,6 +116,17 @@ $.extend({
     });
 
 
+    $( ".btn-location" ).click(function(e) { 
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                console.log(position);
+                $("input[name='latitude']").val(position.coords.latitude);
+                $("input[name='longtitude']").val(position.coords.longitude);
+            });
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    });
 
 
 

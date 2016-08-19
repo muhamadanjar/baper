@@ -19,8 +19,8 @@
             <!-- Breadcrumbs line -->
             <div class="breadcrumb-line">
                 <ul class="breadcrumb">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="forms.html">Forms</a></li>
+                    <li><a href="{{ url('home')}}">Home</a></li>
+                    <li><a href="{{ url('master')}}">Forms</a></li>
                     <li class="active">Amp</li>
                 </ul>
 
@@ -105,14 +105,17 @@
 						
 						<div class="form-group">
 				            <label class="col-sm-2 control-label">Longtitude:</label>
-				            <div class="col-sm-10">
+				            <div class="col-sm-5">
 				            	<input type="text" class="form-control" name="longtitude">
+				            </div>
+				            <div class="col-sm-2">
+				            	<a class="btn btn-location btn-success"><i class="icon-location"></i></a>
 				            </div>
 				        </div>
 						
 						<div class="form-group">
 				            <label class="col-sm-2 control-label">Latitude:</label>
-				            <div class="col-sm-10">
+				            <div class="col-sm-5">
 				            	<input type="text" class="form-control" name="latitude">
 				            </div>
 				        </div>
