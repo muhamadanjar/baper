@@ -83,7 +83,7 @@ class AmpMastCtrl extends Controller {
 			->get();
 		}
 		
-		
+		session()->put('store_data_map',$dbquery);
 			
 			
 			//->whereRaw('UPPER(kode_provinsi) LIKE ?',array(strtoupper('%'.$kode_provinsi.'%')),'OR')

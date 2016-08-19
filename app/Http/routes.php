@@ -27,7 +27,9 @@ Route::group(array('prefix'=>'custom'), function(){
 	Route::get('form', function(){
 		return view('vendor.modalForm');
 	});
-	
+	Route::get('store_data_map', function(){
+		return session('store_data_map');
+	});
 	Route::get('geojson/{term}','MapCtrl@geojson');
 	Route::get('barcode',function ($value=''){
 		//echo \DNS1D::getBarcodeSVG("4445645656", "PHARMA2T");

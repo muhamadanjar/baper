@@ -20,7 +20,8 @@ class ReportCtrl extends Controller {
 			die('This example should only be run from a Web Browser');
 		$objPHPExcel = new \PHPExcel();
 
-		$report = $amp;
+
+		$report = (session('store_data_map') === null) ? $amp : session('store_data_map') ;
 		
 
 		$objPHPExcel->setActiveSheetIndex(0)
@@ -70,17 +71,19 @@ class ReportCtrl extends Controller {
 		            ->setCellValue('D'.$posHeader, 'Longtitude')
 		            ->setCellValue('E'.$posHeader, 'Latitude')
 		            ->setCellValue('F'.$posHeader, 'PIC')
-		            ->setCellValue('G'.$posHeader, 'ALAMAT ALAT')
-		            ->setCellValue('H'.$posHeader, 'KABUPATEN')
+		            ->setCellValue('G'.$posHeader, 'Alamat Alat')
+		            ->setCellValue('H'.$posHeader, 'Kabupaten')
 		            ->setCellValue('I'.$posHeader, 'Merk')
 		            ->setCellValue('J'.$posHeader, 'Tahun Pembuatan')
 		            ->setCellValue('K'.$posHeader, 'Tipe')
 		            ->setCellValue('L'.$posHeader, 'Kapasitas Maksimum');
-		            
+		$objPHPExcel->getActiveSheet()->getStyle('C'.$posHeader)->getAlignment()->setWrapText(true);
+		$objPHPExcel->getActiveSheet()->getStyle('J'.$posHeader)->getAlignment()->setWrapText(true);
+		$objPHPExcel->getActiveSheet()->getStyle('L'.$posHeader)->getAlignment()->setWrapText(true);           
 		$pos = 9;
 		$no = 1;
 		//dd($amp);
-		foreach ($amp as $k => $vk) {
+		foreach ($report as $k => $vk) {
 			//$objPHPExcel->getActiveSheet()->getStyle('A'.$pos.':E'.$pos)->applyFromArray($this->Borderstyle());
 			$objPHPExcel->setActiveSheetIndex(0)
 				->setCellValue('A'.$pos, $no)
@@ -89,7 +92,13 @@ class ReportCtrl extends Controller {
 				->setCellValue('D'.$pos, $vk->longtitude)
 				->setCellValue('E'.$pos, $vk->latitude)
 				->setCellValue('F'.$pos, $vk->pic)
-				->setCellValue('G'.$pos, $vk->lokasi);
+				->setCellValue('G'.$pos, $vk->lokasi)
+				->setCellValue('H'.$pos, $vk->nama_kabupaten)
+				->setCellValue('I'.$pos, $vk->merk)
+				->setCellValue('J'.$pos, $vk->tahun_buat)
+				->setCellValue('K'.$pos, $vk->tipe)
+				->setCellValue('L'.$pos, $vk->kapasitas);
+			$objPHPExcel->getActiveSheet()->getStyle('G'.$pos)->getAlignment()->setWrapText(true);
 			$pos++;
 			$no++;
 

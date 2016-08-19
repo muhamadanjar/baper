@@ -186,6 +186,12 @@
                     row.append($("<td/>").text(kondisi));
                     table.append(row);
                 });
+                var lastRow = $('<tr/>').appendTo(table.find('tbody:last'));
+                    
+                    lastRow.append($('<a/>').attr('class','btn btn-success')
+                        .attr('href','/laporan/excel-amp').text('Cetak'));
+
+                
             }
         });
         
