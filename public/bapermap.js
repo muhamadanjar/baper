@@ -123,6 +123,27 @@
         markers = [];
     }
 
+    function makeTable(container, data) {
+        var table = $("<table/>").addClass('CSSTableGenerator');
+        $.each(data, function(rowIndex, r) {
+            var row = $("<tr/>");
+            $.each(r, function(colIndex, c) { 
+                row.append($("<t"+(rowIndex == 0 ?  "h" : "d")+"/>").text(c));
+            });
+            table.append(row);
+        });
+        return container.append(table);
+    }
+
+    function appendTableColumn(table, rowData) {
+        var lastRow = $('<tr/>').appendTo(table.find('tbody:last'));
+        $.each(rowData, function(colIndex, c) { 
+            lastRow.append($('<td/>').text(c));
+        });
+       
+        return lastRow;
+    }
+
     initMap();
     
     $( "#btn-map-filter" ).click(function(e) {
@@ -132,7 +153,42 @@
         var kode_provinsi = $("select[name='provinsi']").val();
         var kondisi = $("select[name='kondisi']").val();
         var urlmarker = rootURL+"/api/getampmap&merk="+merk+"&kapasitas="+kapasitas+"&kode_provinsi="+kode_provinsi+"&kondisi="+kondisi;
-        console.log(urlmarker)
+        console.log(urlmarker);
+        var table = $('.table-amp');
+        $.ajax({
+            url: urlmarker,
+            type: 'get',
+            dataType: 'json',
+            async: false,
+            success: function(data) {
+                table.html('');
+                var row = $("<tr/>");
+                    
+                    row.append($("<th/>").text('Merk'));
+                    row.append($("<th/>").text('Tipe'));
+                    row.append($("<th/>").text('Tahun Buat'));
+                    row.append($("<th/>").text('Perusahaan'));
+                    row.append($("<th/>").text('Awal'));
+                    row.append($("<th/>").text('Akhir'));
+                    row.append($("<th/>").text('Kondisi'));
+                    table.append(row);
+                $.each(data, function(rowIndex, r) {
+                    var row = $("<tr/>");
+                    var kondisi = '';
+                    
+                    if (r.kondisi == '1') { kondisi = 'Laik'}else{ kondisi = 'Tidak Laik'};
+                    row.append($("<td/>").text(r.merk));
+                    row.append($("<td/>").text(r.tipe));
+                    row.append($("<td/>").text(r.tahun_buat));
+                    row.append($("<td/>").text(r.nama_perusahaan));
+                    row.append($("<td/>").text(r.tgl_sertifikat_awal));
+                    row.append($("<td/>").text(r.tgl_sertifikat_akhir));
+                    row.append($("<td/>").text(kondisi));
+                    table.append(row);
+                });
+            }
+        });
+        
         deleteMarkers();
         ampMarker = getjson(urlmarker);
         setMarkers(map,ampMarker);

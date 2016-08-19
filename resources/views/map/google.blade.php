@@ -65,8 +65,16 @@
     			              <div class="panel panel-default">
     			                <div class="panel-heading"><h6 class="panel-title"><i class="icon-table2"></i> Tabel AMP</h6></div>
     			                <div class="table-responsive">
-    				                <table class="table">
+    				                <table class="table table-amp">
     				                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th colspan="2">Tgl Sertifikat</th>
+                                        <th></th>
+                                    </tr>
     				                        <tr>
     				                            <th>Merk</th>
     				                            <th>Tipe</th>
@@ -85,13 +93,13 @@
                                   $kondisi = ($va->kondisi == '1') ? 'Baik' : 'Rusak' ;
                                 ?>
     				                        <tr>
-    				                            <td>{{ $va->merk }}</td>
-    				                            <td>{{ $va->tipe }}</td>
-    				                            <td>{{ $va->tahun_buat }}</td>
-    				                            <td>{{ $va->nama_perusahaan }}</td>
-                                        <td>{{ $va->tgl_mulai }}</td>
-                                        <td>{{ $va->tgl_akhir }}</td>
-    				                            <td>{{ $kondisi }}</td>
+    				                            <td class="merk">{{ $va->merk }}</td>
+    				                            <td class="tipe">{{ $va->tipe }}</td>
+    				                            <td class="tahun_buat">{{ $va->tahun_buat }}</td>
+    				                            <td class="nama_perusahaan">{{ $va->nama_perusahaan }}</td>
+                                        <td class="tgl_mulai">{{ $va->tgl_mulai }}</td>
+                                        <td class="tgl_akhir">{{ $va->tgl_akhir }}</td>
+    				                            <td class="kondisi">{{ $kondisi }}</td>
     				                        </tr>
     				                        
     				                    @endforeach 
