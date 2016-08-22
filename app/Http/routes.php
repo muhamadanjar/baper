@@ -65,6 +65,8 @@ Route::group(array('prefix'=>'api'), function(){
 		return \App\Kabupaten::where('kode_provinsi',$kode_provinsi)->get();
 	});
 
+	Route::get('getpemeriksaan_satu_amp','PemeriksaanCtrl@getPemeriksaan1AMP');
+
 });
 
 

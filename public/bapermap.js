@@ -138,26 +138,7 @@
         markers = [];
     }
 
-    function makeTable(container, data) {
-        var table = $("<table/>").addClass('CSSTableGenerator');
-        $.each(data, function(rowIndex, r) {
-            var row = $("<tr/>");
-            $.each(r, function(colIndex, c) { 
-                row.append($("<t"+(rowIndex == 0 ?  "h" : "d")+"/>").text(c));
-            });
-            table.append(row);
-        });
-        return container.append(table);
-    }
-
-    function appendTableColumn(table, rowData) {
-        var lastRow = $('<tr/>').appendTo(table.find('tbody:last'));
-        $.each(rowData, function(colIndex, c) { 
-            lastRow.append($('<td/>').text(c));
-        });
-       
-        return lastRow;
-    }
+    
 
     initMap();
     

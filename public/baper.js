@@ -2,6 +2,26 @@ $.ajaxSetup({
     headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
 });
 var rootURL = 'http://'+window.location.hostname+':'+window.location.port;
+    function makeTable(container, data) {
+        var table = $("<table/>").addClass('table table-striped table-bordered');
+        $.each(data, function(rowIndex, r) {
+            var row = $("<tr/>");
+            $.each(r, function(colIndex, c) { 
+                row.append($("<t"+(rowIndex == 0 ?  "h" : "d")+"/>").text(c));
+            });
+            table.append(row);
+        });
+        return container.append(table);
+    }
+
+    function appendTableColumn(table, rowData) {
+        var lastRow = $('<tr/>').appendTo(table.find('tbody:last'));
+        $.each(rowData, function(colIndex, c) { 
+            lastRow.append($('<td/>').text(c));
+        });
+       
+        return lastRow;
+    }
 $.extend({
     getValues: function(url) {
         var result = null;
@@ -47,7 +67,16 @@ $.extend({
         var msg = el.attr('data-message');
         var dataForm = el.attr('data-form');
         var kode_periksa = el.attr('data-kodeperiksa');
-
+        $.ajax({
+            url: rootURL+"/api/getpemeriksaan_satu_amp",
+            type: 'get',
+            dataType: 'json',
+            async: false,
+            success: function(data) {
+                makeTable($('.table-pemeriksaan'),data)
+                
+            }
+        });
         $('#pemeriksaan-modal')
         .find('#frm_body').html('<h6>'+msg+'</h6>')
         .end().find('input[name="kode_periksa"]').val(kode_periksa)

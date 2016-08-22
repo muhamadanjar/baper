@@ -66,7 +66,7 @@
 							</div>
 
 							<div class="panel-body">
-								<form method="post" action="{{ url('pemeriksaan/tglperiksa/post') }}">
+								<form method="post" class="validate" action="{{ url('pemeriksaan/tglperiksa/post') }}">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="row invoice-payment">
 									<div class="col-sm-5">
@@ -94,7 +94,7 @@
 								
 								
 							</div>
-							<div class="table-responsive">
+							<div class="table-responsive table-pemeriksaan">
 							    <table class="table table-striped table-bordered">
 							        <thead>
 							            <tr>
