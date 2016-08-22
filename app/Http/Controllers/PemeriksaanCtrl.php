@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class PemeriksaanCtrl extends Controller {
 
-	public function getPemeriksaan1AMP(){
-		return \DB::table('tbl_amp_1_periksa')->get();
+	public function getPemeriksaan1AMP($kode_periksa=''){
+		if ($kode_periksa != 'all') {
+			return \DB::table('tbl_amp_1_periksa')->where('kode_periksa',$kode_periksa)->get();
+		}else{
+			return \DB::table('tbl_amp_1_periksa')->get();
+		}
+		
 	}	
 	public function store(Request $request){
 		$validator = \Validator::make($request->all(), [
