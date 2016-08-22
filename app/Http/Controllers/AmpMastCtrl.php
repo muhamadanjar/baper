@@ -37,7 +37,7 @@ class AmpMastCtrl extends Controller {
 			array_push($arraytext, strtoupper($merk));
 		}
 		if ($kapasitas != 'all') {
-			$text = (empty($text)) ? 'UPPER(kapasitas) = ?' : $text.' AND UPPER(kapasitas) = ?' ;
+			$text = (empty($text)) ? '(kapasitas) = ?' : $text.' AND (kapasitas) = ?' ;
 			array_push($arraytext, strtoupper($kapasitas));	
 		}
 		if ($kode_provinsi != 'all') {
@@ -91,8 +91,8 @@ class AmpMastCtrl extends Controller {
 			//->whereRaw('UPPER(kode_perusahaan) LIKE ?',array(strtoupper('%'.$kode_perusahaan.'%')),'OR')
 			//->whereRaw('UPPER(kondisi) LIKE ?',array(strtoupper('%'.$kondisi.'%')),'OR')
 			
-
-		return $dbquery;
+		//return $dbquery;
+		return json_encode( $dbquery, JSON_NUMERIC_CHECK );
 	}
 
 	/**
@@ -102,7 +102,9 @@ class AmpMastCtrl extends Controller {
 	 */
 	public function create()
 	{
-		return view('master.ampAdd');
+		$provinsi = \App\Provinsi::orderBy('kode_provinsi','ASC')->get();
+		$perusahaan = \App\Perusahaan::get();
+		return view('master.ampAdd')->with('provinsi',$provinsi)->with('perusahaan',$perusahaan);
 	}
 
 	/**
@@ -131,41 +133,29 @@ class AmpMastCtrl extends Controller {
 		$amp->lokasi = $request->lokasi;
 		$amp->longtitude = $request->longtitude;
 		$amp->latitude = $request->latitude;
+		$amp->kode_provinsi = $request->kode_provinsi;
+		$amp->kode_kabupaten = $request->kode_kabupaten;
+		$amp->kode_perusahaan = $request->kode_perusahaan;
 		$amp->save();
 
 		return redirect('master/amp/index');
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	
 	public function edit($id)
 	{
 		$amp = \App\AmpMast::find($id);
+		$provinsi = \App\Provinsi::orderBy('kode_provinsi','ASC')->get();
 
-		return view('master.ampEdit')->with('amp',$amp);
+		$kabupaten = \App\Kabupaten::where('kode_provinsi',$amp->kode_provinsi)->get();
+		
+		$perusahaan = \App\Perusahaan::get();
+		return view('master.ampEdit')->with('amp',$amp)
+			->with('provinsi',$provinsi)->with('kabupaten',$kabupaten)
+			->with('perusahaan',$perusahaan);
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	
 	public function update($id,Request $request)
 	{
 		$amp = \App\ampMast::find($id);
@@ -177,6 +167,9 @@ class AmpMastCtrl extends Controller {
 		$amp->lokasi = $request->lokasi;
 		$amp->longtitude = $request->longtitude;
 		$amp->latitude = $request->latitude;
+		$amp->kode_provinsi = $request->kode_provinsi;
+		$amp->kode_kabupaten = $request->kode_kabupaten;
+		$amp->kode_perusahaan = $request->kode_perusahaan;
 		$amp->save();
 
 		return redirect('master/amp/index');

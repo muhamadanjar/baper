@@ -105,6 +105,7 @@
 									<li><a href="{{ url('amp/pemeriksaan1/unitbinfiller') }}">14. Unit Bin Filler</a></li>
 									<li><a href="{{ url('amp/pemeriksaan1/unitelevator') }}">15. Unit Elevator / Conveyor Campuran Aspal Panas </a></li>
 									<li><a href="{{ url('amp/pemeriksaan1/unitsilo') }}">16. Unit Silo</a></li>
+									<li><a href="{{ url('amp/pemeriksaan1/unitrekap') }}">Rekapitulasi Pemeriksaan Tahap I</a></li>
 								</ul>
 							</div>
 							

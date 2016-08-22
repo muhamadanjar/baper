@@ -39,6 +39,21 @@ $.extend({
         console.log(id);
         $(id).submit();
     });
+
+    $('.formHistoryPemeriksaan').on('click', function(e) {
+        e.preventDefault();
+        var el = $(this).parent();
+        var title = el.attr('data-title');
+        var msg = el.attr('data-message');
+        var dataForm = el.attr('data-form');
+        var kode_periksa = el.attr('data-kodeperiksa');
+
+        $('#pemeriksaan-modal')
+        .find('#frm_body').html('<h6>'+msg+'</h6>')
+        .end().find('input[name="kode_periksa"]').val(kode_periksa)
+        .end().find('#frm_title').html(title)
+        .end().modal('show');
+    });
   
 
 }(jQuery, window, document));
@@ -222,6 +237,27 @@ $.extend({
                 $.each(data, function(key, value) {
                     console.log(value);
                     $('select[name="kabupaten"]').append($("<option></option>")
+                    .attr("value",value.kode_kabupaten)
+                    .text(value.kode_kabupaten+" - "+value.nama_kabupaten)); 
+                });
+            }
+        });
+    });
+
+    $('select[name="kode_provinsi"]').change(function() {
+        $.ajax({
+            url: rootURL+"/api/getkab-"+$(this).val(),
+            type: 'get',
+            dataType: 'json',
+            async: false,
+            success: function(data) {
+                $('select[name="kode_kabupaten"]').html('');
+                $('select[name="kode_kabupaten"]').append($("<option></option>")
+                .attr("value",'all')
+                .text("--------------")); 
+                $.each(data, function(key, value) {
+                    console.log(value);
+                    $('select[name="kode_kabupaten"]').append($("<option></option>")
                     .attr("value",value.kode_kabupaten)
                     .text(value.kode_kabupaten+" - "+value.nama_kabupaten)); 
                 });

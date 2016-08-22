@@ -67,8 +67,7 @@ class permohonanCtrl extends Controller {
 	}
 
 	
-	public function edit($id)
-	{
+	public function edit($id){
 		$permohonan = \App\permohonan::select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
 		->join('tbl_perusahaan', 'tbl_permohonan.kode_perusahaan', '=', 'tbl_perusahaan.kode_perusahaan')
 		->join('tbl_amp','tbl_permohonan.kode_amp','=','tbl_amp.kode_amp')->find($id);
@@ -124,6 +123,11 @@ class permohonanCtrl extends Controller {
 		}
 
 		return $isi;
+	}
+
+
+	public function tgl_periksa_post(Request $request){
+		
 	}
 
 }

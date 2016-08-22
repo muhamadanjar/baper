@@ -80,8 +80,8 @@
     				                            <th>Tipe</th>
     				                            <th>Tahun Buat</th>
     				                            <th>Perusahaan</th>
-    				                            <th>Mulai</th>
-                                        <th>Akhir</th>
+    				                            <th>Tgl Sertifikat Mulai</th>
+                                        <th>Tgl Sertifikat Akhir</th>
                                         <th>Kondisi</th>
     				                        </tr>
     				                    </thead>
@@ -90,9 +90,10 @@
 
     				                    @foreach($amp as $k =>$va)
                                 <?php
-                                  $kondisi = ($va->kondisi == '1') ? 'Baik' : 'Rusak' ;
+                                  $kondisi = ($va->kondisi == '1') ? 'Laik' : 'Tidak Laik';
+                                  $merah = (date('Y-m-d') > $va->tgl_sertifikat_akhir) ? 'bg-warning':'';
                                 ?>
-    				                        <tr>
+    				                        <tr class="{{$merah}}">
     				                            <td class="merk">{{ $va->merk }}</td>
     				                            <td class="tipe">{{ $va->tipe }}</td>
     				                            <td class="tahun_buat">{{ $va->tahun_buat }}</td>
@@ -210,7 +211,7 @@
                 </div>
 
             </div>
-            <!-- /page tabs -->
+<!-- /page tabs -->
 
 <style type="text/css">
 	html, body, #map,#map-bp,#map-quary { margin: 0; padding: 0; height: 500px }

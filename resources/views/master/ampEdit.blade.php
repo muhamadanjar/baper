@@ -90,6 +90,13 @@
 							<div class="col-sm-10">
 								<select class="form-control" name="kode_provinsi">
 									<option value="">Nama Provinsi</option>
+									@foreach($provinsi as $pk => $pv)
+		                                @if($amp->kode_provinsi == $pv->kode_provinsi)
+		                                <option value="{{ $pv->kode_provinsi }}" selected="selected">{{$pv->nama_provinsi}}</option>
+		                                @else
+		                                <option value="{{ $pv->kode_provinsi }}">{{$pv->nama_provinsi}}</option>
+		                                @endif
+		                            @endforeach
 								</select>
 							</div>
 						</div>
@@ -99,6 +106,13 @@
 							<div class="col-sm-10">
 								<select class="form-control" name="kode_kabupaten">
 									<option value="">Nama Kabupaten/Kota</option>
+									@foreach($kabupaten as $pk => $pv)
+		                                @if($amp->kode_kabupaten == $pv->kode_kabupaten)
+		                                <option value="{{ $pv->kode_kabupaten }}" selected="selected">{{$pv->nama_kabupaten}}</option>
+		                                @else
+		                                <option value="{{ $pv->kode_kabupaten }}">{{$pv->nama_kabupaten}}</option>
+		                                @endif
+		                            @endforeach
 								</select>
 							</div>
 						</div>
@@ -125,6 +139,13 @@
 							<div class="col-sm-10">
 								<select class="form-control" name="kode_perusahaan">
 									<option value="">Nama Perusahaan</option>
+									@foreach($perusahaan as $pk => $pv)
+		                                @if(trim($amp->kode_perusahaan) == $pv->kode_perusahaan)
+		                                <option value="{{ $pv->kode_perusahaan }}" selected="selected">{{$pv->nama_perusahaan}}</option>
+		                                @else
+		                                <option value="{{ $pv->kode_perusahaan }}">{{$pv->nama_perusahaan}}</option>
+		                                @endif
+		                            @endforeach
 								</select>
 							</div>
 						</div>
@@ -132,7 +153,29 @@
 						<div class="form-group">
 				            <label class="col-sm-2 control-label">Kondisi:</label>
 				            <div class="col-sm-10">
-				            	<input type="text" class="form-control" name="kondisi" value="{{ $amp->kondisi }}">
+
+				            	@if($amp->kondisi == '1')
+				            	<label>
+				            		<input type="checkbox" name="kondisi" class="styled" value="1" checked="checked"> Laik
+				            	</label>
+				            	<label>
+				            		<input type="checkbox" name="kondisi" class="styled" value="2">Tidak Laik
+				            	</label>
+				            	@elseif($amp->kondisi == '2')
+				            	<label>
+				            		<input type="checkbox" name="kondisi" class="styled" value="1"> Laik
+				            	</label>
+				            	<label>
+				            		<input type="checkbox" name="kondisi" class="styled" value="2" checked="checked">Tidak Laik
+				            	</label>
+				            	@else
+				            	<label>
+				            		<input type="checkbox" name="kondisi" class="styled" value="1"> Laik
+				            	</label>
+				            	<label>
+				            		<input type="checkbox" name="kondisi" class="styled" value="2">Tidak Laik
+				            	</label>
+				            	@endif
 				            </div>
 				        </div>
 						

@@ -63,6 +63,14 @@
                                         <li><a href="{{ route('pm_2_unit_menu', ['id' => $v->no_permohonan]) }}"><i class="icon-quill2"></i>Pemeriksaan Tahap II</a></li>            
                                     </ul>
                                 </div>
+                                <div data-title="Pemeriksaan {{ $v->no_permohonan }}" 
+                                    data-message="Pemeriksaan {{ $v->no_permohonan }}"
+                                    data-kodeperiksa="{{ $v->no_permohonan }}">
+                                    <a class="formHistoryPemeriksaan btn btn-default btn-xs btn-icon">
+                                        <i class="icon-file6"></i>
+                                    </a>        
+                                </div>
+                                
                             </td>
                             <td>{{$v->no_permohonan}}</td>
 							<td>{{$v->tanggal_permohonan}}</td>
@@ -79,5 +87,7 @@
                 </table>
             </div>
     </div>
+
+    @include('vendor.modalPemeriksaan')
 	
 @stop

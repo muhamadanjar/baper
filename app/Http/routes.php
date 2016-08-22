@@ -65,8 +65,6 @@ Route::group(array('prefix'=>'api'), function(){
 		return \App\Kabupaten::where('kode_provinsi',$kode_provinsi)->get();
 	});
 
-	
-	
 });
 
 
@@ -215,7 +213,7 @@ Route::group(array('prefix'=>'jadwal'), function(){
 Route::group(array('prefix'=>'laporan'), function(){
 	Route::get('excel-{namafile}', 'ReportCtrl@printAmp');
 });
-
+Route::post('pemeriksaan/tglperiksa/post','PemeriksaanCtrl@store');
 
 Route::get('cauth/login','CAuthCtrl@getLogin');
 Route::post('cauth/login','CAuthCtrl@postLogin');

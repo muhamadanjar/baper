@@ -18,8 +18,9 @@
           center: {lat: -6.4765194, lng: 107.0231146},
           zoom: 10
         });
-
-        ampMarker = getjson(rootURL+"/api/getampmap&merk=all&kapasitas=all&kode_provinsi=all&kondisi=all");
+        var url_amp = rootURL+"/api/getampmap&merk=all&kapasitas=all&kode_provinsi=all&kondisi=all";
+        console.log(url_amp);
+        ampMarker = getjson(url_amp);
         setMarkers(map,ampMarker);
         /*bpMarker = getjson('http://localhost/baper/public/api/getbp');
         setMarkers(mapbp,bpMarker);
@@ -55,20 +56,21 @@
     }
 
     function setMarkers(map,locations){
+        //console.log(locations);
         for (var i = 0; i < locations.length; i++){  
             var loan = locations[i]['kode_amp'];
-            var lat = locations[i]['longtitude'];
-            var long = locations[i]['latitude'];
+            var lat = (locations[i]['latitude']);
+            var long = (locations[i]['longtitude']);
             var add =  locations[i]['merk'];
             latlngset = new google.maps.LatLng(lat, long);
             marker = new google.maps.Marker({  
-                map: map, title: locations[i]['nama_perusahaan'] , position: latlngset , html: popupContentAMP('',locations[i]) 
+                map: map, title: locations[i]['nama_perusahaan'] , 
+                position: latlngset , html: popupContentAMP('',locations[i]) 
             });
             markers.push(marker);
             map.setCenter(marker.getPosition());
           
             google.maps.event.addListener(marker, "click", function () {
-                    //alert(this.html);
                 infowindow.setContent(this.html);
                 infowindow.open(map, this);
             });
@@ -181,8 +183,8 @@
                     row.append($("<th/>").text('Tipe'));
                     row.append($("<th/>").text('Tahun Buat'));
                     row.append($("<th/>").text('Perusahaan'));
-                    row.append($("<th/>").text('Awal'));
-                    row.append($("<th/>").text('Akhir'));
+                    row.append($("<th/>").text('Tgl Sertifikat Awal'));
+                    row.append($("<th/>").text('Tgl Sertifikat Akhir'));
                     row.append($("<th/>").text('Kondisi'));
                     table.append(row);
                 $.each(data, function(rowIndex, r) {

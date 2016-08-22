@@ -90,6 +90,9 @@
 							<div class="col-sm-10">
 								<select class="form-control" name="kode_provinsi">
 									<option value="">Nama Provinsi</option>
+									@foreach($provinsi as $pk => $pv)
+		                                <option value="{{ $pv->kode_provinsi }}">{{$pv->nama_provinsi}}</option>
+		                            @endforeach 
 								</select>
 							</div>
 						</div>
@@ -104,7 +107,7 @@
 						</div>
 						
 						<div class="form-group">
-				            <label class="col-sm-2 control-label">Longtitude:</label>
+				            <label class="col-sm-2 control-label">Longtitude(X):</label>
 				            <div class="col-sm-5">
 				            	<input type="text" class="form-control" name="longtitude">
 				            </div>
@@ -114,7 +117,7 @@
 				        </div>
 						
 						<div class="form-group">
-				            <label class="col-sm-2 control-label">Latitude:</label>
+				            <label class="col-sm-2 control-label">Latitude(Y):</label>
 				            <div class="col-sm-5">
 				            	<input type="text" class="form-control" name="latitude">
 				            </div>
@@ -125,6 +128,9 @@
 							<div class="col-sm-10">
 								<select class="form-control" name="kode_perusahaan">
 									<option value="">Nama Perusahaan</option>
+									@foreach($perusahaan as $pk => $pv)
+		                                <option value="{{ $pv->kode_perusahaan }}">{{$pv->nama_perusahaan}}</option>
+		                            @endforeach
 								</select>
 							</div>
 						</div>
@@ -132,7 +138,12 @@
 						<div class="form-group">
 				            <label class="col-sm-2 control-label">Kondisi:</label>
 				            <div class="col-sm-10">
-				            	<input type="text" class="form-control" name="kondisi">
+				            	<label>
+				            		<input type="checkbox" name="kondisi" class="styled" value="1"> Laik
+				            	</label>
+				            	<label>
+				            		<input type="checkbox" name="kondisi" class="styled" value="2">Tidak Laik
+				            	</label>
 				            </div>
 				        </div>
 						
