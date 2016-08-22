@@ -22,6 +22,17 @@ var rootURL = 'http://'+window.location.hostname+':'+window.location.port;
        
         return lastRow;
     }
+    function getTableData(table) {
+        var data = [];
+        table.find('tr').each(function (rowIndex, r) {
+            var cols = [];
+            $(this).find('th,td').each(function (colIndex, c) {
+                cols.push(c.textContent);
+            });
+            data.push(cols);
+        });
+        return data;
+    }
 $.extend({
     getValues: function(url) {
         var result = null;
