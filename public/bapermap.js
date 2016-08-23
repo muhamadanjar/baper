@@ -5,7 +5,9 @@
     var ampMarker,bpMarker,quaryMarker;
     var marker;var markers = [];
     function initMap() {
-        infowindow = new google.maps.InfoWindow();
+        infowindow = new google.maps.InfoWindow({
+            maxWidth: 350
+        });
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -6.4765194, lng: 107.0231146},
           zoom: 10
@@ -26,6 +28,36 @@
         setMarkers(mapbp,bpMarker);
         quaryMarker = getjson('http://localhost/baper/public/api/getquary');
         setMarkers(mapquary,quaryMarker);*/
+
+        google.maps.event.addListener(infowindow, 'domready', function() {
+            var iwOuter = $('.gm-style-iw');
+
+            var iwBackground = iwOuter.prev();
+
+            iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+            iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+            iwOuter.parent().parent().css({left: '115px'});
+
+            iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+
+            iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+
+            iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
+
+            var iwCloseBtn = iwOuter.next();
+
+            iwCloseBtn.css({opacity: '1', right: '38px', top: '3px', border: '7px solid #48b5e9', 'border-radius': '13px', 'box-shadow': '0 0 5px #3990B9'});
+
+            if($('.iw-content').height() < 140){
+              $('.iw-bottom-gradient').css({display: 'none'});
+            }
+
+            iwCloseBtn.mouseout(function(){
+              $(this).css({opacity: '1'});
+            });
+        });
     }
 
     function getjson(url){
@@ -98,30 +130,31 @@
         return popup;
     }
     function popupContentAMP(title,content){
-        var popup = "<div class='panel panel-default'>";
+        
         var kondisi = "";
-        popup += "<div class='panel-heading'><h6 class='panel-title'><i class='icon-accessibility'></i><b><u>"+title+"</u></b></h6></div>";
-        popup += "<div class='panel-body'>";
-        popup += "<table class='table table-bordered'>";
+        var content_ = '<div id="iw-container">';
+            content_ += '<div class="iw-title">AMP</div>';
+            content_ += '<div class="iw-content">';
+            content_ += '<table class="table table-bordered">';
+            if (content['kondisi'] == '1') { kondisi = 'Laik'} else { kondisi = 'Tidak Laik'};
+            content_ += '<tr><td><b>Kode Amp</b></td><td><b>:</b> </td><td>' + content['kode_amp'] + '</td></tr>';
+            content_ += '<tr><td><b>Merk</b></td><td><b>:</b> </td><td>' + content['merk'] + '</td></tr>';
+            content_ += '<tr><td><b>Tipe</b></td><td><b>:</b> </td><td>' + content['tipe'] + '</td></tr>';
+            content_ += '<tr><td><b>Tahun Buat</b></td><td><b>:</b> </td><td>' + content['tahun_buat'] + '</td></tr>';
+            content_ += '<tr><td><b>Kapasitas</b></td><td><b>:</b> </td><td>' + content['kapasitas'] + '</td></tr>';
+                        
+            content_ += '<tr><td><b>Provinsi</b></td><td><b>:</b> </td><td>' + content['nama_provinsi'] + '</td></tr>';
+            content_ += '<tr><td><b>Kabupaten</b></td><td><b>:</b> </td><td>' + content['nama_kabupaten'] + '</td></tr>';
+            content_ += '<tr><td><b>Perusahaan</b></td><td><b>:</b> </td><td>' + content['nama_perusahaan'] + '</td></tr>';
+            content_ += '<tr><td><b>Kondisi</b></td><td><b>:</b> </td><td>' + kondisi + '</td></tr>';
+            content_ += '<tr><td><b>Foto</b></td><td><b>:</b> </td><td><img class="img-responsive" width="100" src="' + content['foto'] + '" /></td></tr>';
+            content_ += '</table>';
 
-        if (content['kondisi'] == '1') { kondisi = 'Laik'} else { kondisi = 'Tidak Laik'};
-        popup += "<tr><td><b>Kode Amp</b></td><td><b>:</b> </td><td>" + content['kode_amp'] + "</td></tr>";
-        popup += "<tr><td><b>Merk</b></td><td><b>:</b> </td><td>" + content['merk'] + "</td></tr>";
-        popup += "<tr><td><b>Tipe</b></td><td><b>:</b> </td><td>" + content['tipe'] + "</td></tr>";
-        popup += "<tr><td><b>Tahun Buat</b></td><td><b>:</b> </td><td>" + content['tahun_buat'] + "</td></tr>";
-        popup += "<tr><td><b>Kapasitas</b></td><td><b>:</b> </td><td>" + content['kapasitas'] + "</td></tr>";
-        
-        popup += "<tr><td><b>Provinsi</b></td><td><b>:</b> </td><td>" + content['nama_provinsi'] + "</td></tr>";
-        popup += "<tr><td><b>Kabupaten</b></td><td><b>:</b> </td><td>" + content['nama_kabupaten'] + "</td></tr>";
-        popup += "<tr><td><b>Perusahaan</b></td><td><b>:</b> </td><td>" + content['nama_perusahaan'] + "</td></tr>";
-        popup += "<tr><td><b>Kondisi</b></td><td><b>:</b> </td><td>" + kondisi + "</td></tr>";
-        popup += "<tr><td><b>Foto</b></td><td><b>:</b> </td><td><img class='img-responsive' width='100' src='" + content['foto'] + "' /></td></tr>";
-        
-        popup += '</div>';
-        popup += '</div>';
-        popup += '</div>';
+            content_ += '</div>';
+            content_ += '<div class="iw-bottom-gradient"></div>';
+            content_ += '</div>';
 
-        return popup;
+        return content_;
     }
 
     function setMapOnAll(map) {

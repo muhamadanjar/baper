@@ -11,13 +11,17 @@ class Amp extends Migration {
 			$table->string('merk', 60);
 			$table->string('tipe', 60);
 			$table->integer('tahun_buat');
-			$table->string('kapasitas', 60);
 			$table->string('lokasi',120);
 			$table->char('kode_provinsi',2);
-			$table->char('kode_kabupaten',3);
+			$table->char('kode_kabupaten',2);
+			$table->char('kode_perusahaan',3);
+			$table->char('kondisi',1);
+			$table->integer('kapasitas');
+			$table->timestamp('tgl_sertifikat_awal');
+			$table->timestamp('tgl_sertifikat_akhir');
 			$table->double('latitude')->comment = "Y";
 			$table->double('longtitude')->comment = "X";;
-			$table->char('kondisi',2);
+			
 				
 		});
 		//DB::statement("SELECT AddGeometryColumn ('public','amp','geom',4326,'POINT',2)");

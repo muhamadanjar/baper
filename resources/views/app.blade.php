@@ -126,9 +126,9 @@
     <script type="text/javascript" src="{{ asset('lib/jqueryui/js/jquery-1.10.2.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('lib/jqueryui/js/jquery-ui-1.10.4.custom.js') }}"></script>
     <script type="text/javascript" src="{{ asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
-	
+	<script type="text/javascript" src="{{ asset('baper.js') }}"></script>
     @yield('js_tambahan')
-	
+	@yield('map_jquery')
 	
     
 	<!-- Scripts -->

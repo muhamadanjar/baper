@@ -27,17 +27,17 @@ class PemeriksaanCtrl extends Controller {
                         ->withInput();
         }else{
         	session()->forget('id_periksa');
-			$id = \DB::table('tbl_amp_1_periksa')->insert(
-				['kode_periksa' => $request->kode_periksa, 'tgl_periksa' => $request->tgl_periksa]
-			);
-			session()->put('id_periksa', $id);
+        	$periksasatuamp = new \App\AmpPeriksaSatu();
+        	$periksasatuamp->kode_periksa = $request->kode_periksa;
+        	$periksasatuamp->tgl_periksa = $request->tgl_periksa;
+			$periksasatuamp->save();
+
+			session()->put('id_periksa', $periksasatuamp->id);
 			return redirect('amp/listpemeriksaanamp/ubah-'.$request->kode_periksa);
         }
 
 		
 		//return 'Data Berhasil di tambah';
 	}
-
-	
 
 }
