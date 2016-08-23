@@ -61,10 +61,7 @@ class permohonanCtrl extends Controller {
 		return redirect('permohonan/permohonan/index');
 	}
 
-	public function show($id)
-	{
-		//
-	}
+	
 
 	
 	public function edit($id){

@@ -7,47 +7,11 @@ use Illuminate\Http\Request;
 use App\Lib\AHelper;
 use Carbon\Carbon;
 
-class AMPCtrl extends Controller {
-
+class pm_1_unit_bin_dinginCtrl extends Controller {
 	public function __construct($value=''){
 		$this->_s = new AHelper();
 	}
-	public function index(){
-		$datpermohonan = \App\Amp::orderBy('no_permohonan','ASC')
-		->select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
-		->join('tbl_perusahaan','tbl_permohonan.kode_perusahaan','=','tbl_perusahaan.kode_perusahaan')
-		->join('tbl_amp','tbl_permohonan.kode_peralatan','=','tbl_amp.kode_amp')
-		->get();
-		return view('amp.listpemeriksaanamp')
-		
-		->with('datpermohonan',$datpermohonan);
-	}
-
-	public function edit($id){
-		$periksa_utama = \App\AmpPeriksaSatu::orderBy('id_periksa','ASC')->where('id_periksa',$id)->first();
-		$datpermohonan = \App\permohonan::select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
-		->join('tbl_perusahaan', 'tbl_permohonan.kode_perusahaan', '=', 'tbl_perusahaan.kode_perusahaan')
-		->join('tbl_amp','tbl_permohonan.kode_peralatan','=','tbl_amp.kode_amp')
-		->find($periksa_utama->kode_periksa);
-		
-		session()->put('no_permohonan', $datpermohonan->no_permohonan);
-		if (!is_null($periksa_utama)) {
-			session()->put('id_periksa', $id);
-		}
-		
-		return view('amp.pm_1_unit_menu')->with('datpermohonan',$datpermohonan);
-	}
-
-	public function show_amp_t2($id)
-	{
-		$datpermohonan = \App\amp::find($id);
-
-		return view('amp.pm_2_unit_menu')->with('datpermohonan',$datpermohonan);
-	}
-
-
-	public function pem_amp_1_unit_bin_dingin_cold_bin(){
-		
+	public function pem_amp_1_unit_bin_dingin(){
 		$id_periksa = session('id_periksa');
 		$pm_satu_amp_bindingin = PMAMP1UBD::orderBy('tgl_periksa','DESC')
 		->where('id_periksa',$id_periksa)->first();
@@ -59,7 +23,7 @@ class AMPCtrl extends Controller {
 			->with('pm_satu_amp_bindingin',$pm_satu_amp_bindingin);
 	}
 
-	public function pem_amp_1_unit_bin_dingin_cold_bin_post(Request $request){
+	public function pem_amp_1_unit_bin_dingin_post(Request $request){
 		$file = $request->file('foto_unit');
 		$destinationPath = public_path('images');
 		
@@ -189,105 +153,11 @@ class AMPCtrl extends Controller {
 		$pm->save();
 	
 		
-		return redirect('amp/pemeriksaan1/unitbindingin');		
-	}
-	
-	public function pem_amp_1_unit_ban_berjalan(){
-		return view('amp.pm_1_unit_ban_berjalan');
-	}
-	
-	public function pem_amp_1_unit_pengering(){
-		return view('amp.pm_1_unit_pengering');
-	}
-	public function pem_amp_1_unit_pemanas(){
-		return view('amp.pm_1_unit_pemanas');
-	}
-	public function pem_amp_1_unit_pengumpul_debu(){
-		return view('amp.pm_1_unit_pengumpul_debu');
-	}
-	public function pem_amp_1_unit_elevator_panas(){
-		return view('amp.pm_1_unit_elevator_panas');
-	}
-	public function pem_amp_1_unit_saringan_bergetar(){
-		return view('amp.pm_1_unit_saringan_bergetar');
-	}
-	public function pem_amp_1_unit_bin_panas(){
-		return view('amp.pm_1_unit_bin_panas');
-	}
-	public function pem_amp_1_unit_timbangan(){
-		return view('amp.pm_1_unit_timbangan');
-	}
-	public function pem_amp_1_unit_pencampur(){
-		return view('amp.pm_1_unit_pencampur');
-	}
-	public function pem_amp_1_unit_pemasok_aspal(){
-		return view('amp.pm_1_unit_pemasok_aspal');
-	}
-	public function pem_amp_1_unit_pemasok_filler(){
-		return view('amp.pm_1_unit_pemasok_filler');
-	}
-	public function pem_amp_1_unit_tenaga_penggerak(){
-		return view('amp.pm_1_unit_tenaga_penggerak');
-	}
-	public function pem_amp_1_unit_bin_filler(){
-		return view('amp.pm_1_unit_bin_filler');
-	}
-	public function pem_amp_1_unit_elevator(){
-		return view('amp.pm_1_unit_elevator');
-	}
-	public function pem_amp_1_unit_silo(){
-		return view('amp.pm_1_unit_silo');
+		return redirect('amp/pemeriksaan1/unitbindingin');	
 	}
 
 
-	public function pem_amp_2_unit_bin_dingin_cold_bin(){
-		return view('amp.pm_2_unit_bin_dingin');
-	}
-	public function pem_amp_2_unit_ban_berjalan(){
-		return view('amp.pm_2_unit_ban_berjalan');
-	}
-	public function pem_amp_2_unit_pengering(){
-		return view('amp.pm_2_unit_pengering');
-	}
-	public function pem_amp_2_unit_pemanas(){
-		return view('amp.pm_2_unit_pemanas');
-	}
-	public function pem_amp_2_unit_pengumpul_debu(){
-		return view('amp.pm_2_unit_pengumpul_debu');
-	}
-	public function pem_amp_2_unit_elevator_panas(){
-		return view('amp.pm_2_unit_elevator_panas');
-	}
-	public function pem_amp_2_unit_saringan_bergetar(){
-		return view('amp.pm_2_unit_saringan_bergetar');
-	}
-	public function pem_amp_2_unit_bin_panas(){
-		return view('amp.pm_2_unit_bin_panas');
-	}
-	public function pem_amp_2_unit_timbangan(){
-		return view('amp.pm_2_unit_timbangan');
-	}
-	public function pem_amp_2_unit_pencampur(){
-		return view('amp.pm_2_unit_pencampur');
-	}
-	public function pem_amp_2_unit_pemasok_aspal(){
-		return view('amp.pm_2_unit_pemasok_aspal');
-	}
-	public function pem_amp_2_unit_pemasok_filler(){
-		return view('amp.pm_2_unit_pemasok_filler');
-	}
-	public function pem_amp_2_unit_tenaga_penggerak(){
-		return view('amp.pm_2_unit_tenaga_penggerak');
-	}
-	public function pem_amp_2_unit_bin_filler(){
-		return view('amp.pm_2_unit_bin_filler');
-	}
-	public function pem_amp_2_unit_elevator(){
-		return view('amp.pm_2_unit_elevator');
-	}
-	public function pem_amp_2_unit_silo(){
-		return view('amp.pm_2_unit_silo');
-	}
+	
 	
 	
 

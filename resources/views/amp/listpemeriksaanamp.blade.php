@@ -56,13 +56,13 @@
                         @foreach($datpermohonan as $key => $v)
                         <tr>
                             <td>
-                                <div class="btn-group">
+                                <!--<div class="btn-group">
                                     <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle" type="button"><i class="icon-cog4"></i><span class="caret"></span></button>
                                     <ul class="dropdown-menu icons-right dropdown-menu-right">
                                         <li><a href="{{ route('pm_1_unit_menu', ['id' => $v->no_permohonan]) }}"><i class="icon-quill2"></i>Pemeriksaan Tahap I</a></li>            
                                         <li><a href="{{ route('pm_2_unit_menu', ['id' => $v->no_permohonan]) }}"><i class="icon-quill2"></i>Pemeriksaan Tahap II</a></li>            
                                     </ul>
-                                </div>
+                                </div-->
                                 <div data-title="Pemeriksaan {{ $v->no_permohonan }}" 
                                     data-message="Pemeriksaan {{ $v->no_permohonan }}"
                                     data-kodeperiksa="{{ $v->no_permohonan }}">

@@ -4,10 +4,24 @@ $.ajaxSetup({
 var rootURL = 'http://'+window.location.hostname+':'+window.location.port;
     function makeTable(container, data) {
         var table = $("<table/>").addClass('table table-striped table-bordered');
+        var id = '';
         $.each(data, function(rowIndex, r) {
             var row = $("<tr/>");
             $.each(r, function(colIndex, c) { 
-                row.append($("<t"+(rowIndex == 0 ?  "h" : "d")+"/>").text(c));
+                if (rowIndex == 0) {
+                    row.append($("<th/>").text(c));    
+                }else{
+
+                    if (colIndex == 'id_periksa') {
+                        id = c;
+                    }
+                    if (colIndex == 'kode_periksa') {
+                        row.append( $("<td/>").text(c).append($("<a>").attr('href',rootURL+'/amp/listpemeriksaanamp/ubah-'+id).text('Link')) );
+                    }else{
+                        row.append($("<td/>").text(c));
+                    }
+                }
+                
             });
             table.append(row);
         });
@@ -79,11 +93,12 @@ $.extend({
         var dataForm = el.attr('data-form');
         var kode_periksa = el.attr('data-kodeperiksa');
         $.ajax({
-            url: rootURL+"/api/getpemeriksaan_satu_amp",
+            url: rootURL+"/api/getpemeriksaan_satu_amp-all",
             type: 'get',
             dataType: 'json',
             async: false,
             success: function(data) {
+                $('.table-pemeriksaan').html('');
                 makeTable($('.table-pemeriksaan'),data)
                 
             }
@@ -158,6 +173,85 @@ $.extend({
     $('.pelindung_bin input:checkbox').click(function(e) {
         $('.pelindung_bin').find('td span').removeClass( "checked" );
         $('.pelindung_bin').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.1_check input:checkbox').click(function(e) {
+        $('.1_check').find('td span').removeClass( "checked" );
+        $('.1_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+    
+    $('.2_check input:checkbox').click(function(e) {
+        $('.2_check').find('td span').removeClass( "checked" );
+        $('.2_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.3_check input:checkbox').click(function(e) {
+        $('.3_check').find('td span').removeClass( "checked" );
+        $('.3_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.4_check input:checkbox').click(function(e) {
+        $('.4_check').find('td span').removeClass( "checked" );
+        $('.4_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.5_check input:checkbox').click(function(e) {
+        $('.5_check').find('td span').removeClass( "checked" );
+        $('.5_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.6_check input:checkbox').click(function(e) {
+        $('.6_check').find('td span').removeClass( "checked" );
+        $('.6_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.7_check input:checkbox').click(function(e) {
+        $('.7_check').find('td span').removeClass( "checked" );
+        $('.7_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.8_check input:checkbox').click(function(e) {
+        $('.8_check').find('td span').removeClass( "checked" );
+        $('.8_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.9_check input:checkbox').click(function(e) {
+        $('.9_check').find('td span').removeClass( "checked" );
+        $('.9_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.10_check input:checkbox').click(function(e) {
+        $('.10_check').find('td span').removeClass( "checked" );
+        $('.10_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.11_check input:checkbox').click(function(e) {
+        $('.11_check').find('td span').removeClass( "checked" );
+        $('.11_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.12_check input:checkbox').click(function(e) {
+        $('.12_check').find('td span').removeClass( "checked" );
+        $('.12_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.13_check input:checkbox').click(function(e) {
+        $('.13_check').find('td span').removeClass( "checked" );
+        $('.13_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.14_check input:checkbox').click(function(e) {
+        $('.14_check').find('td span').removeClass( "checked" );
+        $('.14_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+    $('.15_check input:checkbox').click(function(e) {
+        $('.15_check').find('td span').removeClass( "checked" );
+        $('.15_check').find('td input:checkbox').not(this).prop('checked', false);
+    });
+
+    $('.kesimpulan_check input:checkbox').click(function(e) {
+        $('.kesimpulan_check').find('td span').removeClass( "checked" );
+        $('.kesimpulan_check').find('td input:checkbox').not(this).prop('checked', false);
     });
     
     

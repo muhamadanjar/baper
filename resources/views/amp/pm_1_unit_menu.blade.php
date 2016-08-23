@@ -21,7 +21,8 @@
                 <ul class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="forms.html">Forms</a></li>
-                    <li class="active">Pemeriksaan AMP Tahap I</li>
+                    <li class="active">Pemeriksaan AMP Tahap I - 
+                    {{ \Session::get('no_permohonan')}} - {{ \Session::get('id_periksa')}}</li>
                 </ul>
 
                 <div class="visible-xs breadcrumb-toggle">

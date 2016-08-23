@@ -94,23 +94,8 @@
 								
 								
 							</div>
-							<div class="table-responsive table-pemeriksaan">
-							    <table class="table table-striped table-bordered">
-							        <thead>
-							            <tr>
-							                <th>Tgl Periksa</th>
-							                <th>Periksa Ke</th>
-							                <th>Status</th>
-							            </tr>
-							        </thead>
-							        <tbody>
-							            <tr>
-							                <td>Database</td>
-							                <td>Creating and connecting database</td>
-							                <td><span class="label label-danger">Ok</span></td>
-							            </tr>
-							        </tbody>
-							    </table>
+						<div class="table-responsive table-pemeriksaan">
+							    
 							</div>
 
 							<!--<div class="panel-body">

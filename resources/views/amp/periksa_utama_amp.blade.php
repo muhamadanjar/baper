@@ -2,8 +2,8 @@
 @section('content')
 <div class="panel panel-default">
 		        <div class="panel-heading">
-			        <h6 class="panel-title"><i class="icon-coin"></i> PEMERIKSAAN TAHAP I </h6>
-                	
+			        <h6 class="panel-title"><i class="icon-coin"></i> PEMERIKSAAN TAHAP I - </h6>
+                	{{Session::all()}}
 		        </div>
 				<div class="panel-body">
 					<div class="row">

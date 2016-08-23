@@ -65,7 +65,7 @@ Route::group(array('prefix'=>'api'), function(){
 		return \App\Kabupaten::where('kode_provinsi',$kode_provinsi)->get();
 	});
 
-	Route::get('getpemeriksaan_satu_amp','PemeriksaanCtrl@getPemeriksaan1AMP');
+	Route::get('getpemeriksaan_satu_amp-{kode_periksa}','PemeriksaanCtrl@getPemeriksaan1AMP');
 
 });
 
@@ -77,38 +77,41 @@ Route::group(array('prefix'=>'amp'), function(){
 	Route::get('listpemeriksaanamp/index','AMPCtrl@index');
 	Route::get('listpemeriksaanamp/ubah-{id}',['as' => 'pm_1_unit_menu','uses' => 'AMPCtrl@edit']);
 		
-	Route::get('pemeriksaan1/unitbindingin','AMPCtrl@pem_amp_1_unit_bin_dingin_cold_bin');
-	Route::post('pemeriksaan1/unitbindingin','AMPCtrl@pem_amp_1_unit_bin_dingin_cold_bin_post');	
+	Route::get('pemeriksaan1/unitbindingin','pm_1_unit_bin_dinginCtrl@pem_amp_1_unit_bin_dingin');
+	Route::post('pemeriksaan1/unitbindingin','pm_1_unit_bin_dinginCtrl@pem_amp_1_unit_bin_dingin_post');
+		
 	Route::get('pemeriksaan1/unitbanberjalan','AMPCtrl@pem_amp_1_unit_ban_berjalan');
 	Route::post('pemeriksaan1/unitbanberjalan','AMPCtrl@pem_amp_1_unit_ban_berjalan_post');	
 	Route::get('pemeriksaan1/unitpengering','AMPCtrl@pem_amp_1_unit_pengering');
 	Route::post('pemeriksaan1/unitpengering','AMPCtrl@pem_amp_1_unit_pengering_post');	
-	Route::get('pemeriksaan1/unitpemanas','AMPCtrl@pem_amp_1_unit_pemanas');
-	Route::post('pemeriksaan1/unitpemanas','AMPCtrl@pem_amp_1_unit_pemanas_post');	
-	Route::get('pemeriksaan1/unitpengumpuldebu','AMPCtrl@pem_amp_1_unit_pengumpul_debu');
-	Route::post('pemeriksaan1/unitpengumpuldebu','AMPCtrl@pem_amp_1_unit_pengumpul_debu_post');	
-	Route::get('pemeriksaan1/unitelevatorpanas','AMPCtrl@pem_amp_1_unit_elevator_panas');
-	Route::post('pemeriksaan1/unitelevatorpanas','AMPCtrl@pem_amp_1_unit_elevator_panas_post');
-	Route::get('pemeriksaan1/unitsaringanbergetar','AMPCtrl@pem_amp_1_unit_saringan_bergetar');
-	Route::post('pemeriksaan1/unitsaringanbergetar','AMPCtrl@pem_amp_1_unit_saringan_bergetar_post');
-	Route::get('pemeriksaan1/unitbinpanas','AMPCtrl@pem_amp_1_unit_bin_panas');
-	Route::post('pemeriksaan1/unitbinpanas','AMPCtrl@pem_amp_1_unit_bin_panas_post');	
-	Route::get('pemeriksaan1/unittimbangan','AMPCtrl@pem_amp_1_unit_timbangan');
-	Route::post('pemeriksaan1/unittimbangan','AMPCtrl@pem_amp_1_unit_timbangan_post');	
-	Route::get('pemeriksaan1/unitpencampur','AMPCtrl@pem_amp_1_unit_pencampur');
-	Route::post('pemeriksaan1/unitpencampur','AMPCtrl@pem_amp_1_unit_pencampur_post');
-	Route::get('pemeriksaan1/unitpemasokaspal','AMPCtrl@pem_amp_1_unit_pemasok_aspal');
-	Route::post('pemeriksaan1/unitpemasokaspal','AMPCtrl@pem_amp_1_unit_pemasok_aspal_post');
-	Route::get('pemeriksaan1/unitpemasokfiller','AMPCtrl@pem_amp_1_unit_pemasok_filler');
-	Route::post('pemeriksaan1/unitpemasokfiller','AMPCtrl@pem_amp_1_unit_pemasok_filler_post');	
-	Route::get('pemeriksaan1/unittenagapenggerak','AMPCtrl@pem_amp_1_unit_tenaga_penggerak');
-	Route::post('pemeriksaan1/unittenagapenggerak','AMPCtrl@pem_amp_1_unit_tenaga_penggerak_post');
-	Route::get('pemeriksaan1/unitbinfiller','AMPCtrl@pem_amp_1_unit_bin_filler');
-	Route::post('pemeriksaan1/unitbinfiller','AMPCtrl@pem_amp_1_unit_bin_filler_post');
-	Route::get('pemeriksaan1/unitelevator','AMPCtrl@pem_amp_1_unit_elevator');
-	Route::post('pemeriksaan1/unitelevator','AMPCtrl@pem_amp_1_unit_elevator_post');	
-	Route::get('pemeriksaan1/unitsilo','AMPCtrl@pem_amp_1_unit_silo');
-	Route::post('pemeriksaan1/unitsilo','AMPCtrl@pem_amp_1_unit_silo_post');
+	Route::get('pemeriksaan1/unitpemanas','pm_1_unit_pemanasCtrl@pem_amp_1_unit_pemanas');
+	Route::post('pemeriksaan1/unitpemanas','pm_1_unit_pemanasCtrl@pem_amp_1_unit_pemanas_post');	
+	Route::get('pemeriksaan1/unitpengumpuldebu','pm_1_unit_pengumpuldebuCtrl@pem_amp_1_unit_pengumpul_debu');
+	Route::post('pemeriksaan1/unitpengumpuldebu','pm_1_unit_pengumpuldebuCtrl@pem_amp_1_unit_pengumpul_debu_post');	
+	Route::get('pemeriksaan1/unitelevatorpanas','pm_1_unit_elevator_panasCtrl@pem_amp_1_unit_elevator_panas');
+	Route::post('pemeriksaan1/unitelevatorpanas','pm_1_unit_elevator_panasCtrl@pem_amp_1_unit_elevator_panas_post');
+	Route::get('pemeriksaan1/unitsaringanbergetar','pm_1_unit_saringan_bergetarCtrl@pem_amp_1_unit_saringan_bergetar');
+	Route::post('pemeriksaan1/unitsaringanbergetar','pm_1_unit_saringan_bergetarCtrl@pem_amp_1_unit_saringan_bergetar_post');
+	Route::get('pemeriksaan1/unitbinpanas','pm_1_unit_bin_panasCtrl@pem_amp_1_unit_bin_panas');
+	Route::post('pemeriksaan1/unitbinpanas','pm_1_unit_bin_panasCtrl@pem_amp_1_unit_bin_panas_post');	
+	Route::get('pemeriksaan1/unittimbangan','pm_1_unit_timbanganCtrl@pem_amp_1_unit_timbangan');
+	Route::post('pemeriksaan1/unittimbangan','pm_1_unit_timbanganCtrl@pem_amp_1_unit_timbangan_post');	
+	Route::get('pemeriksaan1/unitpencampur','pm_1_unit_pencampurCtrl@pem_amp_1_unit_pencampur');
+	Route::post('pemeriksaan1/unitpencampur','pm_1_unit_pencampurCtrl@pem_amp_1_unit_pencampur_post');
+	Route::get('pemeriksaan1/unitpemasokaspal','pm_1_unit_pemasok_aspalCtrl@pem_amp_1_unit_pemasok_aspal');
+	Route::post('pemeriksaan1/unitpemasokaspal','pm_1_unit_pemasok_aspalCtrl@pem_amp_1_unit_pemasok_aspal_post');
+	Route::get('pemeriksaan1/unitpemasokfiller','pm_1_unit_pemasok_fillerCtrl@pem_amp_1_unit_pemasok_filler');
+	Route::post('pemeriksaan1/unitpemasokfiller','pm_1_unit_pemasok_fillerCtrl@pem_amp_1_unit_pemasok_filler_post');	
+	Route::get('pemeriksaan1/unittenagapenggerak','pm_1_unit_tenaga_penggerakCtrl@pem_amp_1_unit_tenaga_penggerak');
+	Route::post('pemeriksaan1/unittenagapenggerak','pm_1_unit_tenaga_penggerakCtrl@pem_amp_1_unit_tenaga_penggerak_post');
+	Route::get('pemeriksaan1/unitbinfiller','pm_1_unit_bin_fillerCtrl@pem_amp_1_unit_bin_filler');
+	Route::post('pemeriksaan1/unitbinfiller','pm_1_unit_bin_fillerCtrl@pem_amp_1_unit_bin_filler_post');
+	Route::get('pemeriksaan1/unitelevator','pm_1_unit_elevatorCtrl@pem_amp_1_unit_elevator');
+	Route::post('pemeriksaan1/unitelevator','pm_1_unit_elevatorCtrl@pem_amp_1_unit_elevator_post');	
+	Route::get('pemeriksaan1/unitsilo','pm_1_unit_siloCtrl@pem_amp_1_unit_silo');
+	Route::post('pemeriksaan1/unitsilo','pm_1_unit_siloCtrl@pem_amp_1_unit_silo_post');
+
+	Route::get('pemeriksaan1/unitrekap','pm_1_unit_rekapCtrl@pem_amp_1_unit_rekap');
 	
 	Route::get('listpemeriksaanamp2/ubah-{id}',['as' => 'pm_2_unit_menu','uses' => 'AMPCtrl@show_amp_t2']);
 	
