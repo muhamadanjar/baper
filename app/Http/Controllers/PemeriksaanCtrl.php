@@ -24,7 +24,7 @@ class PemeriksaanCtrl extends Controller {
 			$no++;
 		}
 
-		array_unshift($baru,array("id_periksa" => "Tgl Periksa","tgl_periksa" => "Tgl Periksa","periksake" => "Pemeriksaan Ke","kode_periksa" => "Kode Periksaan"));
+		array_unshift($baru,array("id_periksa" => "ID Periksa","tgl_periksa" => "Tgl Periksa","periksake" => "Pemeriksaan Ke","kode_periksa" => "#"));
 		return $baru;
 	}	
 	public function store(Request $request){

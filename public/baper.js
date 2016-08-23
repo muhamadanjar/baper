@@ -16,7 +16,7 @@ var rootURL = 'http://'+window.location.hostname+':'+window.location.port;
                         id = c;
                     }
                     if (colIndex == 'kode_periksa') {
-                        row.append( $("<td/>").text(c).append($("<a>").attr('href',rootURL+'/amp/listpemeriksaanamp/ubah-'+id).text('Link')) );
+                        row.append( $("<td/>").append($("<a>").attr('href',rootURL+'/amp/listpemeriksaanamp/ubah-'+id).text('Link')) );
                     }else{
                         row.append($("<td/>").text(c));
                     }
