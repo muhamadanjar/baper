@@ -17,6 +17,7 @@ use App\pm_amp_1_unit_pemasok_filler as PMAMP1UBD_PEMASOK_FILLER;
 use App\pm_amp_1_unit_tenaga_penggerak as PMAMP1UBD_TENAGA_PENGGERAK;
 use App\pm_amp_1_unit_bin_filler as PMAMP1UBD_BIN_FILLER;
 use App\pm_amp_1_unit_elevator as PMAMP1UBD_ELEVATOR;
+use App\pm_amp_1_unit_bin_dingin as PMAMP1UBD_BAN_DINGIN;
 use Illuminate\Http\Request;
 use App\Lib\AHelper;
 use Carbon\Carbon;
