@@ -21,7 +21,7 @@
                 <ul class="breadcrumb">
                     <li><a href="{{ url('home')}}">Home</a></li>
                     <li><a href="{{ url('amp/listpemeriksaanamp/index') }}">Pemeriksaan</a></li>
-                    <li class="active">Unit Ban Berjalan - {{$no_permohonan}}</li>
+                    <li class="active">Unit Ban Berjalan - - {{ \Session::get('no_permohonan')}} - {{ \Session::get('id_periksa')}}</li>
                 </ul>
 
                 <div class="visible-xs breadcrumb-toggle">
@@ -35,7 +35,8 @@
 @endsection
 @section('content')
 <?php
-    $kode_periksa = $no_permohonan;
+    $no_id = '';
+    $kode_periksa = \Session::get('no_permohonan');
     $ban_berjalan_penampung_check = '';
     $ban_berjalan_penampung_ket = '';
     $ban_berjalan_penampung_foto = '';
@@ -145,12 +146,19 @@ if (isset($pm_satu_amp_unitbanberjalan)) {
         $kesimpulan_check = $pm_satu_amp_unitbanberjalan->kesimpulan_check;
         $kesimpulan_ket = $pm_satu_amp_unitbanberjalan->kesimpulan_ket;
 
+        $no_id = $pm_satu_amp_bindingin->no_id;
+        $id_periksa = $pm_satu_amp_bindingin->id_periksa;
+
     }
 }
 ?>
     <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="foto_unit_" value="{{$foto_unit}}" /> 
+        <input type="hidden" name="id_periksa" value="{{$id_periksa}}" />
+        <input type="hidden" name="no_id" value="{{$no_id}}" />
+        <input type="hidden" name="kode_periksa" value="{{ $kode_periksa }}">
+
 		<div class="table-responsive">
             <table class="table table-bordered" fixed-header>                               
                 <tr>
@@ -166,7 +174,7 @@ if (isset($pm_satu_amp_unitbanberjalan)) {
                 </tr>
                                 
                 <tr class="1_check">
-                    <input type="hidden" name="kode_periksa" value="{{ $no_permohonan }}">
+                    <input type="hidden" name="kode_periksa" value="{{ $kode_periksa }}">
 					<td>1</td>
                     <td>Ban Berjalan (Belt Conveyor) Penampung dari Bukaan Bin Dingin</td>
                     @if($ban_berjalan_penampung_check == '1')

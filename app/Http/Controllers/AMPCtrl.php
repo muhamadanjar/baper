@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\pm_amp_1_unit_bin_dingin as PMAMP1UBD;
+use App\pm_amp_1_unit_ban_berjalan as PMAMP1UBB;
 use Illuminate\Http\Request;
 use App\Lib\AHelper;
 use Carbon\Carbon;
@@ -193,7 +194,125 @@ class AMPCtrl extends Controller {
 	}
 	
 	public function pem_amp_1_unit_ban_berjalan(){
-		return view('amp.pm_1_unit_ban_berjalan');
+		$id_periksa = session('id_periksa');
+		$pm_satu_amp_banberjalan = PMAMP1UBB::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		if (is_null($id_periksa)) {
+			return redirect('/home');
+		}
+
+		return view('amp.pm_1_unit_ban_berjalan')
+			->with('id_periksa',$id_periksa)
+			->with('pm_satu_amp_banberjalan',$pm_satu_amp_banberjalan);
+	}
+
+	public function pem_amp_1_unit_ban_berjalan_post(){
+
+
+		$kesimpulan_check = '1';
+		if ($request->ban_berjalan_penampung_check < '4') {
+			if ($kesimpulan_check < $request->ban_berjalan_penampung_check) {
+				$kesimpulan_check = $request->ban_berjalan_penampung_check;
+			}
+		}
+
+		if ($request->ban_berjalan_colector_check < '4') {
+			if ($kesimpulan_check < $request->ban_berjalan_colector_check) {
+				$kesimpulan_check = $request->ban_berjalan_colector_check;
+			}
+		}
+
+		if ($request->ban_berjalan_dryer_check < '4') {
+			if ($kesimpulan_check < $request->ban_berjalan_dryer_check) {
+				$kesimpulan_check = $request->ban_berjalan_dryer_check;
+			}
+		}
+
+		if ($request->ban_berjalan_feeder_check < '4') {
+			if ($kesimpulan_check < $request->ban_berjalan_feeder_check) {
+				$kesimpulan_check = $request->ban_berjalan_feeder_check;
+			}
+		}
+
+		
+		if ($request->alat_penimbang_check < '4') {
+			if ($kesimpulan_check < $request->alat_penimbang_check) {
+				$kesimpulan_check = $request->alat_penimbang_check;
+			}
+		}
+
+		if ($request->rol_pemutar_check < '4') {
+			if ($kesimpulan_check < $request->rol_pemutar_check) {
+				$kesimpulan_check = $request->rol_pemutar_check;
+			}
+		}
+
+		if ($request->bearing_check < '4') {
+			if ($kesimpulan_check < $request->bearing_check) {
+				$kesimpulan_check = $request->bearing_check;
+			}
+		}
+
+		if ($request->sprocket_check < '4') {
+			if ($kesimpulan_check < $request->sprocket_check) {
+				$kesimpulan_check = $request->sprocket_check;
+			}
+		}
+
+		if ($request->roller_check < '4') {
+			if ($kesimpulan_check < $request->roller_check) {
+				$kesimpulan_check = $request->roller_check;
+			}
+		}
+
+		if ($request->gear_check < '4') {
+			if ($kesimpulan_check < $request->gear_check) {
+				$kesimpulan_check = $request->gear_check;
+			}
+		}
+
+		$q = ($request->no_id == null) ? new PMAMP1UBB() : PMAMP1UBB::find($request->no_id);
+		$pm = $q;
+
+		$pm->kode_periksa = $request->kode_periksa;
+		
+		$pm->ban_berjalan_penampung_check = $request->ban_berjalan_penampung_check;
+		$pm->ban_berjalan_penampung_ket = $request->ban_berjalan_penampung_ket;
+		$pm->ban_berjalan_penampung_foto = $request->ban_berjalan_penampung_foto;
+		$pm->dinding_bin_check = $request->dinding_bin_check;
+		$pm->dinding_bin_ket = $request->dinding_bin_ket;
+		$pm->dinding_bin_foto = $request->dinding_bin_foto;
+		$pm->bukaan_pintu_check = $request->bukaan_pintu_check;
+		$pm->bukaan_pintu_ket = $request->bukaan_pintu_ket;
+		$pm->bukaan_pintu_foto = $request->bukaan_pintu_foto;
+		$pm->skala_meter_check = $request->skala_meter_check;
+		$pm->skala_meter_ket = $request->skala_meter_ket;
+		$pm->skala_meter_foto = $request->skala_meter_foto;
+		$pm->motor_penggerak_check = $request->motor_penggerak_check;
+		$pm->motor_penggerak_ket = $request->motor_penggerak_ket;
+		$pm->motor_penggerak_foto = $request->motor_penggerak_foto;
+		$pm->penggetar_check = $request->penggetar_check;
+		$pm->penggetar_ket = $request->penggetar_ket;
+		$pm->penggetar_foto = $request->penggetar_foto;
+		$pm->pengatur_kecepatan_check = $request->pengatur_kecepatan_check;
+		$pm->pengatur_kecepatan_ket = $request->pengatur_kecepatan_ket;
+		$pm->pengatur_kecepatan_foto = $request->pengatur_kecepatan_foto;
+		$pm->konstruksi_pendukung_check = $request->konstruksi_pendukung_check;
+		$pm->konstruksi_pendukung_ket = $request->konstruksi_pendukung_ket;
+		$pm->konstruksi_pendukung_foto = $request->konstruksi_pendukung_foto;
+		$pm->pelindung_bin_check = $request->pelindung_bin_check;
+		$pm->pelindung_bin_ket = $request->pelindung_bin_ket;
+		$pm->pelindung_bin_foto = $request->pelindung_bin_foto;
+				
+		$pm->catatan_pemeriksa = $request->catatan_pemeriksa;
+		$pm->harus_diperbaiki = $request->harus_diperbaiki;
+		$pm->pemeriksaan_tahap_2 = $request->pemeriksaan_tahap_2;
+		$pm->kesimpulan_check = $kesimpulan_check;
+		$pm->kesimpulan_ket = $request->kesimpulan_ket;
+		$pm->id_periksa = $request->id_periksa;
+		$pm->tgl_periksa = Carbon::now();
+
+		return 'Sedang Dalam Perbaikan';
 	}
 	
 	public function pem_amp_1_unit_pengering(){
