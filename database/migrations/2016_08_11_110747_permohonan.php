@@ -20,11 +20,17 @@ class Permohonan extends Migration {
 			$table->char('kode_perusahaan',3);
 			$table->string('nama_pemohon',60);
 			$table->string('jabatan',60);
-			$table->string('jenis_peralatan',10);
+			$table->string('jenis_peralatan',15);
 			$table->char('kode_peralatan',8);
 			$table->char('kondisi',2);
 			$table->timestamp('tanggal_expose');
-			$table->timestamp('tanggal_rencana');				
+			$table->timestamp('tanggal_pemeriksaan');
+			$table->string('no_surat',30);
+			$table->timestamp('tgl_surat');
+			$table->string('no_undangan',60);
+			$table->timestamp('tgl_undangan');
+			$table->text('hasil_expose');
+							
 		});
 	}
 
