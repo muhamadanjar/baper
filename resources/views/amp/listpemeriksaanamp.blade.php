@@ -65,7 +65,10 @@
                                 </div-->
                                 <div data-title="Pemeriksaan {{ $v->no_permohonan }}" 
                                     data-message="Pemeriksaan {{ $v->no_permohonan }}"
-                                    data-kodeperiksa="{{ $v->no_permohonan }}">
+                                    data-kodeperiksa="{{ $v->no_permohonan }}"
+                                    data-namaperusahaan="{{ $v->nama_perusahaan }}"
+                                    data-namapemohon="{{ $v->nama_pemohon }}"
+                                    >
                                     <a class="formHistoryPemeriksaan btn btn-default btn-xs btn-icon">
                                         <i class="icon-file6"></i>
                                     </a>        

@@ -22,7 +22,7 @@
 								</div>
 
 
-								<!--<div class="row">
+								<div class="row">
 									<div class="col-sm-5">
 										<h6>Invoice To:</h6>
 			 							<ul>
@@ -58,10 +58,10 @@
 											<li>Responsible: <a href="#" class="pull-right">Eugene Kopyov</a></li>
 											<li>Issued by: <a href="#" class="pull-right">Jennifer Notes</a></li>
 											<li>Payment method: <strong class="pull-right">Wire transfer</strong></li>
-											<li class="invoice-status"><strong>Current status: <span class="label label-danger pull-right">Unpaid</span></strong></li>
+											<li class="invoice-status"><strong>Status Terakhir: <span class="label label-danger pull-right">Unpaid</span></strong></li>
 										</ul>
 									</div>
-								</div>-->
+								</div>
 
 							</div>
 
