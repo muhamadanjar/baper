@@ -5,11 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class TblAmp1UnitBanBerjalan extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
+
 	public function up()
 	{
 		Schema::create('tbl_amp_1_unit_ban_berjalan', function (Blueprint $table) {
