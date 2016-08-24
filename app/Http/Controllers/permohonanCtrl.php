@@ -67,7 +67,7 @@ class permohonanCtrl extends Controller {
 	public function edit($id){
 		$permohonan = \App\permohonan::select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
 		->join('tbl_perusahaan', 'tbl_permohonan.kode_perusahaan', '=', 'tbl_perusahaan.kode_perusahaan')
-		->join('tbl_amp','tbl_permohonan.kode_amp','=','tbl_amp.kode_amp')->find($id);
+		->join('tbl_amp','tbl_permohonan.kode_peralatan','=','tbl_amp.kode_amp')->find($id);
 		
 		$kode_peralatan = \App\AmpMast::get();
 		
@@ -88,11 +88,8 @@ class permohonanCtrl extends Controller {
 		$permohonan->nama_pemohon = $request->nama_pemohon;
 		$permohonan->jabatan = $request->jabatan;
 		$permohonan->jenis_peralatan = $request->jenis_peralatan;
-		if ($request->jenis_peralatan == 'amp') {
-			$permohonan->kode_amp = $request->kode_peralatan;
-		}else{
-			$permohonan->kode_bp = $request->kode_peralatan;
-		}
+		$permohonan->kode_peralatan = $request->kode_peralatan;
+		
 		$permohonan->kondisi = $request->kondisi;
 		$permohonan->save();
 

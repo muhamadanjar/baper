@@ -547,7 +547,7 @@ class AHelper {
     }
 
     // Upload file untuk download file
-    function UploadFile($fupload){
+    function UploadFile($fupload,$fileName=''){
         //direktori file
         $destinationPath = public_path('files');
         if (!file_exists($destinationPath)) {
@@ -562,7 +562,7 @@ class AHelper {
         $fuploadExt = $fupload->getClientOriginalExtension();
         $fuploadSize = $fupload->getSize();
 
-        $fileName = str_random(20) . '.' . $fupload->getClientOriginalExtension();   
+        //$fileName = str_random(20) . '.' . $fupload->getClientOriginalExtension();   
 
         //$vdir_upload = "../../../files/";
         //$vfile_upload = $vdir_upload . $fupload_name;

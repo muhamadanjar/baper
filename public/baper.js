@@ -92,8 +92,10 @@ $.extend({
         var msg = el.attr('data-message');
         var dataForm = el.attr('data-form');
         var kode_periksa = el.attr('data-kodeperiksa');
+        var url = rootURL+"/api/getpemeriksaan_satu_amp-"+kode_periksa;
+        console.log(url);
         $.ajax({
-            url: rootURL+"/api/getpemeriksaan_satu_amp-all",
+            url: url,
             type: 'get',
             dataType: 'json',
             async: false,

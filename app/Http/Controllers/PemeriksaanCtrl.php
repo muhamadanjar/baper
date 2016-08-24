@@ -45,7 +45,7 @@ class PemeriksaanCtrl extends Controller {
 			$periksasatuamp->save();
 
 			session()->put('id_periksa', $periksasatuamp->id_periksa);
-			return redirect('amp/listpemeriksaanamp/ubah-'.$request->kode_periksa);
+			return redirect('amp/listpemeriksaanamp/ubah-'.$periksasatuamp->id_periksa);
         }
 
 		

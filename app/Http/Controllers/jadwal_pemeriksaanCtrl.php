@@ -12,7 +12,10 @@ class jadwal_pemeriksaanCtrl extends Controller {
 	}
 	
 	public function index(){
-		$jadwal_pemeriksaan = \App\jadwal_pemeriksaan::get();
+		$jadwal_pemeriksaan = \App\jadwal_pemeriksaan::select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
+		->join('tbl_perusahaan', 'tbl_permohonan.kode_perusahaan', '=', 'tbl_perusahaan.kode_perusahaan')
+		->join('tbl_amp','tbl_permohonan.kode_peralatan','=','tbl_amp.kode_amp')
+		->whereRaw('tanggal_expose is not null')->get();
 		return view('jadwal.jadwal_pemeriksaan')->with('jadwal_pemeriksaan',$jadwal_pemeriksaan);
 	}
 

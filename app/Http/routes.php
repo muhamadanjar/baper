@@ -77,11 +77,12 @@ Route::group(array('prefix'=>'amp'), function(){
 	Route::get('listpemeriksaanamp/index','AMPCtrl@index');
 	Route::get('listpemeriksaanamp/ubah-{id}',['as' => 'pm_1_unit_menu','uses' => 'AMPCtrl@edit']);
 		
-	Route::get('pemeriksaan1/unitbindingin','pm_1_unit_bin_dinginCtrl@pem_amp_1_unit_bin_dingin');
-	Route::post('pemeriksaan1/unitbindingin','pm_1_unit_bin_dinginCtrl@pem_amp_1_unit_bin_dingin_post');
+	Route::get('pemeriksaan1/unitbindingin','PeriksaSatuAMPUnitBinDinginCtrl@periksaSatuAMPUnitBinDingin');
+	Route::post('pemeriksaan1/unitbindingin','PeriksaSatuAMPUnitBinDinginCtrl@periksaSatuAMPUnitBinDinginPost');
 		
-	Route::get('pemeriksaan1/unitbanberjalan','AMPCtrl@pem_amp_1_unit_ban_berjalan');
-	Route::post('pemeriksaan1/unitbanberjalan','AMPCtrl@pem_amp_1_unit_ban_berjalan_post');	
+	Route::get('pemeriksaan1/unitbanberjalan','PeriksaSatuAMPUnitBanBerjalanCtrl@periksaSatuAMPUnitBanBerjalan');
+	Route::post('pemeriksaan1/unitbanberjalan','PeriksaSatuAMPUnitBanBerjalanCtrl@periksaSatuAMPUnitBanBerjalanPost');	
+
 	Route::get('pemeriksaan1/unitpengering','AMPCtrl@pem_amp_1_unit_pengering');
 	Route::post('pemeriksaan1/unitpengering','AMPCtrl@pem_amp_1_unit_pengering_post');	
 	Route::get('pemeriksaan1/unitpemanas','pm_1_unit_pemanasCtrl@pem_amp_1_unit_pemanas');

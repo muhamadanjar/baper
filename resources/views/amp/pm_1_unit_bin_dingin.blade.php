@@ -73,7 +73,7 @@
     $kesimpulan_check = '';
     $kesimpulan_ket = '';
     $foto_unit = '';
-    $id_periksa = ''; 
+    $id_periksa = \Session::get('id_periksa'); 
 if (isset($pm_satu_amp_bindingin)) {
     if($pm_satu_amp_bindingin->kode_periksa){
         $kode_periksa = $pm_satu_amp_bindingin->kode_periksa;
@@ -196,7 +196,7 @@ if (isset($pm_satu_amp_bindingin)) {
                             </a>   
                         </div>
                         <div class="col-md-11">
-                            <input type="hidden" name="pelat_pemisah_foto_" value="{{$pelat_pemisah_foto}}" /> 
+                            
                             <input type="file" class="styled" name="pelat_pemisah_foto" value="">    
                         </div>
                         
@@ -246,7 +246,16 @@ if (isset($pm_satu_amp_bindingin)) {
                        
                     @endif
                     <td><input type="text" size="50" name="dinding_bin_ket" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="dinding_bin_foto" value=""></td>
+                    <td>
+                        <div class="col-md-1">
+                            <a href="{{ asset('files') }}/{{$dinding_bin_foto}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$dinding_bin_foto}}" class="img-media" alt="">
+                            </a>   
+                        </div>
+                        <div class="col-md-11">
+                            <input type="file" class="styled" name="dinding_bin_foto" value="">        
+                        </div>
+                    </td>
                 </tr>
                 <tr class="3_check">
 					<td>3</td>
@@ -293,8 +302,16 @@ if (isset($pm_satu_amp_bindingin)) {
                     <td><input type="text" size="50" name="bukaan_pintu_ket" class="form-control"
                     value="{{ $bukaan_pintu_ket}}"></td>
 
-                    <td><input type="file" class="styled" name="bukaan_pintu_foto" 
-                    ></td>
+                    <td>
+                        <div class="col-md-1">
+                            <a href="{{ asset('files') }}/{{$dinding_bin_foto}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$dinding_bin_foto}}" class="img-media" alt="">
+                            </a>   
+                        </div>
+                        <div class="col-md-11">
+                            <input type="file" class="styled" name="bukaan_pintu_foto">        
+                        </div>
+                    </td>
                 </tr>
                 <tr class="4_check">
 					<td>4</td>
@@ -339,7 +356,16 @@ if (isset($pm_satu_amp_bindingin)) {
                        
                     @endif
                     <td><input type="text" size="50" name="pintu_pengatur_ketn" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="pintu_pengatur_foto"></td>
+                    <td>
+                        <div class="col-md-1">
+                            <a href="{{ asset('files') }}/{{$pintu_pengatur_foto}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$pintu_pengatur_foto}}" class="img-media" alt="">
+                            </a>   
+                        </div>
+                        <div class="col-md-11">
+                            <input type="file" class="styled" name="pintu_pengatur_foto">        
+                        </div>
+                    </td>
                 </tr>
                 <tr class="5_check">
 					<td>5</td>
@@ -382,7 +408,17 @@ if (isset($pm_satu_amp_bindingin)) {
                     <td><input type="checkbox" class="styled" name="skala_meter_check" value="5"></td>
                     @endif
                     <td><input type="text" size="50" name="skala_meter_ketn" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="skala_meter_foto"></td>
+                    <td>
+                        <div class="col-md-1">
+                            <a href="{{ asset('files') }}/{{$skala_meter_foto}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$skala_meter_foto}}" class="img-media" alt="">
+                            </a>   
+                        </div>
+                        <div class="col-md-11">
+                            <input type="file" class="styled" name="skala_meter_foto">    
+                        </div>
+                        
+                    </td>
                 </tr>
                 <tr class="6_check">
 					<td>6</td>
@@ -425,7 +461,17 @@ if (isset($pm_satu_amp_bindingin)) {
                     <td><input type="checkbox" class="styled" name="motor_penggerak_check" value="5"></td>
                     @endif
                     <td><input type="text" size="50" name="motor_penggerak_ket" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="motor_penggerak_foto"></td>
+                    <td>
+                        <div class="col-md-1">
+                            <a href="{{ asset('files') }}/{{$motor_penggerak_foto}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$motor_penggerak_foto}}" class="img-media" 
+                                alt="">
+                            </a>   
+                        </div>
+                        <div class="col-md-11">
+                            <input type="file" class="styled" name="motor_penggerak_foto">        
+                        </div>
+                    </td>
                 </tr>
                 <tr class="7_check">
 				    <td>7</td>
@@ -468,7 +514,17 @@ if (isset($pm_satu_amp_bindingin)) {
                     <td><input type="checkbox" class="styled" name="penggetar_check" value="5"></td>
                     @endif
                     <td><input type="text" size="50" name="penggetar_ket" class="form-control"></td>
-                    <td><input type="file" class="styled" name="penggetar_foto"></td>
+                    <td>
+                        <div class="col-md-1">
+                            <a href="{{ asset('files') }}/{{$penggetar_foto}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$penggetar_foto}}" class="img-media" 
+                                alt="">
+                            </a>   
+                        </div>
+                        <div class="col-md-11">
+                            <input type="file" class="styled" name="penggetar_foto">    
+                        </div>
+                    </td>
                 </tr>
                 <tr class="8_check">
 					<td>8</td>
@@ -511,7 +567,17 @@ if (isset($pm_satu_amp_bindingin)) {
                     <td><input type="checkbox" class="styled" name="pengatur_kecepatan_check" value="5"></td>
                     @endif
                     <td><input type="text" size="50" name="pengatur_kecepatan_ket" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="pengatur_kecepatan_foto"></td>
+                    <td>
+                        <div class="col-md-1">
+                            <a href="{{ asset('files') }}/{{$pengatur_kecepatan_foto}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$pengatur_kecepatan_foto}}" class="img-media" 
+                                alt="">
+                            </a>   
+                        </div>
+                        <div class="col-md-11">
+                            <input type="file" class="styled" name="pengatur_kecepatan_foto">    
+                        </div>
+                    </td>
                 </tr>
                 <tr class="9_check">
 					<td>9</td>
@@ -556,8 +622,8 @@ if (isset($pm_satu_amp_bindingin)) {
                     <td><input type="text" size="50" name="konstruksi_pendukung_ket" class="form-control" value=""></td>
                     <td>
                         <div class="col-md-1">
-                            <a href="{{ asset('files') }}/{{$foto_unit}}" class="lightbox">
-                                <img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media" alt="">
+                            <a href="{{ asset('files') }}/{{$konstruksi_pendukung_foto}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$konstruksi_pendukung_foto}}" class="img-media" alt="">
                             </a>   
                         </div>
                         <div class="col-md-11">
@@ -609,8 +675,8 @@ if (isset($pm_satu_amp_bindingin)) {
                     <td><input type="text" size="50" name="pelindung_bin_ket" class="form-control" value=""></td>
                     <td>
                         <div class="col-md-1">
-                            <a href="{{ asset('files') }}/{{$foto_unit}}" class="lightbox">
-                                <img src="{{ asset('files') }}/{{$foto_unit}}" class="img-media" alt="">
+                            <a href="{{ asset('files') }}/{{$pelindung_bin_foto}}" class="lightbox">
+                                <img src="{{ asset('files') }}/{{$pelindung_bin_foto}}" class="img-media" alt="">
                             </a>   
                         </div>
                         <div class="col-md-11">

@@ -46,7 +46,7 @@
 				        <div class="form-group">
 							<label class="col-sm-2 control-label">No Permohonan:</label>
 				            <div class="col-sm-2">
-				            	<input type="text" class="form-control" name="no_permohonan" value="{{ $permohonan->no_permohonan }}" maxlength="10">
+				            	<input type="text" class="form-control" name="no_permohonan" value="{{ $permohonan->no_permohonan }}" maxlength="11">
 				            </div>
 							
 						</div>
@@ -149,7 +149,7 @@
 				            	<select name="kode_peralatan" class="form-control">
 				            		<option value="0">-------</option>
 				            		@foreach($kode_peralatan as $kv => $av)
-				            			@if($permohonan->kode_amp == $av->kode_amp)
+				            			@if($permohonan->kode_peralatan == $av->kode_amp)
 				            			<option value="{{ $av->kode_amp }}" selected="selected">{{$av->merk}}/{{$av->tipe}}</option>
 				            			@else
 				            			<option value="{{ $av->kode_amp }}">{{$av->merk}}/{{$av->tipe}}</option>

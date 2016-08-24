@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class pm_amp_1_unit_ban_berjalan extends Model {
+class PeriksaSatuAMPUnitBanBerjalan extends Model {
 
 	protected $table = 'tbl_amp_1_unit_ban_berjalan';
 	protected $primaryKey = 'kode_periksa';
