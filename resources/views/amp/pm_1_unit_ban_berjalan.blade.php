@@ -34,6 +34,7 @@
             <!-- /breadcrumbs line -->
 @endsection
 @section('content')
+
 <?php
     $no_id = '';
     $kode_periksa = \Session::get('no_permohonan');
@@ -88,7 +89,9 @@
     $pemeriksaan_tahap_2 = '';
     $kesimpulan_check = '';
     $kesimpulan_ket = '';
-    $foto_unit = ''; 
+    $foto_unit = '';
+
+    $id_periksa = \Session::get('id_periksa');  
 
 if (isset($pm_satu_amp_unitbanberjalan)) {
     if($pm_satu_amp_unitbanberjalan->kode_periksa){
@@ -146,8 +149,8 @@ if (isset($pm_satu_amp_unitbanberjalan)) {
         $kesimpulan_check = $pm_satu_amp_unitbanberjalan->kesimpulan_check;
         $kesimpulan_ket = $pm_satu_amp_unitbanberjalan->kesimpulan_ket;
 
-        $no_id = $pm_satu_amp_bindingin->no_id;
-        $id_periksa = $pm_satu_amp_bindingin->id_periksa;
+        $no_id = $pm_satu_amp_unitbanberjalan->no_id;
+        $id_periksa = $pm_satu_amp_unitbanberjalan->id_periksa;
 
     }
 }
@@ -352,7 +355,7 @@ if (isset($pm_satu_amp_unitbanberjalan)) {
                     <td><input type="checkbox" class="styled" name="ban_berjalan_feeder_check" value="4"></td>
                     <td><input type="checkbox" class="styled" name="ban_berjalan_feeder_check" value="5"></td>
                     @endif
-                    <td><input type="text" size="50" name="ban_berjalan_feeder_ketn" class="form-control" value=""></td>
+                    <td><input type="text" size="50" name="ban_berjalan_feeder_ket" class="form-control" value=""></td>
                     <td><input type="file" class="styled" name="ban_berjalan_feeder_foto"></td>
                 </tr>
                 <tr class="5_check">
@@ -653,8 +656,8 @@ if (isset($pm_satu_amp_unitbanberjalan)) {
                     <td><input type="checkbox" class="styled" name="gear_check" value="4"></td>
                     <td><input type="checkbox" class="styled" name="gear_check" value="5"></td>
                     @endif
-                    <td><input type="text" size="50" name="roller_ket" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="roller_foto" value=""></td>
+                    <td><input type="text" size="50" name="gear_ket" class="form-control" value=""></td>
+                    <td><input type="file" class="styled" name="gear_foto" value=""></td>
                 </tr>
                 <tr class="12_check">
                     <td>12</td>
@@ -696,8 +699,8 @@ if (isset($pm_satu_amp_unitbanberjalan)) {
                     <td><input type="checkbox" class="styled" name="chain_check" value="4"></td>
                     <td><input type="checkbox" class="styled" name="chain_check" value="5"></td>
                     @endif
-                    <td><input type="text" size="50" name="roller_ket" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="roller_foto" value=""></td>
+                    <td><input type="text" size="50" name="chain_ket" class="form-control" value=""></td>
+                    <td><input type="file" class="styled" name="chain_foto" value=""></td>
                 </tr>
                 <tr class="13_check">
                     <td>13</td>
@@ -739,8 +742,8 @@ if (isset($pm_satu_amp_unitbanberjalan)) {
                     <td><input type="checkbox" class="styled" name="vbelt_check" value="4"></td>
                     <td><input type="checkbox" class="styled" name="vbelt_check" value="5"></td>
                     @endif
-                    <td><input type="text" size="50" name="roller_ketn" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="roller_foto" value=""></td>
+                    <td><input type="text" size="50" name="vbelt_ket" class="form-control" value=""></td>
+                    <td><input type="file" class="styled" name="vbelt_foto" value=""></td>
                 </tr>
                 <tr class="14_check">
                     <td>14</td>
@@ -782,8 +785,8 @@ if (isset($pm_satu_amp_unitbanberjalan)) {
                     <td><input type="checkbox" class="styled" name="kontruksi_pendukung_check" value="4"></td>
                     <td><input type="checkbox" class="styled" name="kontruksi_pendukung_check" value="5"></td>
                     @endif
-                    <td><input type="text" size="50" name="roller_ket" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="roller_foto" value=""></td>
+                    <td><input type="text" size="50" name="kontruksi_pendukung_ket" class="form-control" value=""></td>
+                    <td><input type="file" class="styled" name="kontruksi_pendukung_foto" value=""></td>
                 </tr>
                 <tr class="15_check">
                     <td>15</td>
@@ -825,8 +828,8 @@ if (isset($pm_satu_amp_unitbanberjalan)) {
                     <td><input type="checkbox" class="styled" name="pelindung_kontruksi_check" value="4"></td>
                     <td><input type="checkbox" class="styled" name="pelindung_kontruksi_check" value="5"></td>
                     @endif
-                    <td><input type="text" size="50" name="roller_ket" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="roller_foto" value=""></td>
+                    <td><input type="text" size="50" name="pelindung_kontruksi_ket" class="form-control" value=""></td>
+                    <td><input type="file" class="styled" name="pelindung_kontruksi_foto" value=""></td>
                 </tr>
 			</table>
 		</div>				

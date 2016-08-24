@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class PeriksaSatuAMPUnitBanBerjalan extends Model {
 
 	protected $table = 'tbl_amp_1_unit_ban_berjalan';
-	protected $primaryKey = 'kode_periksa';
+	protected $primaryKey = 'no_id';
 	
 	public $timestamps = false;
 
