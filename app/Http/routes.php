@@ -89,10 +89,12 @@ Route::group(array('prefix'=>'amp'), function(){
 	Route::get('pemeriksaan1/unitpemanas','PeriksaSatuAMPUnitPemanasCtrl@periksaSatuAMPUnitPemanas');
 	Route::post('pemeriksaan1/unitpemanas','PeriksaSatuAMPUnitPemanasCtrl@periksaSatuAMPUnitPemanasPost');
 
-	Route::get('pemeriksaan1/unitpengumpuldebu','pm_1_unit_pengumpuldebuCtrl@pem_amp_1_unit_pengumpul_debu');
-	Route::post('pemeriksaan1/unitpengumpuldebu','pm_1_unit_pengumpuldebuCtrl@pem_amp_1_unit_pengumpul_debu_post');	
+	Route::get('pemeriksaan1/unitpengumpuldebu','PeriksaSatuAMPUnitPengumpulDebuCtrl@periksaSatuAMPUnitPengumpulDebu');
+	Route::post('pemeriksaan1/unitpengumpuldebu','PeriksaSatuAMPUnitPengumpulDebuCtrl@periksaSatuAMPUnitPengumpulDebuPost');
+
 	Route::get('pemeriksaan1/unitelevatorpanas','pm_1_unit_elevator_panasCtrl@pem_amp_1_unit_elevator_panas');
 	Route::post('pemeriksaan1/unitelevatorpanas','pm_1_unit_elevator_panasCtrl@pem_amp_1_unit_elevator_panas_post');
+	
 	Route::get('pemeriksaan1/unitsaringanbergetar','pm_1_unit_saringan_bergetarCtrl@pem_amp_1_unit_saringan_bergetar');
 	Route::post('pemeriksaan1/unitsaringanbergetar','pm_1_unit_saringan_bergetarCtrl@pem_amp_1_unit_saringan_bergetar_post');
 	Route::get('pemeriksaan1/unitbinpanas','pm_1_unit_bin_panasCtrl@pem_amp_1_unit_bin_panas');

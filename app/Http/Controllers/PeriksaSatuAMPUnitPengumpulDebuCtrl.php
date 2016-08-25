@@ -2,25 +2,25 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\pm_amp_1_unit_pengumpul_debu as PMAMP1UBD;
+use App\PeriksaSatuAMPUnitPengumpulDebu as PMAMP1UBD;
 use Illuminate\Http\Request;
 use App\Lib\AHelper;
 use Carbon\Carbon;
 
-class pm_1_unit_pengumpuldebuCtrl extends Controller {
+class PeriksaSatuAMPUnitPengumpulDebuCtrl extends Controller {
 
-	public function pem_amp_1_unit_pengumpul_debu(){
-		$no_permohonan = session('no_permohonan');
-		$pm_satu_amp_pengumpuldebu = PMAMP1UBD::orderBy('tgl_periksa','DESC')->find($no_permohonan);
-		if (is_null($no_permohonan)) {
+	public function periksaSatuAMPUnitPengumpulDebu(){
+		$id_periksa = session('id_periksa');
+		$pm_satu_amp_pengumpuldebu = PMAMP1UBD::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
+		if (is_null($id_periksa)) {
 			return redirect('/home');
 		}
 		return view('amp.pm_1_unit_pengumpul_debu')
-			->with('no_permohonan',$no_permohonan)
+			->with('id_periksa',$id_periksa)
 			->with('pm_satu_amp_pengumpuldebu',$pm_satu_amp_pengumpuldebu);
 	}
 
-	public function pem_amp_1_unit_pengumpul_debu_post(Request $request){
+	public function periksaSatuAMPUnitPengumpulDebuPost(Request $request){
 		$file = $request->file('foto_unit');
 		$destinationPath = public_path('images');
 		
@@ -78,8 +78,8 @@ class pm_1_unit_pengumpuldebuCtrl extends Controller {
 				$kesimpulan_check = $request->konstruksi_check;
 			}
 		}
-
-		$pm = new PMAMP1UBD();
+		$q = ($request->no_id == null) ? new \App\PeriksaSatuAMPUnitPengumpulDebu() : \App\PeriksaSatuAMPUnitPengumpulDebu::find($request->no_id) ;
+		$pm = $q;
 		$pm->kode_periksa = $request->kode_periksa;
 		$pm->pemutar_check = $request->pemutar_check;
 		$pm->pemutar_ket = $request->pemutar_ket;
