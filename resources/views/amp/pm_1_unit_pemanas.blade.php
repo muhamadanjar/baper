@@ -21,7 +21,7 @@
                 <ul class="breadcrumb">
                     <li><a href="{{ url('home')}}">Home</a></li>
                     <li><a href="{{ url('amp/listpemeriksaanamp/index') }}">Pemeriksaan</a></li>
-                    <li class="active">Unit Pemanas - {{$no_permohonan}}</li>
+                    <li class="active">Unit Pemanas - {{ \Session::get('no_permohonan')}} - {{ \Session::get('id_periksa')}}</li>
                 </ul>
 
                 <div class="visible-xs breadcrumb-toggle">
@@ -35,7 +35,10 @@
 @endsection
 @section('content')
 <?php
-    $kode_periksa = $no_permohonan;
+    $no_id = '';
+    $kode_periksa = \Session::get('no_permohonan');
+    $id_periksa = \Session::get('id_periksa');
+
     $tangki_bahan_bakar_check = '';
     $tangki_bahan_bakar_ket = '';
     $tangki_bahan_bakar_foto = '';
@@ -70,7 +73,10 @@
 
 if (isset($pm_satu_amp_unitpemanas)) {
     if($pm_satu_amp_unitpemanas->kode_periksa){
+        $no_id = $pm_satu_amp_unitpemanas->no_id;
         $kode_periksa = $pm_satu_amp_unitpemanas->kode_periksa;
+        $id_periksa = $pm_satu_amp_unitpemanas->id_periksa;
+
         $tangki_bahan_bakar_check = $pm_satu_amp_unitpemanas->tangki_bahan_bakar_check;
         $tangki_bahan_bakar_ket = $pm_satu_amp_unitpemanas->tangki_bahan_bakar_ket;
         $tangki_bahan_bakar_foto = $pm_satu_amp_unitpemanas->tangki_bahan_bakar_foto;
@@ -108,7 +114,11 @@ if (isset($pm_satu_amp_unitpemanas)) {
 ?>
     <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="foto_unit_" value="{{$foto_unit}}" /> 
+
+        <input type="hidden" name="id_periksa" value="{{$id_periksa}}" />
+        <input type="hidden" name="no_id" value="{{$no_id}}" />
+        <input type="hidden" name="kode_periksa" value="{{ $kode_periksa }}">
+        
 		<div class="table-responsive">
             <table class="table table-bordered" fixed-header>                               
                 <tr>

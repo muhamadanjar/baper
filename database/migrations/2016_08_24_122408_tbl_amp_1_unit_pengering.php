@@ -68,10 +68,7 @@ class TblAmp1UnitPengering extends Migration {
                   $table->string('kesimpulan_ket',120)->nullable();
             
                   $table->timestamp('tgl_periksa')->nullable();
-                  $table->string('foto_unit',120)->nullable();
-            
-       
-			
+                  $table->string('foto_unit',120)->nullable();		
 		});
 	}
 

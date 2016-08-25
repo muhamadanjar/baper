@@ -38,6 +38,7 @@
 <?php
     $no_id = '';
     $kode_periksa = \Session::get('no_permohonan');
+    $id_periksa = \Session::get('id_periksa');
     $ban_berjalan_penampung_check = '';
     $ban_berjalan_penampung_ket = '';
     $ban_berjalan_penampung_foto = '';
@@ -91,7 +92,7 @@
     $kesimpulan_ket = '';
     $foto_unit = '';
 
-    $id_periksa = \Session::get('id_periksa');  
+      
 
 if (isset($pm_satu_amp_unitbanberjalan)) {
     if($pm_satu_amp_unitbanberjalan->kode_periksa){

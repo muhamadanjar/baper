@@ -2,15 +2,19 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Carbon\Carbon;
+use App\Lib\AHelper;
 use Illuminate\Http\Request;
 
 class PeriksaSatuAMPUnitPengeringCtrl extends Controller {
-
+	public function __construct($value=''){
+		$this->_s = new AHelper();
+	}
 	public function periksaSatuAMPUnitPengering(){
 		$id_periksa = session('id_periksa');
 		$pm_satu_amp_pengering = \App\PeriksaSatuAMPUnitPengering::orderBy('tgl_periksa','DESC')
 		->where('id_periksa',$id_periksa)->first();
+		
 		if (is_null($id_periksa)) {
 			return redirect('/home');
 		}

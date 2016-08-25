@@ -82,59 +82,63 @@
     $kesimpulan_ket = '';
     $foto_unit = ''; 
 
-if (isset($pm_satu_amp_unitpengering)) {
-    if($pm_satu_amp_unitpengering->kode_periksa){
-        $kode_periksa = $pm_satu_amp_unitpengering->kode_periksa;
-        $corong_pengisi_check = $pm_satu_amp_unitpengering->corong_pengisi_check;
-        $corong_pengisi_ket = $pm_satu_amp_unitpengering->corong_pengisi_ket;
-        $corong_pengisi_foto = $pm_satu_amp_unitpengering->corong_pengisi_foto;
-        $corong_pengeluaran_check = $pm_satu_amp_unitpengering->corong_pengeluaran_check;
-        $corong_pengeluaran_ket = $pm_satu_amp_unitpengering->corong_pengeluaran_ket;
-        $corong_pengeluaran_foto = $pm_satu_amp_unitpengering->corong_pengeluaran_foto;
-        $silinder_pengering_check = $pm_satu_amp_unitpengering->silinder_pengering_check;
-        $silinder_pengering_ket = $pm_satu_amp_unitpengering->silinder_pengering_ket;
-        $silinder_pengering_foto = $pm_satu_amp_unitpengering->silinder_pengering_foto;
-        $sudu_sudu_check = $pm_satu_amp_unitpengering->sudu_sudu_check;
-        $sudu_sudu_ket = $pm_satu_amp_unitpengering->sudu_sudu_ket;
-        $sudu_sudu_foto = $pm_satu_amp_unitpengering->sudu_sudu_foto;
-        $roda_gigi_pemutar_check = $pm_satu_amp_unitpengering->roda_gigi_pemutar_check;
-        $roda_gigi_pemutar_ket = $pm_satu_amp_unitpengering->roda_gigi_pemutar_ket;
-        $roda_gigi_pemutar_foto = $pm_satu_amp_unitpengering->roda_gigi_pemutar_foto;
-        $roda_gigi_ring_check = $pm_satu_amp_unitpengering->roda_gigi_ring_check;
-        $roda_gigi_ring_ket = $pm_satu_amp_unitpengering->roda_gigi_ring_ket;
-        $roda_gigi_ring_foto = $pm_satu_amp_unitpengering->roda_gigi_ring_foto;
-        $motor_penggerak_check = $pm_satu_amp_unitpengering->motor_penggerak_check;
-        $motor_penggerak_ket = $pm_satu_amp_unitpengering->motor_penggerak_ket;
-        $motor_penggerak_foto = $pm_satu_amp_unitpengering->motor_penggerak_foto;
-        $bantalan_rol_check = $pm_satu_amp_unitpengering->bantalan_rol_check;
-        $bantalan_rol_ket = $pm_satu_amp_unitpengering->bantalan_rol_ket;
-        $bantalan_rol_foto = $pm_satu_amp_unitpengering->bantalan_rol_foto;
-        $bantalan_rol_penahan_check = $pm_satu_amp_unitpengering->bantalan_rol_penahan_check;
-        $bantalan_rol_penahan_ket = $pm_satu_amp_unitpengering->bantalan_rol_penahan_ket;
-        $bantalan_rol_penahan_foto = $pm_satu_amp_unitpengering->bantalan_rol_penahan_foto;
-        $chain_check = $pm_satu_amp_unitpengering->chain_check;
-        $chain_ket = $pm_satu_amp_unitpengering->chain_ket;
-        $chain_foto = $pm_satu_amp_unitpengering->chain_foto;
-        $bearing_check = $pm_satu_amp_unitpengering->bearing_check;
-        $bearing_ket = $pm_satu_amp_unitpengering->bearing_ket;
-        $bearing_foto = $pm_satu_amp_unitpengering->bearing_foto;
-        $konstruksi_rangka_check = $pm_satu_amp_unitpengering->konstruksi_rangka_check;
-        $konstruksi_rangka_ket = $pm_satu_amp_unitpengering->konstruksi_rangka_ket;
-        $konstruksi_rangka_foto = $pm_satu_amp_unitpengering->konstruksi_rangka_foto;
+if (isset($pm_satu_amp_pengering)) {
+    if($pm_satu_amp_pengering->kode_periksa){
+        $no_id = $pm_satu_amp_pengering->no_id;
+        $kode_periksa = $pm_satu_amp_pengering->kode_periksa;
         
-        $catatan_pemeriksa = $pm_satu_amp_unitpengering->catatan_pemeriksa;
-        $harus_diperbaiki = $pm_satu_amp_unitpengering->harus_diperbaiki;
-        $pemeriksaan_tahap_2 = $pm_satu_amp_unitpengering->pemeriksaan_tahap_2;
-        $foto_unit = $pm_satu_amp_unitpengering->foto_unit;
-        $kesimpulan_check = $pm_satu_amp_unitpengering->kesimpulan_check;
-        $kesimpulan_ket = $pm_satu_amp_unitpengering->kesimpulan_ket;
+        $corong_pengisi_check = $pm_satu_amp_pengering->corong_pengisi_check;
+        $corong_pengisi_ket = $pm_satu_amp_pengering->corong_pengisi_ket;
+        $corong_pengisi_foto = $pm_satu_amp_pengering->corong_pengisi_foto;
+        $corong_pengeluaran_check = $pm_satu_amp_pengering->corong_pengeluaran_check;
+        $corong_pengeluaran_ket = $pm_satu_amp_pengering->corong_pengeluaran_ket;
+        $corong_pengeluaran_foto = $pm_satu_amp_pengering->corong_pengeluaran_foto;
+        $silinder_pengering_check = $pm_satu_amp_pengering->silinder_pengering_check;
+        $silinder_pengering_ket = $pm_satu_amp_pengering->silinder_pengering_ket;
+        $silinder_pengering_foto = $pm_satu_amp_pengering->silinder_pengering_foto;
+        $sudu_sudu_check = $pm_satu_amp_pengering->sudu_sudu_check;
+        $sudu_sudu_ket = $pm_satu_amp_pengering->sudu_sudu_ket;
+        $sudu_sudu_foto = $pm_satu_amp_pengering->sudu_sudu_foto;
+        $roda_gigi_pemutar_check = $pm_satu_amp_pengering->roda_gigi_pemutar_check;
+        $roda_gigi_pemutar_ket = $pm_satu_amp_pengering->roda_gigi_pemutar_ket;
+        $roda_gigi_pemutar_foto = $pm_satu_amp_pengering->roda_gigi_pemutar_foto;
+        $roda_gigi_ring_check = $pm_satu_amp_pengering->roda_gigi_ring_check;
+        $roda_gigi_ring_ket = $pm_satu_amp_pengering->roda_gigi_ring_ket;
+        $roda_gigi_ring_foto = $pm_satu_amp_pengering->roda_gigi_ring_foto;
+        $motor_penggerak_check = $pm_satu_amp_pengering->motor_penggerak_check;
+        $motor_penggerak_ket = $pm_satu_amp_pengering->motor_penggerak_ket;
+        $motor_penggerak_foto = $pm_satu_amp_pengering->motor_penggerak_foto;
+        $bantalan_rol_check = $pm_satu_amp_pengering->bantalan_rol_check;
+        $bantalan_rol_ket = $pm_satu_amp_pengering->bantalan_rol_ket;
+        $bantalan_rol_foto = $pm_satu_amp_pengering->bantalan_rol_foto;
+        $bantalan_rol_penahan_check = $pm_satu_amp_pengering->bantalan_rol_penahan_check;
+        $bantalan_rol_penahan_ket = $pm_satu_amp_pengering->bantalan_rol_penahan_ket;
+        $bantalan_rol_penahan_foto = $pm_satu_amp_pengering->bantalan_rol_penahan_foto;
+        $chain_check = $pm_satu_amp_pengering->chain_check;
+        $chain_ket = $pm_satu_amp_pengering->chain_ket;
+        $chain_foto = $pm_satu_amp_pengering->chain_foto;
+        $bearing_check = $pm_satu_amp_pengering->bearing_check;
+        $bearing_ket = $pm_satu_amp_pengering->bearing_ket;
+        $bearing_foto = $pm_satu_amp_pengering->bearing_foto;
+        $konstruksi_rangka_check = $pm_satu_amp_pengering->konstruksi_rangka_check;
+        $konstruksi_rangka_ket = $pm_satu_amp_pengering->konstruksi_rangka_ket;
+        $konstruksi_rangka_foto = $pm_satu_amp_pengering->konstruksi_rangka_foto;
+        
+        $catatan_pemeriksa = $pm_satu_amp_pengering->catatan_pemeriksa;
+        $harus_diperbaiki = $pm_satu_amp_pengering->harus_diperbaiki;
+        $pemeriksaan_tahap_2 = $pm_satu_amp_pengering->pemeriksaan_tahap_2;
+        $foto_unit = $pm_satu_amp_pengering->foto_unit;
+        $kesimpulan_check = $pm_satu_amp_pengering->kesimpulan_check;
+        $kesimpulan_ket = $pm_satu_amp_pengering->kesimpulan_ket;
 
     }
 }
 ?>
     <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="foto_unit_" value="{{$foto_unit}}" /> 
+        <input type="hidden" name="id_periksa" value="{{$id_periksa}}" />
+        <input type="hidden" name="no_id" value="{{$no_id}}" />
+        <input type="hidden" name="kode_periksa" value="{{ $kode_periksa }}">
 		<div class="table-responsive">
             <table class="table table-bordered" fixed-header>                               
                 <tr>
@@ -150,7 +154,7 @@ if (isset($pm_satu_amp_unitpengering)) {
                 </tr>
                                 
                 <tr class="1_check">
-                    <input type="hidden" name="kode_periksa" value="{{ $no_permohonan }}">
+                    
 					<td>1</td>
                     <td>Corong Pengisi (Charging Cute)</td>
                     @if($corong_pengisi_check == '1')
@@ -691,12 +695,12 @@ if (isset($pm_satu_amp_unitpengering)) {
 				
 				<tr>
 					<td>Saran Pemeriksa, Harus Diperbaiki</td>
-					<td colspan="5"><input type="text" size="110%" name="harus_diperbaiki" 
+					<td colspan="5"><input type="text" size="110%" name="harus_diperbaiki" class="form-control"
                     value="{{ $harus_diperbaiki }}" /></td>
 				</tr>
 				<tr>
 					<td>Siap Pemeriksaan Tahap II</td>
-					<td colspan="5"><input type="text" size="110%" name="pemeriksaan_tahap_2" value="{{ $pemeriksaan_tahap_2 }}"></td>
+					<td colspan="5"><input type="text" class="form-control" size="110%" name="pemeriksaan_tahap_2" value="{{ $pemeriksaan_tahap_2 }}"></td>
 				</tr>
 			</table>
 		</div>		
@@ -706,7 +710,7 @@ if (isset($pm_satu_amp_unitpengering)) {
 				
 				<tr>
 					<td width=360>Kesimpulan</td>
-                    @if($kesimpulan_check == 'B')
+                    @if($kesimpulan_check == '1')
 					<td><input type="checkbox" name="kesimpulan_check" value="1" checked="checked"></td>
 					<td><input type="checkbox" name="kesimpulan_check" value="2"></td>
 					<td><input type="checkbox" name="kesimpulan_check" value="3"></td>
