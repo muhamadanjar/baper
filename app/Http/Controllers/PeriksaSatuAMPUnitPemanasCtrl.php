@@ -84,7 +84,7 @@ class PeriksaSatuAMPUnitPemanasCtrl extends Controller {
 
 		$q = ($request->no_id == null) ? new \App\PeriksaSatuAMPUnitPemanas() : \App\PeriksaSatuAMPUnitPemanas::find($request->no_id);
 		$pm = $q;
-
+		$pm->id_periksa = $request->id_periksa;
 		$pm->kode_periksa = $request->kode_periksa;
 		$pm->tangki_bahan_bakar_check = $request->tangki_bahan_bakar_check;
 		$pm->tangki_bahan_bakar_ket = $request->tangki_bahan_bakar_ket;

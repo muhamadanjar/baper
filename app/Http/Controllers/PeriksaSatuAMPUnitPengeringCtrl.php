@@ -243,7 +243,7 @@ class PeriksaSatuAMPUnitPengeringCtrl extends Controller {
 		}
 		
 		$pm->save();
-		return redirect('amp/pemeriksaan1/unitbindingin');	
+		return redirect('amp/pemeriksaan1/unitpengering');	
 		
 	}
 

@@ -134,7 +134,7 @@ if (isset($pm_satu_amp_unitpemanas)) {
                 </tr>
                                 
                 <tr class="1_check">
-                    <input type="hidden" name="kode_periksa" value="{{ $no_permohonan }}">
+                    <input type="hidden" name="kode_periksa" value="{{ $kode_periksa }}">
 					<td>1</td>
                     <td>Tangki Bahan Bakar</td>
                     @if($tangki_bahan_bakar_check == '1')
