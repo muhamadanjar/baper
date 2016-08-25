@@ -41,20 +41,20 @@ class permohonanCtrl extends Controller {
 		*/
 
 		$permohonan = new \App\permohonan();
-
+		$pemeriksaan_ulang = ($request->pemeriksaan_ulang == null) ? 0 : 1 ;
 		
 		$permohonan->no_permohonan = $request->no_permohonan;
+		$permohonan->no_surat = $request->no_surat;
+		$permohonan->tgl_surat = $request->tgl_surat;
+		
 		$permohonan->tanggal_permohonan = $request->tanggal_permohonan;
-		$permohonan->pemeriksaan_ulang = $request->pemeriksaan_ulang;
+		$permohonan->pemeriksaan_ulang = $pemeriksaan_ulang;
 		$permohonan->kode_perusahaan = $request->kode_perusahaan;
 		$permohonan->nama_pemohon = $request->nama_pemohon;
 		$permohonan->jabatan = $request->jabatan;
 		$permohonan->jenis_peralatan = $request->jenis_peralatan;
-		if ($request->jenis_peralatan == 'amp') {
-			$permohonan->kode_peralatan = $request->kode_peralatan;
-		}else{
-			$permohonan->kode_peralatan = $request->kode_peralatan;
-		}
+		$permohonan->kode_peralatan = $request->kode_peralatan;
+	
 		$permohonan->kondisi = $request->kondisi;
 		$permohonan->save();
 
@@ -81,15 +81,20 @@ class permohonanCtrl extends Controller {
 	public function update($id,Request $request)
 	{
 		$permohonan = \App\permohonan::find($id);
+		$pemeriksaan_ulang = ($request->pemeriksaan_ulang == null) ? 0 : 1 ;
+		
 		$permohonan->no_permohonan = $request->no_permohonan;
+		$permohonan->no_surat = $request->no_surat;
+		$permohonan->tgl_surat = $request->tgl_surat;
+		
 		$permohonan->tanggal_permohonan = $request->tanggal_permohonan;
-		$permohonan->pemeriksaan_ulang = $request->pemeriksaan_ulang;
+		$permohonan->pemeriksaan_ulang = $pemeriksaan_ulang;
 		$permohonan->kode_perusahaan = $request->kode_perusahaan;
 		$permohonan->nama_pemohon = $request->nama_pemohon;
 		$permohonan->jabatan = $request->jabatan;
 		$permohonan->jenis_peralatan = $request->jenis_peralatan;
 		$permohonan->kode_peralatan = $request->kode_peralatan;
-		
+	
 		$permohonan->kondisi = $request->kondisi;
 		$permohonan->save();
 

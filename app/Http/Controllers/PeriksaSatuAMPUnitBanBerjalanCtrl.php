@@ -140,20 +140,47 @@ class PeriksaSatuAMPUnitBanBerjalanCtrl extends Controller {
 		$pm = $q;
 		$pm->kode_periksa = $request->kode_periksa;
 		$pm->ban_berjalan_penampung_check = $request->ban_berjalan_penampung_check;
+		$pm->ban_berjalan_penampung_ket = $request->ban_berjalan_penampung_ket;
+
 		$pm->ban_berjalan_colector_check = $request->ban_berjalan_colector_check;
+		$pm->ban_berjalan_colector_ket = $request->ban_berjalan_colector_ket;
+
 		$pm->ban_berjalan_dryer_check = $request->ban_berjalan_dryer_check;
+		$pm->ban_berjalan_dryer_ket = $request->ban_berjalan_dryer_ket;
+
 		$pm->ban_berjalan_feeder_check = $request->ban_berjalan_feeder_check;
+		$pm->ban_berjalan_feeder_ket = $request->ban_berjalan_feeder_ket;
+
 		$pm->alat_penimbang_check = $request->alat_penimbang_check;
+		$pm->alat_penimbang_ket = $request->alat_penimbang_ket;
+
 		$pm->rol_pemutar_check = $request->rol_pemutar_check;
+		$pm->rol_pemutar_ket = $request->rol_pemutar_ket;
 		$pm->motor_pemutar_check = $request->motor_pemutar_check;
+		$pm->motor_pemutar_ket = $request->motor_pemutar_ket;
+
 		$pm->bearing_check = $request->bearing_check;
+		$pm->bearing_ket = $request->bearing_ket;
 		$pm->sprocket_check = $request->sprocket_check;
+		$pm->sprocket_ket = $request->sprocket_ket;
+
 		$pm->roller_check = $request->roller_check;
+		$pm->roller_ket = $request->roller_ket;
+
 		$pm->gear_check = $request->gear_check;
+		$pm->gear_ket = $request->gear_ket;
+
 		$pm->chain_check = $request->chain_check;
+		$pm->chain_ket = $request->chain_ket;
+
 		$pm->vbelt_check = $request->vbelt_check;
+		$pm->vbelt_ket = $request->vbelt_ket;
+
 		$pm->kontruksi_pendukung_check = $request->kontruksi_pendukung_check;
+		$pm->kontruksi_pendukung_ket = $request->kontruksi_pendukung_ket;
 		$pm->pelindung_kontruksi_check = $request->pelindung_kontruksi_check;
+		$pm->pelindung_kontruksi_ket = $request->pelindung_kontruksi_ket;
+		
 		$pm->catatan_pemeriksa = $request->catatan_pemeriksa;
 		$pm->harus_diperbaiki = $request->harus_diperbaiki;
 		$pm->pemeriksaan_tahap_2 = $request->pemeriksaan_tahap_2;

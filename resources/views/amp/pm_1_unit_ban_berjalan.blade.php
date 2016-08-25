@@ -21,7 +21,7 @@
                 <ul class="breadcrumb">
                     <li><a href="{{ url('home')}}">Home</a></li>
                     <li><a href="{{ url('amp/listpemeriksaanamp/index') }}">Pemeriksaan</a></li>
-                    <li class="active">Unit Ban Berjalan - - {{ \Session::get('no_permohonan')}} - {{ \Session::get('id_periksa')}}</li>
+                    <li class="active">Unit Ban Berjalan - {{ \Session::get('no_permohonan')}} - {{ \Session::get('id_periksa')}}</li>
                 </ul>
 
                 <div class="visible-xs breadcrumb-toggle">

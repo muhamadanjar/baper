@@ -28,7 +28,7 @@ class Perusahaan extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('tbl_perusahaan');
 	}
 
 }

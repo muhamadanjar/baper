@@ -314,6 +314,9 @@ $.extend({
             async: false,
             success: function(data) {
                 $('select[name="kode_peralatan"]').html('');
+                $('select[name="kode_peralatan"]').append($("<option></option>")
+                    .attr("value",'0')
+                    .text('-------------')); 
                 $.each(data, function(key, value) {
                    
                     $('select[name="kode_peralatan"]').append($("<option></option>")

@@ -48,6 +48,10 @@
 				            <div class="col-sm-2">
 				            	<input type="text" class="form-control" name="no_permohonan" value="{{ $permohonan->no_permohonan }}" maxlength="11">
 				            </div>
+				            <label class="col-sm-2 control-label">No Surat:</label>
+				            <div class="col-sm-4">
+				            	<input type="text" class="form-control" name="no_surat" value="{{ $permohonan->no_surat }}" maxlength="30">
+				            </div>
 							
 						</div>
 						
@@ -55,6 +59,10 @@
 							<label class="col-sm-2 control-label">Tanggal Permohonan:</label>
 				            <div class="col-sm-2">
 				            	<input type="text" class="form-control datepicker" name="tanggal_permohonan" value="{{ $permohonan->tanggal_permohonan }}">
+				            </div>
+				            <label class="col-sm-2 control-label">Tanggal Surat:</label>
+				            <div class="col-sm-2">
+				            	<input type="text" class="form-control datepicker" name="tgl_surat"  value="{{ $permohonan->tgl_surat }}">
 				            </div>
 						</div>
 							 

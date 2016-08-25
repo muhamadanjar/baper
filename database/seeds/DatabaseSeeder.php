@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder {
 	 * @return void
 	 */
 	public function run(){
-		$seeders = array ('UserSeeder','RoleSeeder','RoleUserSeeder');
+		$seeders = array ('UserSeeder','RoleSeeder','RoleUserSeeder','ProvinsiSeeder','KabupatenSeeder','PerusahaanSeeder','AMPSeeder');
 
         foreach ($seeders as $seeder){ 
            $this->call($seeder);

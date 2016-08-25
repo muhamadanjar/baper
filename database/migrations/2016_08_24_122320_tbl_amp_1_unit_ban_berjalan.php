@@ -13,76 +13,76 @@ class TblAmp1UnitBanBerjalan extends Migration {
             $table->char('kode_periksa',11);
             $table->integer('id_periksa');
 
-            $table->character('ban_berjalan_penampung_check',1);
-            $table->string('ban_berjalan_penampung_ket',120);
-            $table->string('ban_berjalan_penampung_foto',120);
+            $table->char('ban_berjalan_penampung_check',1)->nullable();
+            $table->string('ban_berjalan_penampung_ket',120)->nullable();
+            $table->string('ban_berjalan_penampung_foto',120)->nullable();
 
-            $table->character('ban_berjalan_colector_check',1);
-            $table->string('ban_berjalan_colector_ket',120);
-            $table->string('ban_berjalan_colector_foto',120);
+            $table->char('ban_berjalan_colector_check',1)->nullable();
+            $table->string('ban_berjalan_colector_ket',120)->nullable();
+            $table->string('ban_berjalan_colector_foto',120)->nullable();
 
-            $table->character('ban_berjalan_dryer_check',1);
-            $table->string('ban_berjalan_dryer_ket',120);
-            $table->string('ban_berjalan_dryer_foto',120);
+            $table->char('ban_berjalan_dryer_check',1)->nullable();
+            $table->string('ban_berjalan_dryer_ket',120)->nullable();
+            $table->string('ban_berjalan_dryer_foto',120)->nullable();
 
-            $table->character('ban_berjalan_feeder_check',1);
-            $table->string('ban_berjalan_feeder_ket',120);
-            $table->string('ban_berjalan_feeder_foto',120);
+            $table->char('ban_berjalan_feeder_check',1)->nullable();
+            $table->string('ban_berjalan_feeder_ket',120)->nullable();
+            $table->string('ban_berjalan_feeder_foto',120)->nullable();
 
-            $table->character('alat_penimbang_check',1);
-            $table->string('alat_penimbang_ket',120);
-            $table->string('alat_penimbang_foto',120);
+            $table->char('alat_penimbang_check',1)->nullable();
+            $table->string('alat_penimbang_ket',120)->nullable();
+            $table->string('alat_penimbang_foto',120)->nullable();
             
-            $table->character('rol_pemutar_check',1);
-            $table->string('rol_pemutar_ket',120);
-            $table->string('rol_pemutar_foto',120);
+            $table->char('rol_pemutar_check',1)->nullable();
+            $table->string('rol_pemutar_ket',120)->nullable();
+            $table->string('rol_pemutar_foto',120)->nullable();
 
-            $table->character('bearing_check',1);
-            $table->string('bearing_ket',120);
-            $table->string('bearing_foto',120);
+            $table->char('bearing_check',1)->nullable();
+            $table->string('bearing_ket',120)->nullable();
+            $table->string('bearing_foto',120)->nullable();
 
-            $table->character('sprocket_check',1);
-            $table->string('sprocket_ket',120);
-            $table->string('sprocket_foto',120);
+            $table->char('sprocket_check',1)->nullable();
+            $table->string('sprocket_ket',120)->nullable();
+            $table->string('sprocket_foto',120)->nullable();
 
-            $table->character('roller_check',1);
-            $table->string('roller_ket',120);
-            $table->string('roller_foto',120);
+            $table->char('roller_check',1)->nullable();
+            $table->string('roller_ket',120)->nullable();
+            $table->string('roller_foto',120)->nullable();
 
-            $table->character('gear_check',1);
-            $table->string('gear_ket',120);
-            $table->string('gear_foto',120);
+            $table->char('gear_check',1)->nullable();
+            $table->string('gear_ket',120)->nullable();
+            $table->string('gear_foto',120)->nullable();
 
-            $table->character('chain_check',1);
-            $table->string('chain_ket',120);
-            $table->string('chain_foto',120);
+            $table->char('chain_check',1)->nullable();
+            $table->string('chain_ket',120)->nullable();
+            $table->string('chain_foto',120)->nullable();
 
-            $table->character('vbelt_check',1);
-            $table->string('vbelt_ket',120);
-            $table->string('vbelt_foto',120);
+            $table->char('vbelt_check',1)->nullable();
+            $table->string('vbelt_ket',120)->nullable();
+            $table->string('vbelt_foto',120)->nullable();
             
-            $table->character('kontruksi_pendukung_check',1);
-            $table->string('kontruksi_pendukung_ket',120);
-            $table->string('kontruksi_pendukung_foto',120);
+            $table->char('kontruksi_pendukung_check',1)->nullable();
+            $table->string('kontruksi_pendukung_ket',120)->nullable();
+            $table->string('kontruksi_pendukung_foto',120)->nullable();
             
-            $table->character('pelindung_kontruksi_check',1);
-            $table->string('pelindung_kontruksi_ket',120);
-            $table->string('pelindung_kontruksi_foto',120);
+            $table->char('pelindung_kontruksi_check',1)->nullable();
+            $table->string('pelindung_kontruksi_ket',120)->nullable();
+            $table->string('pelindung_kontruksi_foto',120)->nullable();
             
             
-            $table->character('motor_pemutar_check',1);
-            $table->string('motor_pemutar_ket',120);
-            $table->string('motor_pemutar_foto',120);
+            $table->char('motor_pemutar_check',1)->nullable();
+            $table->string('motor_pemutar_ket',120)->nullable();
+            $table->string('motor_pemutar_foto',120)->nullable();
             
-            $table->text('catatan_pemeriksa');
-            $table->string('harus_diperbaiki',240);
-            $table->string('pemeriksaan_tahap_2',240);
-            $table->timestamp('tgl_periksa');
+            $table->text('catatan_pemeriksa')->nullable();
+            $table->string('harus_diperbaiki',240)->nullable();
+            $table->string('pemeriksaan_tahap_2',240)->nullable();
+            $table->timestamp('tgl_periksa')->nullable();
 
-            $table->character('kesimpulan_check',1);
-            $table->string('kesimpulan_ket',240);
+            $table->char('kesimpulan_check',1)->nullable();
+            $table->string('kesimpulan_ket',240)->nullable();
             
-            $table->string('foto_unit',120);
+            $table->string('foto_unit',120)->nullable();
             
             
         });

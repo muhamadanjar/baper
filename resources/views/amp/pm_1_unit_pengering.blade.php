@@ -21,7 +21,7 @@
                 <ul class="breadcrumb">
                     <li><a href="{{ url('home')}}">Home</a></li>
                     <li><a href="{{ url('amp/listpemeriksaanamp/index') }}">Pemeriksaan</a></li>
-                    <li class="active">Unit Pengering - {{$no_permohonan}}</li>
+                    <li class="active">Unit Pengering - {{ \Session::get('no_permohonan')}} - {{ \Session::get('id_periksa')}}</li>
                 </ul>
 
                 <div class="visible-xs breadcrumb-toggle">
@@ -35,7 +35,9 @@
 @endsection
 @section('content')
 <?php
-    $kode_periksa = $no_permohonan;
+    $no_id = '';
+    $kode_periksa = \Session::get('no_permohonan');
+    $id_periksa = \Session::get('id_periksa');
     $corong_pengisi_check = '';
     $corong_pengisi_ket = '';
     $corong_pengisi_foto = '';
@@ -326,7 +328,7 @@ if (isset($pm_satu_amp_unitpengering)) {
                     <td><input type="checkbox" class="styled" name="sudu_sudu_check" value="4"></td>
                     <td><input type="checkbox" class="styled" name="sudu_sudu_check" value="5"></td>
                     @endif
-                    <td><input type="text" size="50" name="sudu_sudu_ketn" class="form-control" value=""></td>
+                    <td><input type="text" size="50" name="sudu_sudu_ket" class="form-control" value=""></td>
                     <td><input type="file" class="styled" name="sudu_sudu_foto"></td>
                 </tr>
                 <tr class="5_check">
@@ -369,7 +371,7 @@ if (isset($pm_satu_amp_unitpengering)) {
                     <td><input type="checkbox" class="styled" name="roda_gigi_pemutar_check" value="4"></td>
                     <td><input type="checkbox" class="styled" name="roda_gigi_pemutar_check" value="5"></td>
                     @endif
-                    <td><input type="text" size="50" name="roda_gigi_pemutar_check_keteranganket" class="form-control" value=""></td>
+                    <td><input type="text" size="50" name="roda_gigi_pemutar_ket" class="form-control" value=""></td>
                     <td><input type="file" class="styled" name="roda_gigi_pemutar_foto"></td>
                 </tr>
                 <tr class="6_check">
@@ -627,8 +629,8 @@ if (isset($pm_satu_amp_unitpengering)) {
                     <td><input type="checkbox" class="styled" name="bearing_check" value="4"></td>
                     <td><input type="checkbox" class="styled" name="bearing_check" value="5"></td>
                     @endif
-                    <td><input type="text" size="50" name="chain_ket" class="form-control" value=""></td>
-                    <td><input type="file" class="styled" name="chain_foto" value=""></td>
+                    <td><input type="text" size="50" name="bearing_ket" class="form-control" value=""></td>
+                    <td><input type="file" class="styled" name="bearing_foto" value=""></td>
                 </tr>
                 <tr class="12_check">
                     <td>12</td>

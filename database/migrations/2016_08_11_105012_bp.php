@@ -35,7 +35,7 @@ class Bp extends Migration {
 	 */
 	public function down()
 	{
-		//
+	Schema::drop('tbl_bp');
 	}
 
 }

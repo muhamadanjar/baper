@@ -83,8 +83,8 @@ Route::group(array('prefix'=>'amp'), function(){
 	Route::get('pemeriksaan1/unitbanberjalan','PeriksaSatuAMPUnitBanBerjalanCtrl@periksaSatuAMPUnitBanBerjalan');
 	Route::post('pemeriksaan1/unitbanberjalan','PeriksaSatuAMPUnitBanBerjalanCtrl@periksaSatuAMPUnitBanBerjalanPost');	
 
-	Route::get('pemeriksaan1/unitpengering','AMPCtrl@pem_amp_1_unit_pengering');
-	Route::post('pemeriksaan1/unitpengering','AMPCtrl@pem_amp_1_unit_pengering_post');	
+	Route::get('pemeriksaan1/unitpengering','PeriksaSatuAMPUnitPengeringCtrl@periksaSatuAMPUnitPengering');
+	Route::post('pemeriksaan1/unitpengering','PeriksaSatuAMPUnitPengeringCtrl@periksaSatuAMPUnitPengeringPost');	
 	Route::get('pemeriksaan1/unitpemanas','pm_1_unit_pemanasCtrl@pem_amp_1_unit_pemanas');
 	Route::post('pemeriksaan1/unitpemanas','pm_1_unit_pemanasCtrl@pem_amp_1_unit_pemanas_post');	
 	Route::get('pemeriksaan1/unitpengumpuldebu','pm_1_unit_pengumpuldebuCtrl@pem_amp_1_unit_pengumpul_debu');

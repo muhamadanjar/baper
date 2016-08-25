@@ -17,8 +17,8 @@ class Amp extends Migration {
 			$table->char('kode_perusahaan',3);
 			$table->char('kondisi',1);
 			$table->integer('kapasitas');
-			$table->timestamp('tgl_sertifikat_awal');
-			$table->timestamp('tgl_sertifikat_akhir');
+			$table->timestamp('tgl_sertifikat_awal')->nullable();
+			$table->timestamp('tgl_sertifikat_akhir')->nullable();
 			$table->double('latitude')->comment = "Y";
 			$table->double('longtitude')->comment = "X";;
 			
