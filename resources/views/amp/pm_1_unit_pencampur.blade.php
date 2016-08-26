@@ -21,7 +21,7 @@
                 <ul class="breadcrumb">
                     <li><a href="{{ url('home')}}">Home</a></li>
                     <li><a href="{{ url('amp/listpemeriksaanamp/index') }}">Pemeriksaan</a></li>
-                    <li class="active">Unit Pencampu - {{$no_permohonan}}</li>
+                    <li class="active">Unit Pencampu - {{ \Session::get('no_permohonan')}} - {{ \Session::get('id_periksa')}}</li>
                 </ul>
 
                 <div class="visible-xs breadcrumb-toggle">
@@ -35,7 +35,10 @@
 @endsection
 @section('content')
 <?php
-    $kode_periksa = $no_permohonan;
+    $no_id = '';
+    $kode_periksa = \Session::get('no_permohonan');
+    $id_periksa = \Session::get('id_periksa');
+
     $pedal_pugmil_check = '';
     $pedal_pugmil_ket = '';
     $pedal_pugmil_foto = '';
@@ -85,7 +88,9 @@
 
 if (isset($pm_satu_amp_pencampur)) {
     if($pm_satu_amp_pencampur->kode_periksa){
+        $no_id = $pm_satu_amp_pencampur->no_id;
         $kode_periksa = $pm_satu_amp_pencampur->kode_periksa;
+
         $pedal_pugmil_check = $pm_satu_amp_pencampur->pedal_pugmil_check;
         $pedal_pugmil_ket = $pm_satu_amp_pencampur->pedal_pugmil_ket;
         $pedal_pugmil_foto = $pm_satu_amp_pencampur->pedal_pugmil_foto;
@@ -138,7 +143,12 @@ if (isset($pm_satu_amp_pencampur)) {
 ?>
     <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="foto_unit_" value="{{$foto_unit}}" /> 
+        <input type="hidden" name="foto_unit_" value="{{$foto_unit}}" />
+
+        <input type="hidden" name="id_periksa" value="{{$id_periksa}}" />
+        <input type="hidden" name="no_id" value="{{$no_id}}" />
+        <input type="hidden" name="kode_periksa" value="{{ $kode_periksa }}">
+         
 		<div class="table-responsive">
             <table class="table table-bordered" fixed-header>                               
                 <tr>
@@ -154,7 +164,7 @@ if (isset($pm_satu_amp_pencampur)) {
                 </tr>
                                 
                 <tr class="1_check">
-                    <input type="hidden" name="kode_periksa" value="{{ $no_permohonan }}">
+                    
 					<td>1</td>
                     <td>Pedal Pugmil</td>
                     @if($pedal_pugmil_check == '1')

@@ -27,10 +27,6 @@ class TblAmp1UnitPengumpulDebu extends Migration {
 			$table->string('cerobong_ket',120)->nullable();
 			$table->string('cerobong_foto',120)->nullable();
 
-			$table->char('cerobong_check',1)->nullable();
-			$table->string('cerobong_ket',120)->nullable();
-			$table->string('cerobong_foto',120)->nullable();
-
 			$table->char('tangki_air_check',1)->nullable();
 			$table->string('tangki_air_ket',120)->nullable();
 			$table->string('tangki_air_foto',120)->nullable();

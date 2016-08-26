@@ -2,25 +2,69 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\pm_amp_1_unit_tenaga_penggerak as PMAMP1UBD;
+use App\pm_amp_1_unit_silo as PMAMP1UBD_SILO;
+use App\pm_amp_1_unit_ban_berjalan as PMAMP1UBD_BAN_BERJALAN;
+use App\pm_amp_1_unit_pengering as PMAMP1UBD_PENGERING;
+use App\pm_amp_1_unit_pemanas as PMAMP1UBD_PEMANAS;
+use App\pm_amp_1_unit_pengumpul_debu as PMAMP1UBD_PENGUMPUL_DEBU;
+use App\pm_amp_1_unit_elevator_panas as PMAMP1UBD_ELEVATOR_PANAS;
+use App\pm_amp_1_unit_saringan_bergetar as PMAMP1UBD_SARINGAN_BERGETAR;
+use App\pm_amp_1_unit_bin_panas as PMAMP1UBD_BIN_PANAS;
+use App\pm_amp_1_unit_timbangan as PMAMP1UBD_TIMBANGAN;
+use App\pm_amp_1_unit_pencampur as PMAMP1UBD_PENCAMPUR;
+use App\pm_amp_1_unit_pemasok_aspal as PMAMP1UBD_PEMASOK_ASPAL;
+use App\pm_amp_1_unit_pemasok_filler as PMAMP1UBD_PEMASOK_FILLER;
+use App\pm_amp_1_unit_tenaga_penggerak as PMAMP1UBD_TENAGA_PENGGERAK;
+use App\pm_amp_1_unit_bin_filler as PMAMP1UBD_BIN_FILLER;
+use App\pm_amp_1_unit_elevator as PMAMP1UBD_ELEVATOR;
+use App\pm_amp_1_unit_bin_dingin as PMAMP1UBD_BAN_DINGIN;
 use Illuminate\Http\Request;
 use App\Lib\AHelper;
 use Carbon\Carbon;
 
-class pm_1_unit_tenaga_penggerakCtrl extends Controller {
+class PeriksaSatuAMPRekapCtrl extends Controller {
 
-	public function pem_amp_1_unit_tenaga_penggerak(){
-		$no_permohonan = session('no_permohonan');
-		$pm_satu_amp_tenagapenggerak = PMAMP1UBD::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+	public function periksaSatuAMPRekap(){
+		$PeriksaSatuAMPRekapCtrl = session('PeriksaSatuAMPRekapCtrl');
+		$pm_satu_amp_silo = PMAMP1UBD_SILO::orderBy('tgl_periksa','DESC')->find($no_permohonan);
 		if (is_null($no_permohonan)) {
 			return redirect('/home');
 		}
-		return view('amp.pm_1_unit_tenaga_penggerak')
+		$pm_satu_amp_ban_berjalan = PMAMP1UBD_BAN_BERJALAN::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_pengering = PMAMP1UBD_PENGERING::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_pemanas = PMAMP1UBD_PEMANAS::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_pengumpul_debu = PMAMP1UBD_PENGUMPUL_DEBU::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_elevator_panas = PMAMP1UBD_ELEVATOR_PANAS::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_saringan_bergetar = PMAMP1UBD_SARINGAN_BERGETAR::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_bin_panas = PMAMP1UBD_BIN_PANAS::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_timbangan = PMAMP1UBD_TIMBANGAN::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_pencampur = PMAMP1UBD_PENCAMPUR::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_pemasok_aspal = PMAMP1UBD_PEMASOK_ASPAL::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_pemasok_filler = PMAMP1UBD_PEMASOK_FILLER::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_tenaga_penggerak = PMAMP1UBD_TENAGA_PENGGERAK::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_bin_filler = PMAMP1UBD_BIN_FILLER::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		$pm_satu_amp_elevator = PMAMP1UBD_ELEVATOR::orderBy('tgl_periksa','DESC')->find($no_permohonan);
+		
+		return view('amp.pm_1_unit_rekap')
 			->with('no_permohonan',$no_permohonan)
-			->with('pm_satu_amp_tenagapenggerak',$pm_satu_amp_tenagapenggerak);
+			->with('pm_satu_amp_ban_berjalan',$pm_satu_amp_ban_berjalan)
+			->with('pm_satu_amp_pengering',$pm_satu_amp_pemanas)
+			->with('pm_satu_amp_pemanas',$pm_satu_amp_pemanas)
+			->with('pm_satu_amp_pengumpul_debu',$pm_satu_amp_pengumpul_debu)
+			->with('pm_satu_amp_elevator_panas',$pm_satu_amp_elevator_panas)
+			->with('pm_satu_amp_saringan_bergetar',$pm_satu_amp_saringan_bergetar)
+			->with('pm_satu_amp_bin_panas',$pm_satu_amp_bin_panas)
+			->with('pm_satu_amp_timbangan',$pm_satu_amp_timbangan)
+			->with('pm_satu_amp_pencampur',$pm_satu_amp_pencampur)
+			->with('pm_satu_amp_pemasok_aspal',$pm_satu_amp_pemasok_aspal)
+			->with('pm_satu_amp_pemasok_filler',$pm_satu_amp_pemasok_filler)
+			->with('pm_satu_amp_tenaga_penggerak',$pm_satu_amp_tenaga_penggerak)
+			->with('pm_satu_amp_bin_filler',$pm_satu_amp_bin_filler)
+			->with('pm_satu_amp_elevator',$pm_satu_amp_elevator)
+			->with('pm_satu_amp_silo',$pm_satu_amp_silo);
 	}
 
-	public function pem_amp_1_unit_tenaga_penggerak_post(Request $request){
+	public function periksaSatuAMPRekapCtrlPost(Request $request){
 		$file = $request->file('foto_unit');
 		$destinationPath = public_path('images');
 		

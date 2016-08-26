@@ -77,6 +77,9 @@
 if (isset($pm_satu_amp_bindingin)) {
     if($pm_satu_amp_bindingin->kode_periksa){
         $kode_periksa = $pm_satu_amp_bindingin->kode_periksa;
+        $no_id = $pm_satu_amp_bindingin->no_id;
+        $id_periksa = $pm_satu_amp_bindingin->id_periksa;
+        
         $pelat_pemisah_check = $pm_satu_amp_bindingin->pelat_pemisah_check;
         $pelat_pemisah_ket = $pm_satu_amp_bindingin->pelat_pemisah_ket;
         $pelat_pemisah_foto = $pm_satu_amp_bindingin->pelat_pemisah_foto;
@@ -115,8 +118,7 @@ if (isset($pm_satu_amp_bindingin)) {
         $kesimpulan_check = $pm_satu_amp_bindingin->kesimpulan_check;
         $kesimpulan_ket = $pm_satu_amp_bindingin->kesimpulan_ket;
 
-        $no_id = $pm_satu_amp_bindingin->no_id;
-        $id_periksa = $pm_satu_amp_bindingin->id_periksa;
+        
 
     }
 }

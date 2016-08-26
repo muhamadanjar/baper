@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class pm_amp_1_unit_tenaga_penggerak extends Model {
+class PeriksaSatuAMPUnitTenagaPenggerak extends Model {
 
 	protected $table = 'tbl_amp_1_unit_tenaga_penggerak';
-	protected $primaryKey = 'kode_periksa';
+	protected $primaryKey = 'no_id';
 	
 	public $timestamps = false;
 
