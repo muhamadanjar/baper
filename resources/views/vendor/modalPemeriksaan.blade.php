@@ -24,41 +24,23 @@
 
 								<div class="row">
 									<div class="col-sm-5">
-										<h6>Invoice To:</h6>
+										<h6>Permohonan</h6>
 			 							<ul>
-											<li><a href="#">Hiram Roth</a></li>
-											<li>United Federation of Planets</li>
-											<li><a href="#">president.roth@ufop.uni</a></li>
-											<li>2269 Elba Lane</li>
-											<li>Paris</li>
-											<li>France</li>
-											<li>888-555-2311</li>
+											<li><a href="#" id="namapemohon">--</a></li>
+											<li id="kodeperiksa">--</li>
+											<li id="namaperusahaan">--</li>
 										</ul>
 									</div>
-
-
-									<div class="col-sm-4">
-										<h6>Invoice From:</h6>
-			 							<ul>
-											<li><a href="#">Admiral Valdore</a></li>
-											<li>Romulan Empire</li>
-											<li><a href="#">admiral.valdore@theempire.uni</a></li>
-											<li>5151 Pardek Memorial Way</li>
-											<li>Krocton Segment</li>
-											<li>Romulus</li>
-											<li>000-555-9988</li>
-										</ul>
-									</div>
-
 
 									<div class="col-sm-3">
-										<h6>Invoice Details:</h6>
+										<h6>Detail :</h6>
 										<ul>
-											<li>Total hours spent: <strong class="pull-right">379</strong></li>
-											<li>Responsible: <a href="#" class="pull-right">Eugene Kopyov</a></li>
-											<li>Issued by: <a href="#" class="pull-right">Jennifer Notes</a></li>
-											<li>Payment method: <strong class="pull-right">Wire transfer</strong></li>
-											<li class="invoice-status"><strong>Status Terakhir: <span class="label label-danger pull-right">Unpaid</span></strong></li>
+											<li>Tanggal Permohonan: <strong id="tglpermohonan" class="pull-right">--</strong></li>
+											<li>Jenis Peralatan: <a href="#" id="jeniperalatan" class="pull-right">--</a></li>
+											
+											<li class="invoice-status">
+												<strong>Status Terakhir: <span class="label label-danger pull-right">---</span></strong>
+											</li>
 										</ul>
 									</div>
 								</div>

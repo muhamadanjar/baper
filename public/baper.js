@@ -92,6 +92,9 @@ $.extend({
         var msg = el.attr('data-message');
         var dataForm = el.attr('data-form');
         var kode_periksa = el.attr('data-kodeperiksa');
+        var namaperusahaan = el.attr('data-namaperusahaan');
+        var namapemohon = el.attr('data-namapemohon');
+        
         var url = rootURL+"/api/getpemeriksaan_satu_amp-"+kode_periksa;
         console.log(url);
         $.ajax({
@@ -109,6 +112,10 @@ $.extend({
         .find('#frm_body').html('<h6>'+msg+'</h6>')
         .end().find('input[name="kode_periksa"]').val(kode_periksa)
         .end().find('#frm_title').html(title)
+        .end().find('#namaperusahaan').html(namaperusahaan)
+        .end().find('#namapemohon').html(namapemohon)
+        .end().find('#kodeperiksa').html(kode_periksa)
+        
         .end().modal('show');
     });
   
