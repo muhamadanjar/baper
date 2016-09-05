@@ -118,6 +118,7 @@ class PeriksaSatuAMPUnitPengeringCtrl extends Controller {
 
 		$q = ($request->no_id == null) ? new \App\PeriksaSatuAMPUnitPengering : \App\PeriksaSatuAMPUnitPengering::find($request->no_id);
 		$pm = $q;
+		
 		$pm->kode_periksa = $request->kode_periksa;
 		$pm->id_periksa = $request->id_periksa;
 		
