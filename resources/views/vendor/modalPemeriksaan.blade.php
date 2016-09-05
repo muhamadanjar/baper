@@ -36,10 +36,10 @@
 										<h6>Detail :</h6>
 										<ul>
 											<li>Tanggal Permohonan: <strong id="tglpermohonan" class="pull-right">--</strong></li>
-											<li>Jenis Peralatan: <a href="#" id="jeniperalatan" class="pull-right">--</a></li>
+											<li>Jenis Peralatan: <a href="#" id="jenisperalatan" class="pull-right">--</a></li>
 											
 											<li class="invoice-status">
-												<strong>Status Terakhir: <span class="label label-danger pull-right">---</span></strong>
+												<strong>Status Terakhir: <span class="statusterakhir label label-danger pull-right">---</span></strong>
 											</li>
 										</ul>
 									</div>
@@ -68,7 +68,12 @@
 										</div>
 									</div>
 									<div class="col-md-1">
-										<input type="submit" name="submit" value="Simpan" class="btn btn-default">
+										<div class="form-group">
+											<label>
+												&nbsp;
+											</label>
+											<input type="submit" name="submit" value="Simpan" class="btn btn-default">
+										</div>
 									</div>
 									
 								</div>	

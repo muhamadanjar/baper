@@ -2,6 +2,18 @@ $.ajaxSetup({
     headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
 });
 var rootURL = 'http://'+window.location.hostname+':'+window.location.port;
+    function makeTable_origin(container, data) {
+        var table = $("<table/>").addClass('CSSTableGenerator');
+        $.each(data, function(rowIndex, r) {
+            var row = $("<tr/>");
+            $.each(r, function(colIndex, c) { 
+                row.append($("<t"+(rowIndex == 0 ?  "h" : "d")+"/>").text(c));
+            });
+            table.append(row);
+        });
+        return container.append(table);
+    }
+
     function makeTable(container, data) {
         var table = $("<table/>").addClass('table table-striped table-bordered');
         var id = '';
@@ -94,7 +106,8 @@ $.extend({
         var kode_periksa = el.attr('data-kodeperiksa');
         var namaperusahaan = el.attr('data-namaperusahaan');
         var namapemohon = el.attr('data-namapemohon');
-        
+        var statusterakhir = el.attr('data-statusterakhir');
+        var jenisperalatan = el.attr('data-jenisperalatan');
         var url = rootURL+"/api/getpemeriksaan_satu_amp-"+kode_periksa;
         console.log(url);
         $.ajax({
@@ -115,7 +128,8 @@ $.extend({
         .end().find('#namaperusahaan').html(namaperusahaan)
         .end().find('#namapemohon').html(namapemohon)
         .end().find('#kodeperiksa').html(kode_periksa)
-        
+        .end().find('.statusterakhir').text(statusterakhir)
+        .end().find('#jenisperalatan').text(jenisperalatan)
         .end().modal('show');
     });
   
@@ -132,7 +146,6 @@ $.extend({
     $('.jenis_peralatan input:checkbox').click(function() {
         $('.jenis_peralatan input:checkbox').not(this).prop('checked', false);
     });
-
 
     $('.pelat_pemisah input:checkbox').click(function(e) {
         $('.pelat_pemisah').find('td span').removeClass( "checked" );
@@ -266,9 +279,6 @@ $.extend({
     
     
 
-
-
-
     $('.myCheckbox__').click(function() {
         $(this).siblings('input:checkbox').prop('checked', false);
     });
@@ -290,7 +300,7 @@ $.extend({
 
     $('select[name="kode_perusahaan"]').change(function() {
         var kode_perusahaan = $(this).val();
-
+        $("select[name='jenis_peralatan']").first().focus();
         $.ajax({
             url: rootURL+"/api/getperusahaan-"+kode_perusahaan,
             type: 'get',
@@ -314,8 +324,9 @@ $.extend({
 
     $('select[name="jenis_peralatan"]').change(function() {
         var jenis_peralatan = $(this).val();
+        var kode_perusahaan = $('select[name="kode_perusahaan"]').val();
         $.ajax({
-            url: rootURL+"/api/getkodeperalatan-"+jenis_peralatan,
+            url: rootURL+"/api/getkodeperalatan-"+jenis_peralatan+"-"+kode_perusahaan,
             type: 'get',
             dataType: 'json',
             async: false,

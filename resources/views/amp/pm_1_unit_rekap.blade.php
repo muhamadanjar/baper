@@ -110,107 +110,104 @@
     $kesimpulan_ket = '';
     $foto_unit = ''; 
 
-if (isset($pm_satu_amp_silo)) {
-    if($pm_satu_amp_silo->kode_periksa){
-        $no_id = $pm_satu_amp_silo->no_id;
-        $kode_periksa = $pm_satu_amp_silo->kode_periksa;
-        
-        $catatan_pemeriksa = $pm_satu_amp_silo->catatan_pemeriksa;
-        $harus_diperbaiki = $pm_satu_amp_silo->harus_diperbaiki;
-        $pemeriksaan_tahap_2 = $pm_satu_amp_silo->pemeriksaan_tahap_2;
-        $foto_unit = $pm_satu_amp_silo->foto_unit;
-        $kesimpulan_check = $pm_satu_amp_silo->kesimpulan_check;
-        $kesimpulan_ket = $pm_satu_amp_silo->kesimpulan_ket;
 
-        $kesimpulan_16_check = $pm_satu_amp_silo->kesimpulan_check;
+if (isset($bin_dingin)) {
+    if($bin_dingin->kode_periksa){
+        $kesimpulan_01_check = $bin_dingin->kesimpulan_check;
+    }
+}
+
+if (isset($ban_berjalan)) {
+    if($ban_berjalan->kode_periksa){
+        $kesimpulan_02_check = $ban_berjalan->kesimpulan_check;
+    }
+}
+if (isset($pengering)) {
+    if($pengering->kode_periksa){
+        $kesimpulan_03_check = $pengering->kesimpulan_check;
+
+    }
+}
+if (isset($pemanas)) {
+    if($pemanas->kode_periksa){
+        $kesimpulan_04_check = $pemanas->kesimpulan_check;
+
+    }
+}
+if (isset($pengumpul_debu)) {
+    if($pengumpul_debu->kode_periksa){
+        $kesimpulan_05_check = $pengumpul_debu->kesimpulan_check;
+
+    }
+}
+if (isset($elevator_panas)) {
+    if($elevator_panas->kode_periksa){
+        $kesimpulan_06_check = $elevator_panas->kesimpulan_check;
+
+    }
+}
+if (isset($saringan_bergetar)) {
+    if($saringan_bergetar->kode_periksa){
+        $kesimpulan_07_check = $saringan_bergetar->kesimpulan_check;
 
     }
 }
 
-if (isset($pm_satu_amp_ban_berjalan)) {
-    if($pm_satu_amp_ban_berjalan->kode_periksa){
-        $kesimpulan_02_check = $pm_satu_amp_ban_berjalan->kesimpulan_check;
+if (isset($bin_panas)) {
+    if($bin_panas->kode_periksa){
+        $kesimpulan_08_check = $bin_panas->kesimpulan_check;
 
     }
 }
-if (isset($pm_satu_amp_pengering)) {
-    if($pm_satu_amp_pengering->kode_periksa){
-        $kesimpulan_03_check = $pm_satu_amp_pengering->kesimpulan_check;
+if (isset($timbangan)) {
+    if($timbangan->kode_periksa){
+        $kesimpulan_09_check = $timbangan->kesimpulan_check;
 
     }
 }
-if (isset($pm_satu_amp_pemanas)) {
-    if($pm_satu_amp_pemanas->kode_periksa){
-        $kesimpulan_04_check = $pm_satu_amp_pemanas->kesimpulan_check;
+if (isset($pencampur)) {
+    if($pencampur->kode_periksa){
+        $kesimpulan_10_check = $pencampur->kesimpulan_check;
 
     }
 }
-if (isset($pm_satu_amp_pengumpul_debu)) {
-    if($pm_satu_amp_pengumpul_debu->kode_periksa){
-        $kesimpulan_05_check = $pm_satu_amp_pengumpul_debu->kesimpulan_check;
+if (isset($pemasok_aspal)) {
+    if($pemasok_aspal->kode_periksa){
+        $kesimpulan_11_check = $pemasok_aspal->kesimpulan_check;
 
     }
 }
-if (isset($pm_satu_amp_elevator_panas)) {
-    if($pm_satu_amp_elevator_panas->kode_periksa){
-        $kesimpulan_06_check = $pm_satu_amp_elevator_panas->kesimpulan_check;
+if (isset($pemasok_filler)) {
+    if($pemasok_filler->kode_periksa){
+        $kesimpulan_12_check = $pemasok_filler->kesimpulan_check;
 
     }
 }
-if (isset($pm_satu_amp_saringan_bergetar)) {
-    if($pm_satu_amp_saringan_bergetar->kode_periksa){
-        $kesimpulan_07_check = $pm_satu_amp_saringan_bergetar->kesimpulan_check;
+if (isset($tenaga_penggerak)) {
+    if($tenaga_penggerak->kode_periksa){
+        $kesimpulan_13_check = $tenaga_penggerak->kesimpulan_check;
 
     }
 }
-if (isset($pm_satu_amp_bin_panas)) {
-    if($pm_satu_amp_bin_panas->kode_periksa){
-        $kesimpulan_08_check = $pm_satu_amp_bin_panas->kesimpulan_check;
+if (isset($bin_filler)) {
+    if($bin_filler->kode_periksa){
+        $kesimpulan_14_check = $bin_filler->kesimpulan_check;
 
     }
 }
-if (isset($pm_satu_amp_timbangan)) {
-    if($pm_satu_amp_timbangan->kode_periksa){
-        $kesimpulan_09_check = $pm_satu_amp_timbangan->kesimpulan_check;
+if (isset($elevator)) {
+    if($elevator->kode_periksa){
+        $kesimpulan_15_check = $elevator->kesimpulan_check;
 
     }
 }
-if (isset($pm_satu_amp_pencampur)) {
-    if($pm_satu_amp_pencampur->kode_periksa){
-        $kesimpulan_10_check = $pm_satu_amp_pencampur->kesimpulan_check;
+if (isset($silo)) {
+    if($silo->kode_periksa){
+        $kesimpulan_16_check = $silo->kesimpulan_check;
 
     }
 }
-if (isset($pm_satu_amp_pemasok_aspal)) {
-    if($pm_satu_amp_pemasok_aspal->kode_periksa){
-        $kesimpulan_11_check = $pm_satu_amp_pemasok_aspal->kesimpulan_check;
 
-    }
-}
-if (isset($pm_satu_amp_pemasok_filler)) {
-    if($pm_satu_amp_pemasok_filler->kode_periksa){
-        $kesimpulan_12_check = $pm_satu_amp_pemasok_filler->kesimpulan_check;
-
-    }
-}
-if (isset($pm_satu_amp_tenaga_penggerak)) {
-    if($pm_satu_amp_tenaga_penggerak->kode_periksa){
-        $kesimpulan_13_check = $pm_satu_amp_tenaga_penggerak->kesimpulan_check;
-
-    }
-}
-if (isset($pm_satu_amp_bin_filler)) {
-    if($pm_satu_amp_bin_filler->kode_periksa){
-        $kesimpulan_14_check = $pm_satu_amp_bin_filler->kesimpulan_check;
-
-    }
-}
-if (isset($pm_satu_amp_elevator)) {
-    if($pm_satu_amp_elevator->kode_periksa){
-        $kesimpulan_15_check = $pm_satu_amp_elevator->kesimpulan_check;
-
-    }
-}
 ?>
     <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">

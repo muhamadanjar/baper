@@ -44,11 +44,31 @@
 	                <div class="panel-body">
 										
 				        <div class="form-group">
-							<label class="col-sm-2 control-label">Tanggal Expose:</label>
-				            <div class="col-sm-2">
-				            	<input type="text" class="form-control datepicker" name="tanggal_expose" value="{{ $jadwal_expose->tanggal_expose }}">
-				            </div>
-						</div>
+                            <label class="col-sm-2 control-label">Tanggal Expose:</label>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control datepicker" name="tanggal_expose" value="{{ $jadwal_expose->tanggal_expose }}">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">No Surat Undangan:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="no_undangan" value="{{ $jadwal_expose->no_undangan }}" maxlength="60">
+                            </div>
+                            <label class="col-sm-2 control-label">Tanggal Undangan:</label>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control datepicker" name="tgl_undangan" value="{{ $jadwal_expose->tgl_undangan }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Hasil Expose:</label>
+                            <div class="col-sm-10">
+                               <textarea name="hasil_expose" class="editor">
+                                    {{ $jadwal_expose->hasil_expose }}        
+                                </textarea>
+                            </div>
+                        </div>
 						
                         <div class="form-actions text-right">
                         	<input type="submit" value="Simpan" class="btn btn-primary">

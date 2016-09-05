@@ -22,6 +22,7 @@ class AMPSeeder extends Seeder{
                 'latitude' => -6.234495,
                 'longtitude' => 106.624852
             ),
+           
             
         );
         foreach ($amp as $key) {

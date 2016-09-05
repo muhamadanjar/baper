@@ -15,9 +15,10 @@ class AMPCtrl extends Controller {
 	}
 	public function index(){
 		$datpermohonan = \App\Amp::orderBy('no_permohonan','ASC')
-		->select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
+		->select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi','tbl_amp_1_periksa.kesimpulan as status_terakhir')
 		->join('tbl_perusahaan','tbl_permohonan.kode_perusahaan','=','tbl_perusahaan.kode_perusahaan')
 		->join('tbl_amp','tbl_permohonan.kode_peralatan','=','tbl_amp.kode_amp')
+		->leftjoin('tbl_amp_1_periksa','tbl_permohonan.no_permohonan','=','tbl_amp_1_periksa.kode_periksa')
 		->get();
 		return view('amp.listpemeriksaanamp')
 		

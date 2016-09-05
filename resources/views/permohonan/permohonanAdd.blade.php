@@ -56,11 +56,11 @@
 						</div>
 						
 				        <div class="form-group">
-							<label class="col-sm-2 control-label">Tanggal Permohonan:</label>
+							<label class="col-sm-2 control-label">Tanggal Surat:</label>
 				            <div class="col-sm-2">
 				            	<input type="text" class="form-control datepicker" name="tanggal_permohonan" value="">
 				            </div>
-				            <label class="col-sm-2 control-label">Tanggal Surat:</label>
+				            <label class="col-sm-2 control-label">Tanggal Disposisi:</label>
 				            <div class="col-sm-2">
 				            	<input type="text" class="form-control datepicker" name="tgl_surat" value="">
 				            </div>
@@ -80,7 +80,7 @@
 				            <div class="col-sm-10">
 				            	
 				            	<select name="kode_perusahaan" class="form-control">
-				            		<option value="0">-----</option>
+				            		<option value="all">-----</option>
 				            		@foreach($perusahaan as $kp => $vp)
 				            			<option value="{{$vp->kode_perusahaan}}">{{$vp->nama_perusahaan}}</option>
 				            		@endforeach
@@ -97,7 +97,7 @@
 						
 						<div class="form-group">
 				            <label class="col-sm-2 control-label">Telp/HP:</label>
-				            <div class="col-sm-10">
+				            <div class="col-sm-5">
 				            	<input type="text" class="form-control telp" name="telp" value="">
 				            </div>
 				        </div>
@@ -163,7 +163,7 @@
 				        </div>
 						
 						<div class="form-group">
-				            <label class="col-sm-2 control-label">No Register:</label>
+				            <label class="col-sm-2 control-label">No Sertifikat:</label>
 				            <div class="col-sm-3">
 				            	<input type="text" class="form-control" name="no_register" value="">
 				            </div>

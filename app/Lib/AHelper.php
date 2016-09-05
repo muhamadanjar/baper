@@ -648,6 +648,23 @@ class AHelper {
 			return $time;
 	}
 
+
+    public function status_permohonan($id=''){
+        if($id == '1'){
+            $isi = 'Baik';
+        }elseif($id == '2'){
+            $isi = 'Rusak Lengkap';
+        }elseif($id == '3'){
+            $isi = 'Tidak Lengkap';
+        }elseif($id == '4'){
+            $isi = 'Tidak Ada';
+        }else{
+            $isi = 'Tidak Digunakan';
+        }
+
+        return $isi;
+    }
+
     
 
     

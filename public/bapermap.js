@@ -58,6 +58,8 @@
               $(this).css({opacity: '1'});
             });
         });
+
+
     }
 
     function getjson(url){
@@ -172,8 +174,8 @@
     }
 
     
-
-    initMap();
+    google.maps.event.addDomListener(window, 'load', initMap);
+    //initMap();
     
     $( "#btn-map-filter" ).click(function(e) {
         alert( "Handler for .click() called." );

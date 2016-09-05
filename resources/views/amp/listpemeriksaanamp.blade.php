@@ -68,6 +68,10 @@
                                     data-kodeperiksa="{{ $v->no_permohonan }}"
                                     data-namaperusahaan="{{ $v->nama_perusahaan }}"
                                     data-namapemohon="{{ $v->nama_pemohon }}"
+                                    data-tglpermphonan="{{ $v->tanggal_permohonan }}"
+                                    data-jenisperalatan="{{ $v->jenis_peralatan }}"
+                                    data-statusterakhir="{{ \AHelper::status_permohonan($v->status_terakhir) }}"
+                                    
                                     >
                                     <a class="formHistoryPemeriksaan btn btn-default btn-xs btn-icon">
                                         <i class="icon-file6"></i>

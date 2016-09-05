@@ -60,7 +60,7 @@ Route::group(array('prefix'=>'api'), function(){
 	Route::get('getbp','BpMastCtrl@getBP');
 	Route::get('getquary','QuaryCtrl@getQUARY');
 	Route::get('getperusahaan-{kode_perusahaan}','perusahaanCtrl@getPerusahaan');
-	Route::get('getkodeperalatan-{jenis_peralatan}','permohonanCtrl@getKodeperalatan');
+	Route::get('getkodeperalatan-{jenis_peralatan}-{kode_perusahaan}','permohonanCtrl@getKodeperalatan');
 	Route::get('getkab-{kode_provinsi}',function ($kode_provinsi=''){
 		return \App\Kabupaten::where('kode_provinsi',$kode_provinsi)->get();
 	});
@@ -110,6 +110,7 @@ Route::group(array('prefix'=>'amp'), function(){
 	Route::get('pemeriksaan1/unitsilo','PeriksaSatuAMPUnitSiloCtrl@periksaSatuAMPUnitSilo');
 	Route::post('pemeriksaan1/unitsilo','PeriksaSatuAMPUnitSiloCtrl@periksaSatuAMPUnitSiloPost');
 	Route::get('pemeriksaan1/unitrekap','PeriksaSatuAMPRekapCtrl@periksaSatuAMPRekap');
+	Route::post('pemeriksaan1/unitrekap','PeriksaSatuAMPRekapCtrl@periksaSatuAMPRekapPost');
 	
 
 

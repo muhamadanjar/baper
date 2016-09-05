@@ -104,7 +104,7 @@
 						
 						<div class="form-group">
 				            <label class="col-sm-2 control-label">Telp/HP:</label>
-				            <div class="col-sm-10">
+				            <div class="col-sm-5">
 				            	<input type="text" class="form-control telp" name="telp" value="{{ $permohonan->telp }}">
 				            </div>
 				        </div>
@@ -189,7 +189,7 @@
 				        </div>
 						
 						<div class="form-group">
-				            <label class="col-sm-2 control-label">No Register:</label>
+				            <label class="col-sm-2 control-label">No Sertifikat:</label>
 				            <div class="col-sm-10">
 				            	<input type="text" class="form-control" name="no_register" value="{{ $permohonan->no_register }}">
 				            </div>

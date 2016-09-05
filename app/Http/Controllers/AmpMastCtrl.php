@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AmpMastCtrl extends Controller {
 
 	public function __construct(){
-		$this->middleware('auth');
+		$this->middleware('auth',['except' => ['getAmpMap']]);
 	}
 	
 	public function index()

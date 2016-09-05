@@ -32,6 +32,8 @@ class jadwal_exposeCtrl extends Controller {
 	{
 		$jadwal_expose = \App\jadwal_expose::find($id);
 		$jadwal_expose->tanggal_expose = $request->tanggal_expose;
+		$jadwal_expose->no_undangan = $request->no_undangan;
+		$jadwal_expose->hasil_expose = $request->hasil_expose;
 		$jadwal_expose->save();
 
 		return redirect('jadwal/jadwal_expose/index');

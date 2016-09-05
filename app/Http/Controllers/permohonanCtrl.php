@@ -111,8 +111,23 @@ class permohonanCtrl extends Controller {
 	}
 
 
-	public function getKodeperalatan($jenis_peralatan=''){
-		
+	public function getKodeperalatan($jenis_peralatan='',$kode_perusahaan = 'all'){
+		$text = '';
+		$arraytext = array();
+
+		if ($kode_perusahaan != 'all') {
+			$text = 'UPPER(kode_perusahaan) = ?';
+			array_push($arraytext, strtoupper($kode_perusahaan));
+		}
+	if ($arraytext) {
+		if ($jenis_peralatan == 'amp') {
+			$isi = \App\AmpMast::orderBy('kode_amp','ASC')->whereRaw($text,$arraytext)->get();
+		}elseif ($jenis_peralatan == 'bp') {
+			$isi = \App\BpMast::orderBy('kode_bp','ASC')->whereRaw($text,$arraytext)->get();
+		}elseif ($jenis_peralatan == 'quary') {
+			$isi = \App\Quary::orderBy('kode_quary','ASC')->whereRaw($text,$arraytext)->get();
+		}
+	}else{
 		if ($jenis_peralatan == 'amp') {
 			$isi = \App\AmpMast::orderBy('kode_amp','ASC')->get();
 		}elseif ($jenis_peralatan == 'bp') {
@@ -120,6 +135,8 @@ class permohonanCtrl extends Controller {
 		}elseif ($jenis_peralatan == 'quary') {
 			$isi = \App\Quary::orderBy('kode_quary','ASC')->get();
 		}
+	}
+		
 
 		return $isi;
 	}

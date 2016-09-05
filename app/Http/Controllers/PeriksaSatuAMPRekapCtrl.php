@@ -26,150 +26,173 @@ class PeriksaSatuAMPRekapCtrl extends Controller {
 
 	public function periksaSatuAMPRekap(){
 		$id_periksa = session('id_periksa');
-		$pm_satu_amp_silo = PMAMP1UBD_SILO::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
 		if (is_null($id_periksa)) {
 			return redirect('/home');
 		}
-		$pm_satu_amp_ban_berjalan = PMAMP1UBD_BAN_BERJALAN::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
-		$pm_satu_amp_pengering = PMAMP1UBD_PENGERING::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
-		$pm_satu_amp_pemanas = PMAMP1UBD_PEMANAS::orderBy('tgl_periksa','DESC')->find($id_periksa);
-		$pm_satu_amp_pengumpul_debu = PMAMP1UBD_PENGUMPUL_DEBU::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
-		$pm_satu_amp_elevator_panas = PMAMP1UBD_ELEVATOR_PANAS::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
-		$pm_satu_amp_saringan_bergetar = PMAMP1UBD_SARINGAN_BERGETAR::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
-		$pm_satu_amp_bin_panas = PMAMP1UBD_BIN_PANAS::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
-		$pm_satu_amp_timbangan = PMAMP1UBD_TIMBANGAN::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
-		$pm_satu_amp_pencampur = PMAMP1UBD_PENCAMPUR::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
-		$pm_satu_amp_pemasok_aspal = PMAMP1UBD_PEMASOK_ASPAL::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
-		$pm_satu_amp_pemasok_filler = PMAMP1UBD_PEMASOK_FILLER::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
-		$pm_satu_amp_tenaga_penggerak = PMAMP1UBD_TENAGA_PENGGERAK::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
-		$pm_satu_amp_bin_filler = PMAMP1UBD_BIN_FILLER::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
-		$pm_satu_amp_elevator = PMAMP1UBD_ELEVATOR::orderBy('tgl_periksa','DESC')->where('id_periksa',$id_periksa)->first();
+
+		$bin_dingin = \App\PeriksaSatuAMPUnitBinDingin::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$ban_berjalan = \App\PeriksaSatuAMPUnitBanBerjalan::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$pengering = PMAMP1UBD_PENGERING::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$pemanas = PMAMP1UBD_PEMANAS::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$pengumpul_debu = PMAMP1UBD_PENGUMPUL_DEBU::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$elevator_panas = PMAMP1UBD_ELEVATOR_PANAS::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$saringan_bergetar = PMAMP1UBD_SARINGAN_BERGETAR::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$bin_panas = PMAMP1UBD_BIN_PANAS::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$timbangan = PMAMP1UBD_TIMBANGAN::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$pencampur = PMAMP1UBD_PENCAMPUR::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$pemasok_aspal = PMAMP1UBD_PEMASOK_ASPAL::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$pemasok_filler = PMAMP1UBD_PEMASOK_FILLER::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$tenaga_penggerak = PMAMP1UBD_TENAGA_PENGGERAK::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$bin_filler = PMAMP1UBD_BIN_FILLER::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$elevator = PMAMP1UBD_ELEVATOR::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		$silo = PMAMP1UBD_SILO::orderBy('tgl_periksa','DESC')
+		->where('id_periksa',$id_periksa)->first();
+		
+		
+		
 		
 		return view('amp.pm_1_unit_rekap')
 			->with('id_periksa',$id_periksa)
-			->with('pm_satu_amp_ban_berjalan',$pm_satu_amp_ban_berjalan)
-			->with('pm_satu_amp_pengering',$pm_satu_amp_pemanas)
-			->with('pm_satu_amp_pemanas',$pm_satu_amp_pemanas)
-			->with('pm_satu_amp_pengumpul_debu',$pm_satu_amp_pengumpul_debu)
-			->with('pm_satu_amp_elevator_panas',$pm_satu_amp_elevator_panas)
-			->with('pm_satu_amp_saringan_bergetar',$pm_satu_amp_saringan_bergetar)
-			->with('pm_satu_amp_bin_panas',$pm_satu_amp_bin_panas)
-			->with('pm_satu_amp_timbangan',$pm_satu_amp_timbangan)
-			->with('pm_satu_amp_pencampur',$pm_satu_amp_pencampur)
-			->with('pm_satu_amp_pemasok_aspal',$pm_satu_amp_pemasok_aspal)
-			->with('pm_satu_amp_pemasok_filler',$pm_satu_amp_pemasok_filler)
-			->with('pm_satu_amp_tenaga_penggerak',$pm_satu_amp_tenaga_penggerak)
-			->with('pm_satu_amp_bin_filler',$pm_satu_amp_bin_filler)
-			->with('pm_satu_amp_elevator',$pm_satu_amp_elevator)
-			->with('pm_satu_amp_silo',$pm_satu_amp_silo);
+			->with('bin_dingin',$bin_dingin)
+			->with('ban_berjalan',$ban_berjalan)
+			->with('pengering',$pengering)
+			->with('pemanas',$pemanas)
+			->with('pengumpul_debu',$pengumpul_debu)
+			->with('elevator_panas',$elevator_panas)
+			->with('saringan_bergetar',$saringan_bergetar)
+			->with('bin_panas',$bin_panas)
+			->with('timbangan',$timbangan)
+			->with('pencampur',$pencampur)
+			->with('pemasok_aspal',$pemasok_aspal)
+			->with('pemasok_filler',$pemasok_filler)
+			->with('tenaga_penggerak',$tenaga_penggerak)
+			->with('bin_filler',$bin_filler)
+			->with('elevator',$elevator)
+			->with('silo',$silo);
 	}
 
-	public function periksaSatuAMPRekapCtrlPost(Request $request){
+	public function periksaSatuAMPRekapPost(Request $request){
 		$file = $request->file('foto_unit');
 		$destinationPath = public_path('images');
 		
 		$kesimpulan_check = '1';
-		if ($request->generator_check < '4') {
-			if ($kesimpulan_check < $request->generator_check) {
-				$kesimpulan_check = $request->generator_check;
+		if ($request->kesimpulan_01_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_01_check) {
+				$kesimpulan_check = $request->kesimpulan_01_check;
 			}
 		}
 
-		if ($request->mesin_check < '4') {
-			if ($kesimpulan_check < $request->mesin_check) {
-				$kesimpulan_check = $request->mesin_check;
+		if ($request->kesimpulan_02_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_02_check) {
+				$kesimpulan_check = $request->kesimpulan_02_check;
 			}
 		}
 
-		if ($request->compressor_check < '4') {
-			if ($kesimpulan_check < $request->compressor_check) {
-				$kesimpulan_check = $request->compressor_check;
+		if ($request->kesimpulan_03_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_03_check) {
+				$kesimpulan_check = $request->kesimpulan_03_check;
 			}
 		}
 
-		if ($request->silinder_udara_check < '4') {
-			if ($kesimpulan_check < $request->silinder_udara_check) {
-				$kesimpulan_check = $request->silinder_udara_check;
+		if ($request->kesimpulan_04_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_04_check) {
+				$kesimpulan_check = $request->kesimpulan_04_check;
 			}
 		}
 
-		if ($request->kontrol_panel_check < '4') {
-			if ($kesimpulan_check < $request->kontrol_panel_check) {
-				$kesimpulan_check = $request->kontrol_panel_check;
+		if ($request->kesimpulan_05_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_05_check) {
+				$kesimpulan_check = $request->kesimpulan_05_check;
 			}
 		}
 
-		if ($request->jaringan_kabel_check < '4') {
-			if ($kesimpulan_check < $request->jaringan_kabel_check) {
-				$kesimpulan_check = $request->jaringan_kabel_check;
+		if ($request->kesimpulan_06_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_06_check) {
+				$kesimpulan_check = $request->kesimpulan_06_check;
 			}
 		}
 
-		if ($request->pipa_pipa_check < '4') {
-			if ($kesimpulan_check < $request->pipa_pipa_check) {
-				$kesimpulan_check = $request->pipa_pipa_check;
+		if ($request->kesimpulan_07_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_07_check) {
+				$kesimpulan_check = $request->kesimpulan_07_check;
 			}
 		}
 
-		if ($request->filter_check < '4') {
-			if ($kesimpulan_check < $request->filter_check) {
-				$kesimpulan_check = $request->filter_check;
+		if ($request->kesimpulan_08_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_08_check) {
+				$kesimpulan_check = $request->kesimpulan_08_check;
 			}
 		}
 
-		if ($request->pompa_hidrolik_check < '4') {
-			if ($kesimpulan_check < $request->pompa_hidrolik_check) {
-				$kesimpulan_check = $request->pompa_hidrolik_check;
+		if ($request->kesimpulan_09_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_09_check) {
+				$kesimpulan_check = $request->kesimpulan_09_check;
 			}
 		}
 
-		$pm = new PMAMP1UBD();
-		$pm->kode_periksa = $request->kode_periksa;
-		$pm->generator_check = $request->generator_check;
-		$pm->generator_ket = $request->generator_ket;
-		$pm->generator_foto = $request->generator_foto;
-		$pm->mesin_check = $request->mesin_check;
-		$pm->mesin_ket = $request->mesin_ket;
-		$pm->mesin_foto = $request->mesin_foto;
-		$pm->compressor_check = $request->compressor_check;
-		$pm->compressor_ket = $request->compressor_ket;
-		$pm->compressor_foto = $request->compressor_foto;
-		$pm->silinder_udara_check = $request->silinder_udara_check;
-		$pm->silinder_udara_ket = $request->silinder_udara_ket;
-		$pm->silinder_udara_foto = $request->silinder_udara_foto;
-		$pm->kontrol_panel_check = $request->kontrol_panel_check;
-		$pm->kontrol_panel_ket = $request->kontrol_panel_ket;
-		$pm->kontrol_panel_foto = $request->kontrol_panel_foto;
-		$pm->jaringan_kabel_check = $request->jaringan_kabel_check;
-		$pm->jaringan_kabel_ket = $request->jaringan_kabel_ket;
-		$pm->jaringan_kabel_foto = $request->jaringan_kabel_foto;
-		$pm->pipa_pipa_check = $request->pipa_pipa_check;
-		$pm->pipa_pipa_ket = $request->pipa_pipa_ket;
-		$pm->pipa_pipa_foto = $request->pipa_pipa_foto;
-		$pm->filter_check = $request->filter_check;
-		$pm->filter_ket = $request->filter_ket;
-		$pm->filter_foto = $request->filter_foto;
-		$pm->pompa_hidrolik_check = $request->pompa_hidrolik_check;
-		$pm->pompa_hidrolik_ket = $request->pompa_hidrolik_ket;
-		$pm->pompa_hidrolik_foto = $request->pompa_hidrolik_foto;
-										
-		$pm->catatan_pemeriksa = $request->catatan_pemeriksa;
-		$pm->harus_diperbaiki = $request->harus_diperbaiki;
-		$pm->pemeriksaan_tahap_2 = $request->pemeriksaan_tahap_2;
-		$pm->kesimpulan_check = $kesimpulan_check;
-		$pm->kesimpulan_ket = $request->kesimpulan_ket;
-		$pm->tgl_periksa = Carbon::now();
-		if ( !is_null($file) )  {
-			$fileName = str_random(20) . '.' . $file->getClientOriginalExtension();	
-			$pm->foto_unit = $fileName;
-			$this->_s->UploadFile($file,$fileName);
+		if ($request->kesimpulan_10_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_10_check) {
+				$kesimpulan_check = $request->kesimpulan_10_check;
+			}
 		}
+
+		if ($request->kesimpulan_11_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_11_check) {
+				$kesimpulan_check = $request->kesimpulan_11_check;
+			}
+		}
+
+		if ($request->kesimpulan_12_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_12_check) {
+				$kesimpulan_check = $request->kesimpulan_12_check;
+			}
+		}
+
+		if ($request->kesimpulan_13_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_13_check) {
+				$kesimpulan_check = $request->kesimpulan_13_check;
+			}
+		}
+
+		if ($request->kesimpulan_14_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_14_check) {
+				$kesimpulan_check = $request->kesimpulan_14_check;
+			}
+		}
+
+		if ($request->kesimpulan_15_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_15_check) {
+				$kesimpulan_check = $request->kesimpulan_15_check;
+			}
+		}
+
+		if ($request->kesimpulan_16_check < '4') {
+			if ($kesimpulan_check < $request->kesimpulan_16_check) {
+				$kesimpulan_check = $request->kesimpulan_16_check;
+			}
+		}
+
+		\DB::table('tbl_amp_1_periksa')
+            ->where('id_periksa', session('id_periksa'))
+            ->update(['kesimpulan' => $kesimpulan_check]);
+
 		
-		
-		$pm->save();
-	
-		
-		return redirect('amp/pemeriksaan1/unittenagapenggerak');	
+		return redirect('amp/listpemeriksaanamp/ubah-'.session('id_periksa'));	
 	}
 
 
