@@ -56,11 +56,11 @@
 						</div>
 						
 				        <div class="form-group">
-							<label class="col-sm-2 control-label">Tanggal Permohonan:</label>
+							<label class="col-sm-2 control-label">Tanggal Surat:</label>
 				            <div class="col-sm-2">
 				            	<input type="text" class="form-control datepicker" name="tanggal_permohonan" value="{{ $permohonan->tanggal_permohonan }}">
 				            </div>
-				            <label class="col-sm-2 control-label">Tanggal Surat:</label>
+				            <label class="col-sm-2 control-label">Tanggal Disposisi:</label>
 				            <div class="col-sm-2">
 				            	<input type="text" class="form-control datepicker" name="tgl_surat"  value="{{ $permohonan->tgl_surat }}">
 				            </div>
@@ -207,27 +207,27 @@
 				            <div class="col-sm-10">
 				            @if($permohonan->kondisi == 1)
 				            	<label>
-				            		<input type="checkbox" class="styled" name="kondisi" value="1" checked="checked">
+				            		<input type="checkbox" id="laik_check" class="styled" name="kondisi" value="1" checked="checked">
 				            		Laik
 				            	</label>
 				            	<label>
-				            		<input type="checkbox" class="styled" name="kondisi" value="2">Tidak Laik
+				            		<input type="checkbox" id="tlaik_check" class="styled" name="kondisi" value="2">Tidak Laik
 				            	</label>
 				            @elseif($permohonan->kondisi == 2)
 				            	<label>
-				            		<input type="checkbox" class="styled" name="kondisi" value="1">
+				            		<input type="checkbox" id="laik_check" class="styled" name="kondisi" value="1">
 				            		Laik
 				            	</label>
 				            	<label>
-				            		<input type="checkbox" class="styled" name="kondisi" value="2" checked="checked">Tidak Laik
+				            		<input type="checkbox" id="tlaik_check" class="styled" name="kondisi" value="2" checked="checked">Tidak Laik
 				            	</label>
 				            @else
 				            	<label>
-				            		<input type="checkbox" class="styled" name="kondisi" value="1">
+				            		<input type="checkbox" id="laik_check" class="styled" name="kondisi" value="1">
 				            		Laik
 				            	</label>
 				            	<label>
-				            		<input type="checkbox" class="styled" name="kondisi" value="2">Tidak Laik
+				            		<input type="checkbox" id="tlaik_check" class="styled" name="kondisi" value="2">Tidak Laik
 				            	</label>
 				            @endif
 				            </div>

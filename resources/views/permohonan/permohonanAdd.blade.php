@@ -181,11 +181,11 @@
 				            <div class="col-sm-10">
 				            
 				            	<label>
-				            		<input type="checkbox" class="styled" name="kondisi" value="1">
+				            		<input type="checkbox" id="laik_check" class="styled" name="kondisi" value="1">
 				            		Laik
 				            	</label>
 				            	<label>
-				            		<input type="checkbox" class="styled" name="kondisi" value="2">Tidak Laik
+				            		<input type="checkbox" id="tlaik_check" class="styled" name="kondisi" value="2">Tidak Laik
 				            	</label>
 				            
 				            </div>

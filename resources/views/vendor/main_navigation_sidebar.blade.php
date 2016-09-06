@@ -20,7 +20,7 @@
 						<a href="{{ url('permohonan/permohonan/index') }}"><span>Permohonan Pemeriksaan</span> <i class="icon-grid"></i></a>
 					</li>
 					<li>
-						<a href="{{ url('jadwal/jadwal_expose/index') }}"><span>Jadwal Expose</span> <i class="icon-grid"></i></a>
+						<a href="{{ url('jadwal/jadwal_expose/index') }}"><span>Expose</span> <i class="icon-grid"></i></a>
 					</li>
 					<li>
 						<a href="{{ url('jadwal/jadwal_pemeriksaan/index') }}"><span>Jadwal Pemeriksaan</span> <i class="icon-grid"></i></a>

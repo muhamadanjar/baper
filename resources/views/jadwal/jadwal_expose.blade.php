@@ -65,13 +65,13 @@
 
                             </td>
                             <td>{{$v->no_permohonan}}</td>
-							<td>{{$v->tanggal_permohonan}}</td>
+							<td>{{ date("d M Y", strtotime($v->tanggal_permohonan)) }}</td>
 							<td>{{$v->nama_perusahaan}}</td>
 							<td>{{$v->nama_pemohon}}</td>
 							<td>{{$v->jenis_alat}}</td>
 							<td>{{$v->merk}}</td>
 							<td>{{$v->tipe}}</td>
-							<td>{{$v->tanggal_expose}}</td>
+							<td>{{ date("d M Y", strtotime($v->tanggal_expose)) }}</td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -66,14 +66,14 @@
 
                             </td>
                             <td>{{$v->no_permohonan}}</td>
-							<td>{{$v->tanggal_permohonan}}</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>{{$v->tanggal_expose}}</td>
-							<td>{{$v->tanggal_pemeriksaan}}</td>
+                            <td>{{ date("d M Y", strtotime($v->tanggal_permohonan)) }}</td>
+                            <td>{{$v->nama_perusahaan}}</td>
+                            <td>{{$v->nama_pemohon}}</td>
+                            <td>{{$v->jenis_peralatan}}</td>
+                            <td>{{$v->merk}}</td>
+                            <td>{{$v->tipe}}</td>
+                            <td>{{ date("d M Y", strtotime($v->tanggal_expose)) }}</td>
+                            <td>{{ date("d M Y", strtotime($v->tanggal_pemeriksaan)) }}</td>
                             
                         </tr>
                         @endforeach

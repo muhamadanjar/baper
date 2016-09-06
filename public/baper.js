@@ -2,6 +2,28 @@ $.ajaxSetup({
     headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
 });
 var rootURL = 'http://'+window.location.hostname+':'+window.location.port;
+var monthNames = [
+  "January", "February", "March",
+  "April", "May", "June", "July",
+  "August", "September", "October",
+  "November", "December"
+];
+    function status_permohonan(id=''){
+        if(id == '1'){
+            isi = 'Baik';
+        }else if(id == '2'){
+            isi = 'Rusak Lengkap';
+        }else if(id == '3'){
+            isi = 'Tidak Lengkap';
+        }else if(id == '4'){
+            isi = 'Tidak Ada';
+        }else{
+            isi = 'Tidak Digunakan';
+        }
+
+        return isi;
+    }
+
     function makeTable_origin(container, data) {
         var table = $("<table/>").addClass('CSSTableGenerator');
         $.each(data, function(rowIndex, r) {
@@ -14,7 +36,7 @@ var rootURL = 'http://'+window.location.hostname+':'+window.location.port;
         return container.append(table);
     }
 
-    function makeTable(container, data) {
+    function makeTablePemeriksaan(container, data) {
         var table = $("<table/>").addClass('table table-striped table-bordered');
         var id = '';
         $.each(data, function(rowIndex, r) {
@@ -23,15 +45,21 @@ var rootURL = 'http://'+window.location.hostname+':'+window.location.port;
                 if (rowIndex == 0) {
                     row.append($("<th/>").text(c));    
                 }else{
-
                     if (colIndex == 'id_periksa') {
-                        id = c;
-                    }
-                    if (colIndex == 'kode_periksa') {
-                        row.append( $("<td/>").append($("<a>").attr('href',rootURL+'/amp/listpemeriksaanamp/ubah-'+id).text('Link')) );
+                        row.append( $("<td/>").append($("<a>").attr('href',rootURL+'/amp/listpemeriksaanamp/ubah-'+c).text('Link')) );
+                    }else if (colIndex == 'kesimpulan') {
+                        row.append($("<td/>").append( $("<span>").attr("class","label label-danger").text(status_permohonan(c)) ));    
+                    }else if (colIndex == 'tgl_periksa') {
+                        var date = new Date(c);
+                        var day = date.getDate();
+                        var monthIndex = date.getMonth();
+                        var year = date.getFullYear();
+                        row.append($("<td/>").text(day + ' ' + monthNames[monthIndex] + ' ' + year));
                     }else{
                         row.append($("<td/>").text(c));
                     }
+                    
+                    
                 }
                 
             });
@@ -117,7 +145,7 @@ $.extend({
             async: false,
             success: function(data) {
                 $('.table-pemeriksaan').html('');
-                makeTable($('.table-pemeriksaan'),data)
+                makeTablePemeriksaan($('.table-pemeriksaan'),data)
                 
             }
         });
@@ -361,7 +389,7 @@ $.extend({
                 var tahun_buat = $('input[name="tahun_buat"]');
                 var kapasitas = $('input[name="kapasitas"]');
                 var lokasi = $('input[name="lokasi"]');
-
+                var kondisi = $('input[name="kondisi"]');
                 if( merk.length > 0 ){
                     merk.val(data.merk +'/' + data.tipe);
                 }
@@ -372,6 +400,14 @@ $.extend({
 
                 if( kapasitas.length > 0 ){
                     kapasitas.val(data.kapasitas);
+                }
+                
+                if (data.kondisi == '1') {
+                    $("#laik_check").prop("checked",true);
+                    $("#laik_check").closest('span').addClass('checked')
+                }else{
+                    $("#tlaik_check").prop("checked",true);
+                    $("#tlaik_check").closest('span').addClass('checked')
                 }
 
                 

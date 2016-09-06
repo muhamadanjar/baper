@@ -16,15 +16,15 @@ class PemeriksaanCtrl extends Controller {
 		$baru = array();
 		$no = 1;
 		foreach ($data as $key => $value) {
-			$baru[$key]['id_periksa'] = $value->id_periksa;
+			/*$baru[$key]['id_periksa'] = $value->id_periksa;
 			$baru[$key]['tgl_periksa'] = $value->tgl_periksa;
 			$baru[$key]['periksake'] = $no;
-			$baru[$key]['kode_periksa'] = $value->kode_periksa;
-			
+			$baru[$key]['kode_periksa'] = $value->kode_periksa;*/
+			$baru[$key] = $value;
 			$no++;
 		}
 
-		array_unshift($baru,array("id_periksa" => "ID Periksa","tgl_periksa" => "Tgl Periksa","periksake" => "Pemeriksaan Ke","kode_periksa" => "#"));
+		array_unshift($baru,array("id_periksa" => "ID Periksa","kode_periksa" => "Kode Periksa","tgl_periksa" => "Tanggal Periksa","kesimpulan" => "Status"));
 		return $baru;
 	}	
 	public function store(Request $request){

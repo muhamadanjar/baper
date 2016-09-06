@@ -17,8 +17,6 @@
 										<h3><div id="frm_body"></div></h3>
 										<span></span>
 									</div>
-
-									
 								</div>
 
 
@@ -44,9 +42,7 @@
 										</ul>
 									</div>
 								</div>
-
 							</div>
-
 							<div class="panel-body">
 								<form method="post" class="validate" action="{{ url('pemeriksaan/tglperiksa/post') }}">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -56,7 +52,7 @@
 											<label>
 												Kode Periksa:
 											</label>
-											<input type="text" name="kode_periksa" class="required form-control">
+											<input type="text" readonly="readonly" name="kode_periksa" class="required form-control">
 										</div>
 									</div>
 									<div class="col-md-5">
@@ -78,10 +74,8 @@
 									
 								</div>	
 								</form>
-								
-								
 							</div>
-						<div class="table-responsive table-pemeriksaan">
+							<div class="table-responsive table-pemeriksaan">
 							    
 							</div>
 

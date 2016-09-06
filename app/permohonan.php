@@ -9,10 +9,11 @@ class permohonan extends Model {
 	public $timestamps = false;
 
 	public static $rules = array(
-		'layername'=>'required|min:3',
-		'layerurl' => 'required',
-		'orderlayer'=>'numeric|required',
-		'level' => 'required',
+		'no_permohonan'=>'required|min:3',
+		'kode_perusahaan' => 'required',
+		'jenis_perlatan' => 'required',
+		'kode_peralatan'=>'required',
+		
 	);
 
 }

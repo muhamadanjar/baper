@@ -31,33 +31,49 @@ class permohonanCtrl extends Controller {
 	
 	public function store(Request $request){
 		$validator = \Validator::make($request->all(), \App\permohonan::$rules);
-		/**
-		 if(!$validator->passes()) {
+		
+		if(!$validator->passes()) {
 			return \Redirect::to('permohonan/permohonan/index')
 			->with('message', \AHelper::format_message('Error,Coba lagi','cancel'))
 			->withErrors($validator)
 			->withInput();
+		}else{
+			\DB::beginTransaction();
+			try {
+				$permohonan = new \App\permohonan();
+				$pemeriksaan_ulang = ($request->pemeriksaan_ulang == null) ? 0 : 1 ;
+				
+				$permohonan->no_permohonan = $request->no_permohonan;
+				$permohonan->no_surat = $request->no_surat;
+				$permohonan->tgl_surat = $request->tgl_surat;
+				
+				$permohonan->tanggal_permohonan = $request->tanggal_permohonan;
+				$permohonan->pemeriksaan_ulang = $pemeriksaan_ulang;
+				$permohonan->kode_perusahaan = $request->kode_perusahaan;
+				$permohonan->nama_pemohon = $request->nama_pemohon;
+				$permohonan->jabatan = $request->jabatan;
+				$permohonan->jenis_peralatan = $request->jenis_peralatan;
+				$permohonan->kode_peralatan = $request->kode_peralatan;
+			
+				$permohonan->kondisi = $request->kondisi;
+				$permohonan->save();
+			} catch (Exception $e) {
+				DB::rollback();
+			    throw $e;
+			}
+
+			try {
+				$amp = \App\AmpMast::find($request->kode_peralatan);
+				$amp->kondisi = 2;
+				$amp->save();
+
+			} catch (Exception $e) {
+				DB::rollback();
+			    throw $e;
+			}
+			\DB::commit();
 		}
-		*/
-
-		$permohonan = new \App\permohonan();
-		$pemeriksaan_ulang = ($request->pemeriksaan_ulang == null) ? 0 : 1 ;
 		
-		$permohonan->no_permohonan = $request->no_permohonan;
-		$permohonan->no_surat = $request->no_surat;
-		$permohonan->tgl_surat = $request->tgl_surat;
-		
-		$permohonan->tanggal_permohonan = $request->tanggal_permohonan;
-		$permohonan->pemeriksaan_ulang = $pemeriksaan_ulang;
-		$permohonan->kode_perusahaan = $request->kode_perusahaan;
-		$permohonan->nama_pemohon = $request->nama_pemohon;
-		$permohonan->jabatan = $request->jabatan;
-		$permohonan->jenis_peralatan = $request->jenis_peralatan;
-		$permohonan->kode_peralatan = $request->kode_peralatan;
-	
-		$permohonan->kondisi = $request->kondisi;
-		$permohonan->save();
-
 		return redirect('permohonan/permohonan/index');
 	}
 

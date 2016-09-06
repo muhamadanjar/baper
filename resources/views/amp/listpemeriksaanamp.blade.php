@@ -3,7 +3,7 @@
             <!-- Page header -->
             <div class="page-header">
                 <div class="page-title">
-                    <h3>Pemeriksaan AMP</h3>
+                    <h3>Pemeriksaan AMP Tahap 1</h3>
                 </div>
                 <div id="reportrange" class="range">
                     <div class="visible-xs header-element-toggle">
@@ -20,8 +20,8 @@
             <div class="breadcrumb-line">
                 <ul class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="forms.html">Forms</a></li>
-                    <li class="active">---</li>
+                    <li><a href="forms.html">AMP</a></li>
+                    <li class="active">Pemeriksaan Tahap 1</li>
                 </ul>
 
                 <div class="visible-xs breadcrumb-toggle">
@@ -35,7 +35,7 @@
 @endsection
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading"><h6 class="panel-title"><i class="icon-table2"></i>List Pemeriksaan AMP</h6></div>
+        <div class="panel-heading"><h6 class="panel-title"><i class="icon-table2"></i>List Pemeriksaan AMP Tahap 1</h6></div>
 
             <div class="table-responsive">
                 <table class="table">
@@ -80,13 +80,13 @@
                                 
                             </td>
                             <td>{{$v->no_permohonan}}</td>
-							<td>{{$v->tanggal_permohonan}}</td>
+							<td>{{ date("d M Y", strtotime($v->tanggal_permohonan)) }}</td>
 							<td>{{$v->nama_perusahaan}}</td>
 							<td>{{$v->nama_pemohon}}</td>
 							<td>{{$v->merk}}</td>
 							<td>{{$v->tipe}}</td>
-							<td>{{$v->tanggal_expose}}</td>
-							<td>{{$v->tanggal_pemeriksaan}}</td>
+							<td>{{ date("d M Y", strtotime($v->tanggal_expose)) }}</td>
+							<td>{{ date("d M Y", strtotime($v->tanggal_pemeriksaan)) }}</td>
                             
                         </tr>
                         @endforeach
