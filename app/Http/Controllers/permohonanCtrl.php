@@ -18,10 +18,8 @@ class permohonanCtrl extends Controller {
 		->join('tbl_amp','tbl_permohonan.kode_peralatan','=','tbl_amp.kode_amp')->get();
 		return view('permohonan.permohonan')->with('permohonan',$permohonan);
 	}
-
 	
-	public function create()
-	{
+	public function create(){
 		$kode_peralatan = \App\AmpMast::get();
 		
 		$perusahaan = \App\perusahaan::get();
