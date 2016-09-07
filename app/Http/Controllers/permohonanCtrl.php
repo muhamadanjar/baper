@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
 use Illuminate\Http\Request;
 
 class permohonanCtrl extends Controller {
@@ -28,17 +28,18 @@ class permohonanCtrl extends Controller {
 
 	
 	public function store(Request $request){
-		$validator = \Validator::make($request->all(), \App\permohonan::$rules);
+		$validator = \Validator::make($request->all(), \App\Permohonan::$rules);
 		
-		if(!$validator->passes()) {
+		if($validator->fails()) {
 			return \Redirect::to('permohonan/permohonan/index')
 			->with('message', \AHelper::format_message('Error,Coba lagi','cancel'))
 			->withErrors($validator)
 			->withInput();
+			//dd($validator);
 		}else{
 			\DB::beginTransaction();
 			try {
-				$permohonan = new \App\permohonan();
+				$permohonan = new \App\Permohonan();
 				$pemeriksaan_ulang = ($request->pemeriksaan_ulang == null) ? 0 : 1 ;
 				
 				$permohonan->no_permohonan = $request->no_permohonan;
@@ -56,7 +57,7 @@ class permohonanCtrl extends Controller {
 				$permohonan->kondisi = $request->kondisi;
 				$permohonan->save();
 			} catch (Exception $e) {
-				DB::rollback();
+				\DB::rollback();
 			    throw $e;
 			}
 
@@ -66,13 +67,14 @@ class permohonanCtrl extends Controller {
 				$amp->save();
 
 			} catch (Exception $e) {
-				DB::rollback();
+				\DB::rollback();
 			    throw $e;
 			}
 			\DB::commit();
+			return redirect('permohonan/permohonan/index');
 		}
 		
-		return redirect('permohonan/permohonan/index');
+		
 	}
 
 	

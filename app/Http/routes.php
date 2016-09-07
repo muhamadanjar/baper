@@ -66,6 +66,7 @@ Route::group(array('prefix'=>'api'), function(){
 	});
 
 	Route::get('getpemeriksaan_satu_amp-{kode_periksa}','PemeriksaanCtrl@getPemeriksaan1AMP');
+	Route::get('getpemeriksaan_dua_amp-{kode_periksa}','PemeriksaanCtrl@getPemeriksaan2AMP');
 
 });
 
@@ -115,8 +116,9 @@ Route::group(array('prefix'=>'amp'), function(){
 
 
 
-	Route::get('listpemeriksaanamp2/ubah-{id}',['as' => 'pm_2_unit_menu','uses' => 'AMPCtrl@show_amp_t2']);
-	Route::get('pemeriksaan2/unitbindingin','AMPCtrl@pem_amp_2_unit_bin_dingin_cold_bin');
+	Route::get('listpemeriksaanamp2/ubah-{id}',['as' => 'pemeriksaan2_menu','uses' => 'AMPCtrl@PemeriksaanDua']);
+	Route::get('pemeriksaan2/unitbindingin','PeriksaDuaAMPUnitBinDinginCtrl@periksaDuaAMPUnitBinPanas');
+
 	Route::get('pemeriksaan2/unitbanberjalan','AMPCtrl@pem_amp_2_unit_ban_berjalan');
 	Route::get('pemeriksaan2/unitpengering','AMPCtrl@pem_amp_2_unit_pengering');
 	Route::get('pemeriksaan2/unitpemanas','AMPCtrl@pem_amp_2_unit_pemanas');

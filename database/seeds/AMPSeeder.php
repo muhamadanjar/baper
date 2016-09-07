@@ -22,6 +22,19 @@ class AMPSeeder extends Seeder{
                 'latitude' => -6.234495,
                 'longtitude' => 106.624852
             ),
+            array('kode_amp' => 'AMP-0002', 
+                'merk' => 'AZP',
+                'tipe' => '1000',
+                'tahun_buat' => '2000',
+                'lokasi' => 'Jl. Lingkar, Babat, Kec. Legok, Tangerang',
+                'kode_provinsi' => '36',
+                'kode_kabupaten' => '03',
+                'kode_perusahaan' => 'DRP',
+                'kondisi' => '1',
+                'kapasitas' => 200,
+                'latitude' => -6.232298,
+                'longtitude' => 106.608396
+            ),
            
             
         );

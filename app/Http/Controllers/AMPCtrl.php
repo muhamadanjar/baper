@@ -27,7 +27,7 @@ class AMPCtrl extends Controller {
 
 	public function edit($id){
 		$periksa_utama = \App\AmpPeriksaSatu::orderBy('id_periksa','ASC')->where('id_periksa',$id)->first();
-		$datpermohonan = \App\permohonan::select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
+		$datpermohonan = \App\Permohonan::select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
 		->join('tbl_perusahaan', 'tbl_permohonan.kode_perusahaan', '=', 'tbl_perusahaan.kode_perusahaan')
 		->join('tbl_amp','tbl_permohonan.kode_peralatan','=','tbl_amp.kode_amp')
 		->find($periksa_utama->kode_periksa);
@@ -40,10 +40,18 @@ class AMPCtrl extends Controller {
 		return view('amp.pm_1_unit_menu')->with('datpermohonan',$datpermohonan);
 	}
 
-	public function show_amp_t2($id)
-	{
-		$datpermohonan = \App\amp::find($id);
-
+	public function PemeriksaanDua($id){
+		$periksa_utama = \App\AmpPeriksaDua::orderBy('id_periksa','ASC')->where('id_periksa',$id)->first();
+		$datpermohonan = \App\Permohonan::select('tbl_permohonan.*','tbl_perusahaan.nama_perusahaan','tbl_perusahaan.alamat','tbl_perusahaan.telp','tbl_amp.merk','tbl_amp.tipe','tbl_amp.tahun_buat','tbl_amp.kapasitas','tbl_amp.lokasi')
+		->join('tbl_perusahaan', 'tbl_permohonan.kode_perusahaan', '=', 'tbl_perusahaan.kode_perusahaan')
+		->join('tbl_amp','tbl_permohonan.kode_peralatan','=','tbl_amp.kode_amp')
+		->find($periksa_utama->kode_periksa);
+		
+		session()->put('no_permohonan', $datpermohonan->no_permohonan);
+		if (!is_null($periksa_utama)) {
+			session()->put('id_periksa', $id);
+		}
+		
 		return view('amp.pm_2_unit_menu')->with('datpermohonan',$datpermohonan);
 	}
 

@@ -36,7 +36,7 @@ var monthNames = [
         return container.append(table);
     }
 
-    function makeTablePemeriksaan(container, data) {
+    function makeTablePemeriksaanTahap1(container, data) {
         var table = $("<table/>").addClass('table table-striped table-bordered');
         var id = '';
         $.each(data, function(rowIndex, r) {
@@ -46,7 +46,13 @@ var monthNames = [
                     row.append($("<th/>").text(c));    
                 }else{
                     if (colIndex == 'id_periksa') {
-                        row.append( $("<td/>").append($("<a>").attr('href',rootURL+'/amp/listpemeriksaanamp/ubah-'+c).text('Link')) );
+                        row.append( 
+                            $("<td/>").append( 
+                                $("<a>").attr('href',rootURL+'/amp/listpemeriksaanamp/ubah-'+c).append( 
+                                    $("<b>").text('Link') 
+                                )
+                            ) 
+                        );
                     }else if (colIndex == 'kesimpulan') {
                         row.append($("<td/>").append( $("<span>").attr("class","label label-danger").text(status_permohonan(c)) ));    
                     }else if (colIndex == 'tgl_periksa') {
@@ -58,8 +64,44 @@ var monthNames = [
                     }else{
                         row.append($("<td/>").text(c));
                     }
-                    
-                    
+
+                }
+                
+            });
+            table.append(row);
+        });
+        return container.append(table);
+    }
+
+    function makeTablePemeriksaanTahap2(container, data) {
+        var table = $("<table/>").addClass('table table-striped table-bordered');
+        var id = '';
+        $.each(data, function(rowIndex, r) {
+            var row = $("<tr/>");
+            $.each(r, function(colIndex, c) { 
+                if (rowIndex == 0) {
+                    row.append($("<th/>").text(c));    
+                }else{
+                    if (colIndex == 'id_periksa') {
+                        row.append( 
+                            $("<td/>").append( 
+                                $("<a>").attr('href',rootURL+'/amp/listpemeriksaanamp2/ubah-'+c).append( 
+                                    $("<b>").text('Link') 
+                                )
+                            ) 
+                        );
+                    }else if (colIndex == 'kesimpulan') {
+                        row.append($("<td/>").append( $("<span>").attr("class","label label-danger").text(status_permohonan(c)) ));    
+                    }else if (colIndex == 'tgl_periksa') {
+                        var date = new Date(c);
+                        var day = date.getDate();
+                        var monthIndex = date.getMonth();
+                        var year = date.getFullYear();
+                        row.append($("<td/>").text(day + ' ' + monthNames[monthIndex] + ' ' + year));
+                    }else{
+                        row.append($("<td/>").text(c));
+                    }
+
                 }
                 
             });
@@ -131,12 +173,20 @@ $.extend({
         var title = el.attr('data-title');
         var msg = el.attr('data-message');
         var dataForm = el.attr('data-form');
+        var tahap = el.attr('data-tahap');
+        var tahaptext = el.attr('data-tahaptext');
         var kode_periksa = el.attr('data-kodeperiksa');
         var namaperusahaan = el.attr('data-namaperusahaan');
         var namapemohon = el.attr('data-namapemohon');
         var statusterakhir = el.attr('data-statusterakhir');
         var jenisperalatan = el.attr('data-jenisperalatan');
-        var url = rootURL+"/api/getpemeriksaan_satu_amp-"+kode_periksa;
+        var url;
+        if (tahap == '1') {
+            url = rootURL+"/api/getpemeriksaan_satu_amp-"+kode_periksa;
+        } else {
+            url = rootURL+"/api/getpemeriksaan_dua_amp-"+kode_periksa;
+        }
+        
         console.log(url);
         $.ajax({
             url: url,
@@ -145,7 +195,12 @@ $.extend({
             async: false,
             success: function(data) {
                 $('.table-pemeriksaan').html('');
-                makeTablePemeriksaan($('.table-pemeriksaan'),data)
+                if (tahap == 1) {
+                    makeTablePemeriksaanTahap1($('.table-pemeriksaan'),data)
+                } else {
+                    makeTablePemeriksaanTahap2($('.table-pemeriksaan'),data)
+                }
+                
                 
             }
         });
@@ -158,6 +213,8 @@ $.extend({
         .end().find('#kodeperiksa').html(kode_periksa)
         .end().find('.statusterakhir').text(statusterakhir)
         .end().find('#jenisperalatan').text(jenisperalatan)
+        .end().find('.tahap').text(tahaptext)
+        .end().find('input[name="tahap"]').val(tahap)
         .end().modal('show');
     });
   

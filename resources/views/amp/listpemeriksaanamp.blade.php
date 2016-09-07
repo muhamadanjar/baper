@@ -21,7 +21,7 @@
                 <ul class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="forms.html">AMP</a></li>
-                    <li class="active">Pemeriksaan Tahap 1</li>
+                    <li class="active">Pemeriksaan</li>
                 </ul>
 
                 <div class="visible-xs breadcrumb-toggle">
@@ -35,7 +35,7 @@
 @endsection
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading"><h6 class="panel-title"><i class="icon-table2"></i>List Pemeriksaan AMP Tahap 1</h6></div>
+        <div class="panel-heading"><h6 class="panel-title"><i class="icon-table2"></i>List Pemeriksaan AMP</h6></div>
 
             <div class="table-responsive">
                 <table class="table">
@@ -56,14 +56,28 @@
                         @foreach($datpermohonan as $key => $v)
                         <tr>
                             <td>
-                                <!--<div class="btn-group">
-                                    <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle" type="button"><i class="icon-cog4"></i><span class="caret"></span></button>
-                                    <ul class="dropdown-menu icons-right dropdown-menu-right">
-                                        <li><a href="{{ route('pm_1_unit_menu', ['id' => $v->no_permohonan]) }}"><i class="icon-quill2"></i>Pemeriksaan Tahap I</a></li>            
-                                        <li><a href="{{ route('pm_2_unit_menu', ['id' => $v->no_permohonan]) }}"><i class="icon-quill2"></i>Pemeriksaan Tahap II</a></li>            
-                                    </ul>
-                                </div-->
-                                <div data-title="Pemeriksaan {{ $v->no_permohonan }}" 
+                                
+                                <div 
+                                    data-tahap="1"
+                                    data-tahaptext="Pemeriksaan Tahap 1"
+                                    data-title="Pemeriksaan {{ $v->no_permohonan }}" 
+                                    data-message="Pemeriksaan {{ $v->no_permohonan }}"
+                                    data-kodeperiksa="{{ $v->no_permohonan }}"
+                                    data-namaperusahaan="{{ $v->nama_perusahaan }}"
+                                    data-namapemohon="{{ $v->nama_pemohon }}"
+                                    data-tglpermphonan="{{ $v->tanggal_permohonan }}"
+                                    data-jenisperalatan="{{ $v->jenis_peralatan }}"
+                                    data-statusterakhir="{{ \AHelper::status_permohonan($v->status_terakhir) }}"
+                                    >
+                                    <a class="formHistoryPemeriksaan btn btn-default btn-xs btn-icon">
+                                        <i class="icon-file6"></i>
+                                    </a>        
+                                </div>
+
+                                <div 
+                                    data-tahap="2"
+                                    data-tahaptext="Pemeriksaan Tahap 2"
+                                    data-title="Pemeriksaan {{ $v->no_permohonan }}" 
                                     data-message="Pemeriksaan {{ $v->no_permohonan }}"
                                     data-kodeperiksa="{{ $v->no_permohonan }}"
                                     data-namaperusahaan="{{ $v->nama_perusahaan }}"

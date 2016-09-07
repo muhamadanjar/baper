@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class permohonan extends Model {
+class Permohonan extends Model {
 
 	protected $table = 'tbl_permohonan';
 	protected $primaryKey = 'no_permohonan';
@@ -11,7 +11,7 @@ class permohonan extends Model {
 	public static $rules = array(
 		'no_permohonan'=>'required|min:3',
 		'kode_perusahaan' => 'required',
-		'jenis_perlatan' => 'required',
+		'jenis_peralatan' => 'required',
 		'kode_peralatan'=>'required',
 		
 	);

@@ -5,6 +5,7 @@
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h4 class="modal-title" id="frm_title">Modal title</h4>
+
 						</div>
 
 				        <!-- New invoice template -->
@@ -15,11 +16,9 @@
 								<div class="row invoice-header">
 									<div class="col-sm-6">
 										<h3><div id="frm_body"></div></h3>
-										<span></span>
+										<span class="tahap">Pemeriksaan Tahap 1</span>
 									</div>
 								</div>
-
-
 								<div class="row">
 									<div class="col-sm-5">
 										<h6>Permohonan</h6>
@@ -35,7 +34,6 @@
 										<ul>
 											<li>Tanggal Permohonan: <strong id="tglpermohonan" class="pull-right">--</strong></li>
 											<li>Jenis Peralatan: <a href="#" id="jenisperalatan" class="pull-right">--</a></li>
-											
 											<li class="invoice-status">
 												<strong>Status Terakhir: <span class="statusterakhir label label-danger pull-right">---</span></strong>
 											</li>
@@ -46,6 +44,7 @@
 							<div class="panel-body">
 								<form method="post" class="validate" action="{{ url('pemeriksaan/tglperiksa/post') }}">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
+								<input type="hidden" name="tahap" value="">
 								<div class="row invoice-payment">
 									<div class="col-sm-5">
 										<div class="form-group">

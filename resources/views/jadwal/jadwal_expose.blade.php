@@ -59,7 +59,7 @@
                                 <div class="btn-group">
                                     <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle" type="button"><i class="icon-cog4"></i><span class="caret"></span></button>
                                     <ul class="dropdown-menu icons-right dropdown-menu-right">
-                                        <li><a href="{{ route('jadwal_exposeedit', ['id' => $v->no_permohonan]) }}"><i class="icon-quill2"></i>Jadwal Expose</a></li>            
+                                        <li><a href="{{ route('jadwal_exposeedit', ['id' => $v->no_permohonan]) }}"><i class="icon-quill2"></i> Expose</a></li>            
                                     </ul>
                                 </div>
 

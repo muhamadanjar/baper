@@ -265,7 +265,20 @@
 
 			@yield('breadcrumb')
 			
-
+			@if (count($errors) > 0)
+				<div class="callout callout-danger fade in">
+					<button data-dismiss="alert" class="close" type="button">×</button>
+					<h5><strong>Whoops!</strong> Ada beberapa masalah dengan apa yang Anda input.</h5>
+					<ul>
+						@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+			@endif
+			@if(Session::has('message'))
+		        {!! Session::get('message') !!}
+			@endif
 
 			<!-- Callout -->
 			<!--<div class="callout callout-danger fade in">
