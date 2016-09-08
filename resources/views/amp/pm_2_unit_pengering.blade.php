@@ -20,8 +20,8 @@
             <div class="breadcrumb-line">
                 <ul class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="forms.html">Forms</a></li>
-                    <li class="active">---</li>
+                    <li><a href="forms.html">Pemeriksaan Tahap 2</a></li>
+                    <li class="active">AMP</li>
                 </ul>
 
                 <div class="visible-xs breadcrumb-toggle">
@@ -34,7 +34,14 @@
             <!-- /breadcrumbs line -->
 @endsection
 @section('content')
-    <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ url('amp/pemeriksa/unitbindingin') }}">
+
+<?php
+    $no_id = '';
+    $kode_periksa = \Session::get('no_permohonan');
+    $id_periksa = \Session::get('id_periksa');
+
+?>
+    <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
                             
 		<div class="table-responsive">

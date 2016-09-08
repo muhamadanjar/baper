@@ -37,6 +37,8 @@
 <?php
     $no_id = '';
     $kode_periksa = \Session::get('no_permohonan');
+    $id_periksa = \Session::get('id_periksa');
+    
     $pelat_pemisah_check = '';
     $pelat_pemisah_ket = '';
     $pelat_pemisah_foto = '';
@@ -73,7 +75,7 @@
     $kesimpulan_check = '';
     $kesimpulan_ket = '';
     $foto_unit = '';
-    $id_periksa = \Session::get('id_periksa'); 
+     
 if (isset($pm_satu_amp_bindingin)) {
     if($pm_satu_amp_bindingin->kode_periksa){
         $kode_periksa = $pm_satu_amp_bindingin->kode_periksa;

@@ -4,6 +4,18 @@
     var infowindow;
     var ampMarker,bpMarker,quaryMarker;
     var marker;var markers = [];
+    var iconBase = '/images/icons/';
+    var icons = {
+        3: {
+            icon: iconBase + 'merah.png'
+        },
+        2: {
+            icon: iconBase + 'biru.png'
+        },
+        1: {
+            icon: iconBase + 'hitam.png'
+        }
+    };
     function initMap() {
         infowindow = new google.maps.InfoWindow({
             maxWidth: 350
@@ -90,16 +102,20 @@
     }
 
     function setMarkers(map,locations){
-        //console.log(locations);
+        var warna ='';
         for (var i = 0; i < locations.length; i++){  
             var loan = locations[i]['kode_amp'];
             var lat = (locations[i]['latitude']);
             var long = (locations[i]['longtitude']);
             var add =  locations[i]['merk'];
+            var kondisi =  locations[i]['kondisi'];
+
+            
             latlngset = new google.maps.LatLng(lat, long);
             marker = new google.maps.Marker({  
                 map: map, title: locations[i]['nama_perusahaan'] , 
-                position: latlngset , html: popupContentAMP('',locations[i]) 
+                position: latlngset , html: popupContentAMP('',locations[i]),
+                icon: icons[kondisi].icon, 
             });
             markers.push(marker);
             map.setCenter(marker.getPosition());
