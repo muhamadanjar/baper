@@ -13,6 +13,8 @@
 <link href="{{ asset('backend/css/styles.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('backend/css/icons.css') }}" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+<link href="http://localhost/baper/public/backend/css/loading.css" rel="stylesheet" type="text/css">
+
 
 <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>-->
@@ -56,11 +58,14 @@
 
 <script type="text/javascript" src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/js/application.js') }}"></script>
+<script type="text/javascript" src="{{ asset('ajax.js') }}"></script>
+
 
 
 
 </head>
-<body class="navbar-fixed">	
+<body class="navbar-fixed">
+	@include('loading')	
     <!-- Navbar -->
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="navbar-header">

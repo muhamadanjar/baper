@@ -30,6 +30,8 @@ class Permohonan extends Migration {
 			$table->string('no_undangan',60)->nullable();
 			$table->timestamp('tgl_undangan')->nullable();
 			$table->text('hasil_expose')->nullable();
+			$table->integer('kondisi_pemeriksaan')->nullable();
+			
 							
 		});
 	}

@@ -211,13 +211,20 @@ Route::group(array('prefix'=>'permohonan'), function(){
 });
 
 Route::group(array('prefix'=>'jadwal'), function(){
+	Route::get('jadwal_expose/tanggal-{id}',['as' => 'jadwal_exposetanggal','uses' => 'jadwal_exposeCtrl@tanggal']);
+	Route::get('jadwal_expose/hasil-{id}',['as' => 'jadwal_exposehasil','uses' => 'jadwal_exposeCtrl@hasil']);
 	Route::get('jadwal_expose/index','jadwal_exposeCtrl@index');
 	Route::get('jadwal_expose/ubah-{id}',['as' => 'jadwal_exposeedit','uses' => 'jadwal_exposeCtrl@edit']);
 	Route::post('jadwal_expose/ubah-{id}','jadwal_exposeCtrl@update');
+	Route::post('jadwal_expose/hasil-{id}','jadwal_exposeCtrl@update');
+	Route::get('jadwal_expose/datahasil','jadwal_exposeCtrl@datahasil');
+	Route::post('expose/tanggal','jadwal_exposeCtrl@postTanggal');
 
 	Route::get('jadwal_pemeriksaan/index','jadwal_pemeriksaanCtrl@index');
 	Route::get('jadwal_pemeriksaan/ubah-{id}',['as' => 'jadwal_pemeriksaanedit','uses' => 'jadwal_pemeriksaanCtrl@edit']);
 	Route::post('jadwal_pemeriksaan/ubah-{id}','jadwal_pemeriksaanCtrl@update');
+	Route::post('periksa/tanggal','jadwal_pemeriksaanCtrl@postTanggal');
+
 });
 
 Route::group(array('prefix'=>'laporan'), function(){

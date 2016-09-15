@@ -3,7 +3,7 @@
             <!-- Page header -->
             <div class="page-header">
                 <div class="page-title">
-                    <h3>Jadwal Pemeriksaan</h3>
+                    <h3>Hasil Expose</h3>
                 </div>
                 <div id="reportrange" class="range">
                     <div class="visible-xs header-element-toggle">
@@ -35,13 +35,13 @@
 @endsection
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading"><h6 class="panel-title"><i class="icon-table2"></i>List Jadwal Pemeriksaan</h6></div>
+        <div class="panel-heading"><h6 class="panel-title"><i class="icon-table2"></i>List Hasil Expose</h6></div>
 
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>#</th>
+                           
                             <th>No Permohonan</th>
                             <th>Tanggal</th>
 							<th>Nama Perusahaan</th>
@@ -50,62 +50,71 @@
 							<th>Merk</th>
 							<th>Tipe</th>
 							<th>Tgl-Expose</th>
-							<th>Tgl-Periksa</th>
+                             <th>Isi Hasil Expose</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($jadwal_pemeriksaan as $key => $v)
+                        @foreach($jadwal_expose as $key => $v)
                         <tr>
-                            <td>
+                           <!-- <td>
                                 <div class="btn-group">
                                     <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle" type="button"><i class="icon-cog4"></i><span class="caret"></span></button>
                                     <ul class="dropdown-menu icons-right dropdown-menu-right">
-                                        <li><a href="{{ route('jadwal_pemeriksaanedit', ['id' => $v->no_permohonan]) }}"><i class="icon-quill2"></i>Jadwal Pemeriksaan</a></li>            
+                                        <li><a href="{{ route('jadwal_exposeedit', ['id' => $v->no_permohonan]) }}"><i class="icon-quill2"></i>Jadwal Expose</a></li>            
                                     </ul>
                                 </div>
 
-                            </td>
+                            </td> -->
                             <td>{{$v->no_permohonan}}</td>
-                            <td>{{ date("d M Y", strtotime($v->tanggal_permohonan)) }}</td>
-                            <td>{{$v->nama_perusahaan}}</td>
-                            <td>{{$v->nama_pemohon}}</td>
-                            <td>{{$v->jenis_peralatan}}</td>
-                            <td>{{$v->merk}}</td>
-                            <td>{{$v->tipe}}</td>
-                            <td>{{ date("d M Y", strtotime($v->tanggal_expose)) }}</td>
-                            <td>
-                                <input type="text" class="form-control datepickers" name="tanggal_pemeriksaan" value="{{date('Y-m-d',strtotime($v->tanggal_pemeriksaan))}}"  id="tanggalexpose{{$v->id}}" data-permohonan="{{$v->no_permohonan}}" onchange="javascript:getpostdata('{{$v->id}}');" />
+							<td>{{$v->tanggal_permohonan}}</td>
+							<td>{{$v->nama_perusahaan}}</td>
+							<td>{{$v->nama_pemohon}}</td>
+							<td>{{$v->jenis_alat}}</td>
+							<td>{{$v->merk}}</td>
+							<td>{{$v->tipe}}</td>
+							<td> <input type="text" class="form-control datepickers" name="tanggal_expose" value="{{date('Y-m-d',strtotime($v->tanggal_expose))}}"  id="tanggalexpose{{$v->id}}" data-permohonan="{{$v->no_permohonan}}" onchange="javascript:getpostdata('{{$v->id}}');" /></td>
+                            <td width="20%"> 
+                                @if ($v->kondisi_pemeriksaan==1)
+                                <a href="{{ route('jadwal_exposehasil', ['id' => $v->id]) }}" class="btn btn-sm btn-primary">
+                                	<i class="icon-file7"></i> LAYAK
+                                </a>
+
+                                
+                                @elseif ($v->kondisi_pemeriksaan==2)
+								<a href="{{ route('jadwal_exposehasil', ['id' => $v->id]) }}" class="btn btn-sm btn-danger">
+                                	<i class="icon-file7"></i> Tidak LAYAK
+                                </a>
+                                @else
+                                <a href="{{ route('jadwal_exposehasil', ['id' => $v->id]) }}" class="btn btn-sm btn-warning">
+                                	<i class="icon-file7"></i> 
+                                </a>
+                                @endif
                             </td>
-                            
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
     </div>
+    <!--- add tanggal expose -->  
+	<script>
+		$(function()
+		{
+			$('.datepickers').datepicker({ dateFormat: 'yy-mm-dd' });
+		});
+		
+		function getpostdata(id){
 
-    <script>
-        $(function()
-        {
-            $('.datepickers').datepicker({ dateFormat: 'yy-mm-dd' });
-        });
-        
-        function getpostdata(id)
-        {
-                var datas = $("#tanggalexpose"+ id).val();
-                var idperm = $("#tanggalexpose"+ id).attr("data-permohonan");
-                var req = post("{{asset('jadwal/periksa/tanggal')}}",{"tanggal":datas,"id":idperm});
-                req.then(function(out)
-                {
-                    if(!out.error)
-                    {
-                            
-                    }else
-                    {
-                        alert("error save data");   
-                    }
-                }); 
-        }
-    </script>
-	
+			var datas = $("#tanggalexpose"+ id).val();
+			var idperm = $("#tanggalexpose"+ id).attr("data-permohonan");
+			var req = post("{{asset('jadwal/expose/tanggal')}}",{"tanggal":datas,"id":idperm});
+			req.then(function(out){
+				if(!out.error){
+							
+				}else{
+					alert("error save data");	
+				}
+			});	
+		}
+	</script>
 @stop

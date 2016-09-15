@@ -34,4 +34,29 @@ class jadwal_pemeriksaanCtrl extends Controller {
 		return redirect('jadwal/jadwal_pemeriksaan/index');
 	}
 
+	public function postTanggal(Request $request)
+	{
+		if ($request->isMethod('post')) 
+		{
+			$input = $request->all();
+			
+			$jadwal_pemeriksaan = \App\jadwal_pemeriksaan::find($input['id']);
+			$date1 = strtr($input['tanggal'], '/', '-');
+			
+			if(isset($jadwal_pemeriksaan->id))
+			{
+				$jadwal_pemeriksaan->tanggal_pemeriksaan = $date1;
+			
+				if($jadwal_pemeriksaan->save())
+				{
+					echo json_encode(array('error'=>false,"message"=>"success"));
+					exit;
+				}
+			}
+			
+		}
+		echo json_encode(array('error'=>true,"message"=>"false"));
+		exit;
+	}
+
 }
