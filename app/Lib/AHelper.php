@@ -665,6 +665,47 @@ class AHelper {
         return $isi;
     }
 
+
+    public function otomatis_kode_permohonan($awalan,$table,$field){
+        $last_rec = \DB::table($table)
+        ->select([DB::raw('MAX('.$field.') AS kodex')])
+        ->first($field);
+        $kode ='';
+        if ($last_rec != null) {
+            $kode = $last_rec->kodex;
+        }
+
+        //$kode = trim($kode);
+        $angka = substr($kode, 4, 7);
+      
+        if ($angka == false) {
+            $angka = '00000';
+        }
+        $angka++; 
+        
+    
+        if($angka<=9){
+                $angka="000000".$angka;
+        }elseif($angka<=99){
+                $angka="00000".$angka;
+        }elseif($angka<=999){
+                $angka="0000".$angka;
+        }elseif($angka<=9999){
+                $angka="000".$angka;
+        }elseif($angka<=99999){
+                $angka="00".$angka;
+        }elseif($angka<=999999){
+                $angka="0".$angka;
+        }elseif($angka<=9999999){
+                $angka=$angka;
+        }else{
+            $alert=eks::msg("Kode otomatis sudah dalam batas, silahkan kontak admin");
+            return $alert;
+            return false;
+        }
+        return $awalan.$angka;
+    }
+
     
 
     

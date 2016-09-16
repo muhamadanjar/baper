@@ -3,12 +3,14 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Lib\AHelper;
 use Illuminate\Http\Request;
 
 class permohonanCtrl extends Controller {
 
 	public function __construct($value=''){
 		$this->middleware('auth');
+		$this->ahelper = new AHelper();
 	}
 	
 	public function index(){
@@ -21,9 +23,13 @@ class permohonanCtrl extends Controller {
 	
 	public function create(){
 		$kode_peralatan = \App\AmpMast::get();
+		$kode_otomatis = $this->ahelper
+			->otomatis_kode_permohonan(date('Y'),'tbl_permohonan','no_permohonan');
 		
 		$perusahaan = \App\perusahaan::get();
-		return view('permohonan.permohonanAdd')->with('perusahaan',$perusahaan);
+		return view('permohonan.permohonanAdd')
+		->with('kode_otomatis',$kode_otomatis)
+		->with('perusahaan',$perusahaan);
 	}
 
 	
@@ -73,8 +79,6 @@ class permohonanCtrl extends Controller {
 			\DB::commit();
 			return redirect('permohonan/permohonan/index');
 		}
-		
-		
 	}
 
 	

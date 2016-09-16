@@ -85,26 +85,21 @@
     </div>
 
     <script>
-        $(function()
-        {
+        $(function(){
             $('.datepickers').datepicker({ dateFormat: 'yy-mm-dd' });
         });
         
-        function getpostdata(id)
-        {
-                var datas = $("#tanggalexpose"+ id).val();
-                var idperm = $("#tanggalexpose"+ id).attr("data-permohonan");
-                var req = post("{{asset('jadwal/periksa/tanggal')}}",{"tanggal":datas,"id":idperm});
-                req.then(function(out)
-                {
-                    if(!out.error)
-                    {
+        function getpostdata(id){
+            var datas = $("#tanggalexpose"+ id).val();
+            var idperm = $("#tanggalexpose"+ id).attr("data-permohonan");
+            var req = post("{{asset('jadwal/periksa/tanggal')}}",{"tanggal":datas,"id":idperm});
+            req.then(function(out){
+                if(!out.error){
                             
-                    }else
-                    {
-                        alert("error save data");   
-                    }
-                }); 
+                }else{
+                    alert("error save data");   
+                }
+            }); 
         }
     </script>
 	

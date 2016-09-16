@@ -23,7 +23,6 @@
                     <li><a href="#">Forms</a></li>
                     <li class="active">Permohonan</li>
                 </ul>
-
                 <div class="visible-xs breadcrumb-toggle">
                     <a class="btn btn-link btn-lg btn-icon" data-toggle="collapse" data-target=".breadcrumb-buttons"><i class="icon-menu2"></i></a>
                 </div>
@@ -46,7 +45,7 @@
 				        <div class="form-group">
 							<label class="col-sm-2 control-label">No Permohonan:</label>
 				            <div class="col-sm-2">
-				            	<input type="text" class="form-control" name="no_permohonan" value="{{ $permohonan->no_permohonan }}" maxlength="11">
+				            	<input type="text" class="form-control" name="no_permohonan" value="{{ $permohonan->no_permohonan }}" readonly maxlength="11">
 				            </div>
 				            <label class="col-sm-2 control-label">No Surat:</label>
 				            <div class="col-sm-4">
@@ -238,7 +237,6 @@
                         	<input type="submit" value="Simpan" class="btn btn-primary">
                         	<a href="{{ url('permohonan/permohonan/index') }}" class="btn btn-danger">Batal</a>
                         </div>
-
 				    </div>
 				</div>
 			</form>

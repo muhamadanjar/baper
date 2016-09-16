@@ -46,7 +46,7 @@
 				        <div class="form-group">
 							<label class="col-sm-2 control-label">No Permohonan:</label>
 				            <div class="col-sm-2">
-				            	<input type="text" class="form-control" name="no_permohonan" value="" maxlength="11">
+				            	<input type="text" class="form-control" readonly="readonly" name="no_permohonan"  maxlength="11" value="{{ $kode_otomatis }}">
 				            </div>
 				            <label class="col-sm-2 control-label">No Surat:</label>
 				            <div class="col-sm-4">
