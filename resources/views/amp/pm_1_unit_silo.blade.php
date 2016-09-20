@@ -63,6 +63,7 @@ if (isset($pm_satu_amp_silo)) {
     if($pm_satu_amp_silo->kode_periksa){
         $kode_periksa = $pm_satu_amp_silo->kode_periksa;
         $id_periksa = $pm_satu_amp_silo->id_periksa;
+        $no_id = $pm_satu_amp_silo->no_id;
 
         $silo_penampung_check = $pm_satu_amp_silo->silo_penampung_check;
         $silo_penampung_ket = $pm_satu_amp_silo->silo_penampung_ket;

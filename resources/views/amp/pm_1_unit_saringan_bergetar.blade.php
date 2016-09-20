@@ -72,7 +72,8 @@ if (isset($pm_satu_amp_saringanbergetar)) {
     if($pm_satu_amp_saringanbergetar->kode_periksa){
         $kode_periksa = $pm_satu_amp_saringanbergetar->kode_periksa;
         $id_periksa = $pm_satu_amp_saringanbergetar->id_periksa;
-
+        $no_id = $pm_satu_amp_saringanbergetar->no_id;
+        
         $saringan_check = $pm_satu_amp_saringanbergetar->saringan_check;
         $saringan_ket = $pm_satu_amp_saringanbergetar->saringan_ket;
         $saringan_foto = $pm_satu_amp_saringanbergetar->saringan_foto;

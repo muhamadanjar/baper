@@ -133,11 +133,12 @@ class AmpMastCtrl extends Controller {
 		$amp->tahun_buat = $request->tahun_buat;
 		$amp->kapasitas = $request->kapasitas;
 		$amp->lokasi = $request->lokasi;
-		$amp->longtitude = $request->longtitude;
-		$amp->latitude = $request->latitude;
+		//$amp->longtitude = $request->longtitude;
+		//$amp->latitude = $request->latitude;
 		$amp->kode_provinsi = $request->kode_provinsi;
 		$amp->kode_kabupaten = $request->kode_kabupaten;
 		$amp->kode_perusahaan = $request->kode_perusahaan;
+		$amp->kondisi = 2;
 		$amp->save();
 
 		return redirect('master/amp/index');
@@ -167,8 +168,8 @@ class AmpMastCtrl extends Controller {
 		$amp->tahun_buat = $request->tahun_buat;
 		$amp->kapasitas = $request->kapasitas;
 		$amp->lokasi = $request->lokasi;
-		$amp->longtitude = $request->longtitude;
-		$amp->latitude = $request->latitude;
+		//$amp->longtitude = $request->longtitude;
+		//$amp->latitude = $request->latitude;
 		$amp->kode_provinsi = $request->kode_provinsi;
 		$amp->kode_kabupaten = $request->kode_kabupaten;
 		$amp->kode_perusahaan = $request->kode_perusahaan;

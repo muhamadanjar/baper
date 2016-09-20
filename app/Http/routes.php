@@ -114,7 +114,8 @@ Route::group(array('prefix'=>'amp'), function(){
 	Route::post('pemeriksaan1/unitrekap','PeriksaSatuAMPRekapCtrl@periksaSatuAMPRekapPost');
 	
 
-
+	#------------- router pemeriksaan 2
+	Route::get('listpemeriksaanamp2/pemeriksaan_dua','AMPCtrl@pemeriksaan_dua');
 
 	Route::get('listpemeriksaanamp2/ubah-{id}',['as' => 'pemeriksaan2_menu','uses' => 'AMPCtrl@PemeriksaanDua']);
 	Route::get('pemeriksaan2/unitbindingin','PeriksaDuaAMPUnitBinDinginCtrl@periksaDuaAMPUnitBinDingin');
@@ -227,6 +228,10 @@ Route::group(array('prefix'=>'jadwal'), function(){
 
 });
 
+Route::controller('periksa','jadwal_pemeriksaanCtrl');
+Route::controller('expose','jadwal_exposeCtrl');
+Route::controller('certificate','CertificateCtrl');
+Route::get('certificate/certificate','CertificateCtrl@getCertificate');
 Route::group(array('prefix'=>'laporan'), function(){
 	Route::get('excel-{namafile}', 'ReportCtrl@printAmp');
 });

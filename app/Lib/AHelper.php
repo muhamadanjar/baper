@@ -44,6 +44,11 @@ class AHelper {
         $s = strtolower(str_replace($c, '-', $s)); // Ganti spasi dengan tanda - dan ubah hurufnya menjadi kecil semua
         return $s;
     }
+    public function format_tgl($format='d M Y',$date){
+        $tgl = ($date == null) ? '' : date($format, strtotime($date)) ;
+        return $tgl;
+    }
+    
 
 ////////////////Post//////////////////////////////////////////////////////////////
     public function TermQuery($jenis = ''){

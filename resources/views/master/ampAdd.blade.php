@@ -107,7 +107,7 @@
 							</div>
 						</div>
 						
-						<div class="form-group">
+						<!--<div class="form-group">
 				            <label class="col-sm-2 control-label">Longtitude(X):</label>
 				            <div class="col-sm-5">
 				            	<input type="text" class="form-control" name="longtitude">
@@ -122,7 +122,7 @@
 				            <div class="col-sm-5">
 				            	<input type="text" class="form-control" name="latitude">
 				            </div>
-				        </div>
+				        </div>-->
 											
 						<div class="form-group">
 							<label class="col-sm-2 control-label">Perusahaan:</label>
@@ -136,17 +136,7 @@
 							</div>
 						</div>
 						
-						<div class="form-group">
-				            <label class="col-sm-2 control-label">Kondisi:</label>
-				            <div class="col-sm-10">
-				            	<label>
-				            		<input type="checkbox" name="kondisi" class="styled" value="1"> Laik
-				            	</label>
-				            	<label>
-				            		<input type="checkbox" name="kondisi" class="styled" value="2">Tidak Laik
-				            	</label>
-				            </div>
-				        </div>
+						
 						
                         <div class="form-actions text-right">
                         	<input type="submit" value="Simpan" class="btn btn-primary">

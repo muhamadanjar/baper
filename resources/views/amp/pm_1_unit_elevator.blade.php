@@ -3,7 +3,7 @@
             <!-- Page header -->
             <div class="page-header">
                 <div class="page-title">
-                    <h3>14. Unit Elevator / Conveyor Campuran Aspal Panas (Untuk Tipe Continuos)</h3>
+                    <h3>15. Unit Elevator / Conveyor Campuran Aspal Panas (Untuk Tipe Continuos)</h3>
 				</div>
                 <div id="reportrange" class="range">
                     <div class="visible-xs header-element-toggle">

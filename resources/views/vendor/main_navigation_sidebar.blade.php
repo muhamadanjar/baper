@@ -20,7 +20,7 @@
 						<a href="{{ url('permohonan/permohonan/index') }}"><span>Permohonan Pemeriksaan</span> <i class="icon-grid"></i></a>
 					</li>
 					<li>
-						<a href="{{ url('jadwal/jadwal_expose/index') }}"><span>Expose</span> <i class="icon-grid"></i></a>
+						<a href="{{ url('jadwal/jadwal_expose/datahasil') }}"><span>Expose</span> <i class="icon-grid"></i></a>
 					</li>
 					<li>
 						<a href="{{ url('jadwal/jadwal_pemeriksaan/index') }}"><span>Jadwal Pemeriksaan</span> <i class="icon-grid"></i></a>
@@ -30,40 +30,12 @@
 						<ul>
 							<li><a href="{{ url('amp/listpemeriksaanamp/index') }}"><span>AMP</span></a></li>
 							<li><a href="{{ url('bp/listpemeriksaanbp/index') }}"><span>BP</span></a></li>
-							<!--
-                            	<ul>
-                                    <li><a href="{{ url('amp/pemeriksa/unitbindingin') }}">Unit Bin Dingin</a></li>
-                                    <li><a href="{{ url('amp/pemeriksa/unitbanberjalan') }}">Unit Ban Berjalan Agregat Dingin</a></li>
-                                    <li><a href="{{ url('amp/pemeriksa/unitpengering') }}">Unit Pengering</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unitpemanas') }}">Unit Pemanas</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unitpengumpuldebu') }}">Unit Pengumpul Debu</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unitelevatorpanas') }}">Unit Elevator Panas</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unitsaringanbergetar') }}">Unit Saringan Bergetar</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unitbinpanas') }}">Unit Bin Panas</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unittimbangan') }}">Unit Timbangan</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unitpencampur') }}">Unit Pencampur</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unitpemasokaspal') }}">Unit Pemasok Aspal</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unitpemasokfiller') }}">Unit Pemasok Filler</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unittenagapenggerak') }}">Unit Tenaga Penggerak</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unitbinfiller') }}">Unit Bin Filler</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unitelevator') }}">Unit Elevator</a></li>
-									<li><a href="{{ url('amp/pemeriksa/unitsilo') }}">Unit Silo</a></li>
-                                </ul>
 							
-                            <li><a href="#">BP</a>
-                            	<ul>
-                                    <li><a href="{{ url('bp/pemeriksa/unitpersediaan') }}">Unit Persedian Material</a></li>
-									<li><a href="{{ url('bp/pemeriksa/unitpenimbangan') }}">Unit Penimbangan</a></li>
-									<li><a href="{{ url('bp/pemeriksa/unitpencampuran') }}">Unit Pencampuran</a></li>
-									<li><a href="{{ url('bp/pemeriksa/unittransport') }}">Unit Transport</a></li>
-                                </ul>
-                            </li>
-                            -->
 							<li><a href="#">Quary</a></li>
 						</ul>
 					</li>
 					<li>
-						<a href="#"><span>Penerbitan Sertifikat</span> <i class="icon-user"></i></a>
+						<a href="{{ url('certificate') }}"><span>Penerbitan Sertifikat</span> <i class="icon-user"></i></a>
 					</li>
 					<li>
 						<a href="#"><span>Kebijakan</span> <i class="icon-bubble6"></i></a>

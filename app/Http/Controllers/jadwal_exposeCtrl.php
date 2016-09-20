@@ -31,23 +31,20 @@ class jadwal_exposeCtrl extends Controller {
 	public function postTanggal(Request $request){
 		if ($request->isMethod('post')) {
 			$input = $request->all();
-			
+
 			$jadwal_expose = \App\jadwal_expose::find($input['id']);
-			$date1 = strtr($input['tanggal'], '/', '-');
-			print_r($input);
-			exit;
-			if(isset($jadwal_expose->id)){
-				$jadwal_expose->tanggal_expose = $date1;
-			
-				if($jadwal_expose->save())
-				{
-					echo json_encode(array('error'=>false,"message"=>"success"));
-					exit;
-				}
+			try {
+				if(isset($jadwal_expose->id)){
+					$jadwal_expose->tanggal_expose = $input['tanggal'];
+					if($jadwal_expose->save()) return json_encode(array('error'=>false,"message"=>"success"));exit;
+				}	
+			} catch (Exception $e) {
+				
 			}
 			
+			
 		}
-		echo json_encode(array('error'=>true,"message"=>"false"));
+		return json_encode(array('error'=>true,"message"=>"false"));
 		exit;
 	}
 	/* ---- end jadwal expose dan hasil pemeriksaan */ 
@@ -72,8 +69,7 @@ class jadwal_exposeCtrl extends Controller {
 		return view('jadwal.jadwal_exposehasil')->with('jadwal_expose',$jadwal_expose);
 	}
 	
-	public function update($id,Request $request)
-	{
+	public function update($id,Request $request){
 		//$jadwal_expose = \App\jadwal_expose::find($id);
 		$jadwal_expose = \App\jadwal_expose::whereId($id)->first();
 		$jadwal_expose->no_undangan = $request->no_undangan;

@@ -56,15 +56,7 @@
                     <tbody>
                         @foreach($jadwal_expose as $key => $v)
                         <tr>
-                           <!-- <td>
-                                <div class="btn-group">
-                                    <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle" type="button"><i class="icon-cog4"></i><span class="caret"></span></button>
-                                    <ul class="dropdown-menu icons-right dropdown-menu-right">
-                                        <li><a href="{{ route('jadwal_exposeedit', ['id' => $v->no_permohonan]) }}"><i class="icon-quill2"></i>Jadwal Expose</a></li>            
-                                    </ul>
-                                </div>
-
-                            </td> -->
+                           
                             <td>{{$v->no_permohonan}}</td>
 							<td>{{$v->tanggal_permohonan}}</td>
 							<td>{{$v->nama_perusahaan}}</td>
@@ -98,17 +90,18 @@
     </div>
     <!--- add tanggal expose -->  
 	<script>
-		$(function()
-		{
+		$(function(){
 			$('.datepickers').datepicker({ dateFormat: 'yy-mm-dd' });
 		});
 		
 		function getpostdata(id){
-
 			var datas = $("#tanggalexpose"+ id).val();
 			var idperm = $("#tanggalexpose"+ id).attr("data-permohonan");
-			var req = post("{{asset('jadwal/expose/tanggal')}}",{"tanggal":datas,"id":idperm});
-			req.then(function(out){
+			
+            var req = post("{{asset('jadwal/expose/tanggal')}}",{"tanggal":datas,"id":idperm});
+			console.log(req);
+            req.then(function(out){
+                console.log(out)
 				if(!out.error){
 							
 				}else{
