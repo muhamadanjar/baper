@@ -45,8 +45,9 @@
 
 				        <div class="form-group">
 				            <label class="col-sm-2 control-label">Kode AMP:</label>
-				            <div class="col-sm-10">
-				            	<input type="text" class="form-control" name="kode_amp">
+				            <div class="col-sm-2">
+				            	<input type="text" class="form-control" readonly 
+				            	name="kode_amp" value="{{$kode}}">
 				            </div>
 				        </div>
 

@@ -45,8 +45,8 @@
 
 				        <div class="form-group">
 				            <label class="col-sm-2 control-label">Kode perusahaan:</label>
-				            <div class="col-sm-10">
-				            	<input type="text" class="form-control" name="kode_perusahaan">
+				            <div class="col-sm-2">
+				            	<input type="text" class="form-control" readonly name="kode_perusahaan" value="{{ $kode }}">
 				            </div>
 				        </div>
 

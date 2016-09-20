@@ -283,7 +283,7 @@ class AHelper {
     }
 
     public function otomatis_kode($awalan,$table,$field){
-        $last_rec = \DB::table($table)->select([DB::raw('MAX(nik) AS kodex')])->first($field);
+        $last_rec = \DB::table($table)->select([DB::raw('MAX('.$field.') AS kodex')])->first($field);
         $kode ='';
         if ($last_rec != null) {
             $kode = $last_rec->kodex;
@@ -313,7 +313,106 @@ class AHelper {
         return $awalan.$angka;
     }
 
-    function GetSetVar($str, $def='') {
+    public function otomatis_kode_permohonan($awalan,$table,$field){
+        $last_rec = \DB::table($table)
+        ->select([DB::raw('MAX('.$field.') AS kodex')])
+        ->first($field);
+        $kode ='';
+        if ($last_rec != null) {
+            $kode = $last_rec->kodex;
+        }
+
+        //$kode = trim($kode);
+        $angka = substr($kode, 4, 7);
+      
+        if ($angka == false) {
+            $angka = '00000';
+        }
+        $angka++; 
+        
+    
+        if($angka<=9){
+                $angka="000000".$angka;
+        }elseif($angka<=99){
+                $angka="00000".$angka;
+        }elseif($angka<=999){
+                $angka="0000".$angka;
+        }elseif($angka<=9999){
+                $angka="000".$angka;
+        }elseif($angka<=99999){
+                $angka="00".$angka;
+        }elseif($angka<=999999){
+                $angka="0".$angka;
+        }elseif($angka<=9999999){
+                $angka=$angka;
+        }else{
+            $alert=eks::msg("Kode otomatis sudah dalam batas, silahkan kontak admin");
+            return $alert;
+            return false;
+        }
+        return $awalan.$angka;
+    }
+
+    public function otomatis_kode_perusahaan($awalan,$table,$field){
+        $last_rec = \DB::table($table)->select([DB::raw($field.' AS kodex')])
+        ->whereRaw($field.' LIKE ?',array('%'.$awalan.'%'))
+        ->orderBy($field,'DESC')
+        ->first($field);
+        $kode ='';
+        if ($last_rec != null) {
+            $kode = $last_rec->kodex;
+        }
+        $angka = substr($kode, 2, 2);
+       
+        if ($angka == false) {
+            $angka = '0';
+        }
+        $angka++; 
+
+        if($angka<=9){
+            $angka="0".$angka;
+        }elseif($angka<=99){
+            $angka=$angka;
+        }else{
+                $alert=eks::msg("Kode otomatis sudah dalam batas, silahkan kontak admin");
+                return $alert;
+                return false;
+        }
+        return $awalan.$angka;
+    }
+
+    public function otomatis_kode_amp($awalan,$table,$field){
+        $last_rec = \DB::table($table)->select([DB::raw($field.' AS kodex')])
+        ->orderBy($field,'DESC')
+        ->first($field);
+        $kode ='';
+        if ($last_rec != null) {
+            $kode = $last_rec->kodex;
+        }
+       
+        $angka = substr($kode, 4, 4);
+
+        if ($angka == false) {
+            $angka = '0';
+        }
+        $angka++; 
+        if($angka<=9){
+            $angka="000".$angka;
+        }elseif($angka<=99){
+            $angka="00".$angka;
+        }elseif($angka<=999){
+            $angka="0".$angka;
+        }elseif($angka<=9999){
+            $angka=$angka;
+        }else{
+            $alert=eks::msg("Kode otomatis sudah dalam batas, silahkan kontak admin");
+            return $alert;
+            return false;
+        }
+        return $awalan.$angka;
+    }
+
+    public function GetSetVar($str, $def='') {
         if (isset($_REQUEST[$str])) {
             $_SESSION[$str] = $_REQUEST[$str];
             return $_REQUEST[$str];
@@ -327,67 +426,67 @@ class AHelper {
     }
 
     function tgl_indo($tgl){
-            $tanggal = substr($tgl,8,2);
-            $bulan = $this->getBulan(substr($tgl,5,2));
-            $tahun = substr($tgl,0,4);
-            return $tanggal.' '.$bulan.' '.$tahun;       
+        $tanggal = substr($tgl,8,2);
+        $bulan = $this->getBulan(substr($tgl,5,2));
+        $tahun = substr($tgl,0,4);
+        return $tanggal.' '.$bulan.' '.$tahun;       
     }   
 
     function getBulan($bln){
         switch ($bln){
             case 1: 
-                        return "Januari";
-                        break;
+                return "Januari";
+                break;
             case 2:
-                        return "Februari";
-                        break;
+                return "Februari";
+                break;
             case 3:
-                        return "Maret";
-                        break;
+                return "Maret";
+                break;
             case 4:
-                        return "April";
-                        break;
+                return "April";
+                break;
             case 5:
-                        return "Mei";
-                        break;
+                return "Mei";
+                break;
             case 6:
-                        return "Juni";
-                        break;
+                return "Juni";
+                break;
             case 7:
-                        return "Juli";
-                        break;
+                return "Juli";
+                break;
             case 8:
-                        return "Agustus";
-                        break;
+                return "Agustus";
+                break;
             case 9:
-                        return "September";
-                        break;
+                return "September";
+                break;
             case 10:
-                        return "Oktober";
-                        break;
+                return "Oktober";
+                break;
             case 11:
-                        return "November";
-                        break;
+                return "November";
+                break;
             case 12:
-                        return "Desember";
-                        break;
+                return "Desember";
+                break;
         }
     }
 	
 	function getBulanArray(){
 		
-		$bulan = array(1	=>	'Januari',
-				2	=>	'Februari',
-				3	=>	'Maret',
-				4	=>	'April',
-				5	=>	'Mei',
-				6	=>	'Juni',
-				7	=>	'Juli',
-				8	=>	'Agustus',
-				9	=>	'September',
-				10	=>	'Oktober',
-				11	=>	'November',
-				12	=>	'Desember',
+		$bulan = array(1 =>	'Januari',
+			2	=>	'Februari',
+			3	=>	'Maret',
+			4	=>	'April',
+			5	=>	'Mei',
+			6	=>	'Juni',
+			7	=>	'Juli',
+			8	=>	'Agustus',
+			9	=>	'September',
+			10	=>	'Oktober',
+			11	=>	'November',
+			12	=>	'Desember',
 		);
 		
 		return $bulan;
@@ -665,48 +764,6 @@ class AHelper {
         return $isi;
     }
 
-
-    public function otomatis_kode_permohonan($awalan,$table,$field){
-        $last_rec = \DB::table($table)
-        ->select([DB::raw('MAX('.$field.') AS kodex')])
-        ->first($field);
-        $kode ='';
-        if ($last_rec != null) {
-            $kode = $last_rec->kodex;
-        }
-
-        //$kode = trim($kode);
-        $angka = substr($kode, 4, 7);
-      
-        if ($angka == false) {
-            $angka = '00000';
-        }
-        $angka++; 
-        
-    
-        if($angka<=9){
-                $angka="000000".$angka;
-        }elseif($angka<=99){
-                $angka="00000".$angka;
-        }elseif($angka<=999){
-                $angka="0000".$angka;
-        }elseif($angka<=9999){
-                $angka="000".$angka;
-        }elseif($angka<=99999){
-                $angka="00".$angka;
-        }elseif($angka<=999999){
-                $angka="0".$angka;
-        }elseif($angka<=9999999){
-                $angka=$angka;
-        }else{
-            $alert=eks::msg("Kode otomatis sudah dalam batas, silahkan kontak admin");
-            return $alert;
-            return false;
-        }
-        return $awalan.$angka;
-    }
-
-    
 
     
 }

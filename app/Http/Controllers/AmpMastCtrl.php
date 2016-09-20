@@ -2,13 +2,14 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Lib\AHelper;
 use Illuminate\Http\Request;
 
 class AmpMastCtrl extends Controller {
 
 	public function __construct(){
 		$this->middleware('auth',['except' => ['getAmpMap']]);
+		$this->ahelper = new AHelper();
 	}
 	
 	public function index()
@@ -103,7 +104,9 @@ class AmpMastCtrl extends Controller {
 	{
 		$provinsi = \App\Provinsi::orderBy('kode_provinsi','ASC')->get();
 		$perusahaan = \App\Perusahaan::get();
-		return view('master.ampAdd')->with('provinsi',$provinsi)->with('perusahaan',$perusahaan);
+		$kode = $this->ahelper->otomatis_kode_amp('AMP-','tbl_amp','kode_amp');
+		return view('master.ampAdd')->with('provinsi',$provinsi)
+		->with('perusahaan',$perusahaan)->withKode($kode);
 	}
 
 	/**

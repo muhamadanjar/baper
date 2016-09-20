@@ -9,6 +9,7 @@ class KabupatenCtrl extends Controller {
 
 	public function __construct($value=''){
 		$this->middleware('auth');
+		$this->ahelper = new \AHelper();
 	}
 
 	public function index(){
@@ -22,8 +23,9 @@ class KabupatenCtrl extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
+	public function create(){
+
+		
 		return view('master.kabupatenAdd');
 	}
 

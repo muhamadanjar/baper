@@ -2,16 +2,16 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Lib\AHelper;
 use Illuminate\Http\Request;
 
 class PerusahaanCtrl extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+	public function __construct($value=''){
+		$this->middleware('auth');
+		$this->ahelper = new AHelper();
+	}
+
 	public function index()
 	{
 
@@ -26,7 +26,10 @@ class PerusahaanCtrl extends Controller {
 	 */
 	public function create()
 	{
-		return view('master.perusahaanAdd');
+		$kode = $this->ahelper
+			->otomatis_kode_perusahaan('P','tbl_perusahaan','kode_perusahaan');
+		
+		return view('master.perusahaanAdd')->withKode($kode);
 	}
 
 	/**
