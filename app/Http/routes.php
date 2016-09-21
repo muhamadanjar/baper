@@ -117,26 +117,43 @@ Route::group(array('prefix'=>'amp'), function(){
 	#------------- router pemeriksaan 2
 	Route::get('listpemeriksaanamp2/pemeriksaan_dua','AMPCtrl@pemeriksaan_dua');
 
-	Route::get('listpemeriksaanamp2/ubah-{id}',['as' => 'pemeriksaan2_menu','uses' => 'AMPCtrl@PemeriksaanDua']);
+	Route::get('listpemeriksaanamp2/ubah-{id}',['as' => 'pm_2_unit_menu','uses' => 'AMPCtrl@editpemeriksaan2']);	
+	
 	Route::get('pemeriksaan2/unitbindingin','PeriksaDuaAMPUnitBinDinginCtrl@periksaDuaAMPUnitBinDingin');
 	Route::post('pemeriksaan2/unitbindingin','PeriksaDuaAMPUnitBinDinginCtrl@periksaDuaAMPUnitBinDinginPost');
 	Route::get('pemeriksaan2/unitbanberjalan','PeriksaDuaAMPUnitBanBerjalanCtrl@periksaDuaAMPUnitBanBerjalan');
-	Route::post('pemeriksaan2/unitbanberjalan','PeriksaDuaAMPUnitBanBerjalanCtrl@periksaDuaAMPUnitBanBerjalanPost');
+	Route::post('pemeriksaan2/unitbanberjalan','PeriksaDuaAMPUnitBanBerjalanCtrl@periksaDuaAMPUnitBanBerjalanPost');	
+	Route::get('pemeriksaan2/unitpengering','PeriksaDuaAMPUnitPengeringCtrl@periksaDuaAMPUnitPengering');
+	Route::post('pemeriksaan2/unitpengering','PeriksaDuaAMPUnitPengeringCtrl@periksaDuaAMPUnitPengeringPost');	
+	Route::get('pemeriksaan2/unitpemanas','PeriksaDuaAMPUnitPemanasCtrl@periksaDuaAMPUnitPemanas');
+	Route::post('pemeriksaan2/unitpemanas','PeriksaDuaAMPUnitPemanasCtrl@periksaDuaAMPUnitPemanasPost');
+	Route::get('pemeriksaan2/unitpengumpuldebu','PeriksaDuaAMPUnitPengumpulDebuCtrl@periksaDuaAMPUnitPengumpulDebu');
+	Route::post('pemeriksaan2/unitpengumpuldebu','PeriksaDuaAMPUnitPengumpulDebuCtrl@periksaDuaAMPUnitPengumpulDebuPost');
+	Route::get('pemeriksaan2/unitelevatorpanas','PeriksaDuaAMPUnitElevatorPanasCtrl@periksaDuaAMPUnitElevatorPanas');
+	Route::post('pemeriksaan2/unitelevatorpanas','PeriksaDuaAMPUnitElevatorPanasCtrl@periksaDuaAMPUnitElevatorPanasPost');
+	Route::get('pemeriksaan2/unitsaringanbergetar','PeriksaDuaAMPUnitSaringanBergetarCtrl@periksaDuaAMPUnitSaringanBergetar');
+	Route::post('pemeriksaan2/unitsaringanbergetar','PeriksaDuaAMPUnitSaringanBergetarCtrl@periksaDuaAMPUnitSaringanBergetarPost');
+	Route::get('pemeriksaan2/unitbinpanas','PeriksaDuaAMPUnitBinPanasCtrl@periksaDuaAMPUnitBinPanas');
+	Route::post('pemeriksaan2/unitbinpanas','PeriksaDuaAMPUnitBinPanasCtrl@periksaDuaAMPUnitBinPanasPost');
+	Route::get('pemeriksaan2/unittimbangan','PeriksaDuaAMPUnitTimbanganCtrl@periksaDuaAMPUnitTimbangan');
+	Route::post('pemeriksaan2/unittimbangan','PeriksaDuaAMPUnitTimbanganCtrl@periksaDuaAMPUnitTimbanganPost');
+	Route::get('pemeriksaan2/unitpencampur','PeriksaAMPDuaAMPUnitPencampurCtrl@periksaAMPDuaAMPUnitPencampur');
+	Route::post('pemeriksaan2/unitpencampur','PeriksaAMPDuaAMPUnitPencampurCtrl@periksaAMPDuaAMPUnitPencampurPost');
+	Route::get('pemeriksaan2/unitpemasokaspal','PeriksaDuaAMPUnitPemasokAspalCtrl@periksaDuaAMPUnitPemasokAspal');
+	Route::post('pemeriksaan2/unitpemasokaspal','PeriksaDuaAMPUnitPemasokAspalCtrl@periksaDuaAMPUnitPemasokAspalPost');
+	Route::get('pemeriksaan2/unitpemasokfiller','PeriksaDuaAMPUnitPemasokFillerCtrl@periksaDuaAMPUnitPemasokFiller');
+	Route::post('pemeriksaan2/unitpemasokfiller','PeriksaDuaAMPUnitPemasokFillerCtrl@periksaDuaAMPUnitPemasokFillerPost');
+	Route::get('pemeriksaan2/unittenagapenggerak','PeriksaDuaAMPUnitTenagaPenggerakCtrl@periksaDuaAMPUnitTenagaPenggerak');
+	Route::post('pemeriksaan2/unittenagapenggerak','PeriksaDuaAMPUnitTenagaPenggerakCtrl@periksaDuaAMPUnitTenagaPenggerakPost');
+	Route::get('pemeriksaan2/unitbinfiller','PeriksaDuaAMPUnitBinFillerCtrl@periksaDuaAMPUnitBinFiller');
+	Route::post('pemeriksaan2/unitbinfiller','PeriksaDuaAMPUnitBinFillerCtrl@periksaDuaAMPUnitBinFillerPost');
+	Route::get('pemeriksaan2/unitelevator','PeriksaDuaAMPUnitElevatorCtrl@periksaDuaAMPUnitElevator');
+	Route::post('pemeriksaan2/unitelevator','PeriksaDuaAMPUnitElevatorCtrl@periksaDuaAMPUnitElevatorPost');	
+	Route::get('pemeriksaan2/unitsilo','PeriksaDuaAMPUnitSiloCtrl@periksaDuaAMPUnitSilo');
+	Route::post('pemeriksaan2/unitsilo','PeriksaDuaAMPUnitSiloCtrl@periksaDuaAMPUnitSiloPost');
 
-	Route::get('pemeriksaan2/unitpengering','AMPCtrl@pem_amp_2_unit_pengering');
-	Route::get('pemeriksaan2/unitpemanas','AMPCtrl@pem_amp_2_unit_pemanas');
-	Route::get('pemeriksaan2/unitpengumpuldebu','AMPCtrl@pem_amp_2_unit_pengumpul_debu');
-	Route::get('pemeriksaan2/unitelevatorpanas','AMPCtrl@pem_amp_2_unit_elevator_panas');
-	Route::get('pemeriksaan2/unitsaringanbergetar','AMPCtrl@pem_amp_2_unit_saringan_bergetar');
-	Route::get('pemeriksaan2/unitbinpanas','AMPCtrl@pem_amp_2_unit_bin_panas');
-	Route::get('pemeriksaan2/unittimbangan','AMPCtrl@pem_amp_2_unit_timbangan');
-	Route::get('pemeriksaan2/unitpencampur','AMPCtrl@pem_amp_2_unit_pencampur');
-	Route::get('pemeriksaan2/unitpemasokaspal','AMPCtrl@pem_amp_2_unit_pemasok_aspal');
-	Route::get('pemeriksaan2/unitpemasokfiller','AMPCtrl@pem_amp_2_unit_pemasok_filler');
-	Route::get('pemeriksaan2/unittenagapenggerak','AMPCtrl@pem_amp_2_unit_tenaga_penggerak');
-	Route::get('pemeriksaan2/unitbinfiller','AMPCtrl@pem_amp_2_unit_bin_filler');
-	Route::get('pemeriksaan2/unitelevator','AMPCtrl@pem_amp_2_unit_elevator');
-	Route::get('pemeriksaan2/unitsilo','AMPCtrl@pem_amp_2_unit_silo');
+	Route::get('pemeriksaan2/unitrekap','PeriksaDuaAMPRekapCtr@periksaDuaAMPRekap');
+	Route::post('pemeriksaan2/unitrekap','PeriksaDuaAMPRekapCtr@periksaDuaAMPRekapPost');
 });
 
 Route::group(array('prefix'=>'bp'), function(){
